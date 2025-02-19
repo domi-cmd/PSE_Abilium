@@ -1,7 +1,7 @@
 # PSE 2025 Roadmap 📍🗺️
 
 ## 📅 Deadlines
-- **26. Februar – Erste Abgabe der wöchentlichen Deliverables** 📦
+- **5. März – Erste Abgabe der wöchentlichen Deliverables** 📦
 - **12. März – Abgabe Testkonzept V1** 📑
 - **2. April – Abgabe Testkonzept V2** 📑
 - **21. Mai – Dokumentation & Testresultate abgeben** 📑
@@ -13,7 +13,7 @@
 - **14. Mai – Ende Iteration 4** ✅
 
 ## 🎤 Präsentationstermine
-- **26. Februar – Requirements (5 min)** 📋
+- **5. März – Requirements (5 min)** 📋
 - **12. März – Analyse Iteration 1 (5 min)** 🔍
 - **2. April – Demo 1 (8–10 min)** 🚀
 - **30. April – Technologie & Architektur (5 min)** 🏗️
