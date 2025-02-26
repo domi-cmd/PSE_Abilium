@@ -13,12 +13,12 @@
 - **14. Mai – Ende Iteration 4** ✅
 
 ## 🎤 Präsentationstermine
-- **5. März – Requirements (5 min)** 📋
-- **12. März – Analyse Iteration 1 (5 min)** 🔍
-- **2. April – Demo 1 (8–10 min)** 🚀
-- **30. April – Technologie & Architektur (5 min)** 🏗️
-- **7. Mai – Qualitätssicherung, Testing, Usability (5 min)** ✅
-- **21. Mai – Schlussdemo (8–10 min)** 🎬
+- **5. März – Requirements (5 min) - Caro** 📋
+- **12. März – Analyse Iteration 1 (5 min) - Livia** 🔍
+- **2. April – Demo 1 (8–10 min) - Linus** 🚀
+- **30. April – Technologie & Architektur (5 min) - Dominic** 🏗️
+- **7. Mai – Qualitätssicherung, Testing, Usability (5 min) - Miroslav** ✅
+- **21. Mai – Schlussdemo (8–10 min) - Yannis** 🎬
 
 ## 🎲 Planning Games
 - **19. Februar – Planning Game 1** 🎲
