@@ -5,12 +5,12 @@
 Diese Woche hatten wir das erste Kunden Gespräch. 
 Wir haben einige Raspberry pi erhalten und ein OS auf ihnen Installiert.
 
-![StatusOK.png](StatusOK.png)
+![StatusOK.png](statusgrafiken/StatusOK.png)
 
 ## Week 2 : 03.03. - 09.03. 
 
 ## Grafiken:
-- **![StatusOK.png](StatusOK.png)**
-- **![StatusImVerzug.png](StatusImVerzug.png)**
-- **![StatusKritisch.png](StatusKritisch.png)**
+- **![StatusOK.png](statusgrafiken/StatusOK.png)**
+- **![StatusImVerzug.png](statusgrafiken/StatusImVerzug.png)**
+- **![StatusKritisch.png](statusgrafiken/StatusKritisch.png)**
 
