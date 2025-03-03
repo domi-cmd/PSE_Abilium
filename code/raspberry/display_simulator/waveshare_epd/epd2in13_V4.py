@@ -5,14 +5,17 @@ from PIL import Image, ImageDraw
 logging.basicConfig(level=logging.DEBUG)
 
 # Simulated Display Size (match your Waveshare model)
-DISPLAY_WIDTH = 250  # Update with actual dimensions
-DISPLAY_HEIGHT = 122
+DISPLAY_WIDTH = 250  # Actual display dimensions
+DISPLAY_HEIGHT = 122  # Actual display dimensions
+
+# Upscale factor for simulation (scale by 2 for the simulation)
+UPSCALE_FACTOR = 3
 
 class EPD:
     def __init__(self):
         self.width = DISPLAY_WIDTH
         self.height = DISPLAY_HEIGHT
-        self.image = Image.new("1", (self.width, self.height), 255)  # White canvas
+        self.image = Image.new("1", (self.width, self.height), 255)  # White canvas for simulation
         self.draw = ImageDraw.Draw(self.image)
 
     def init(self):
@@ -30,8 +33,12 @@ class EPD:
     def displayPartial(self, image_buffer):
         """Simulate partial display update."""
         logging.info("Displaying partial update...")
-        self.image = image_buffer  # Store the new image
-        self.image.show()  # Display the updated image
+        # Before displaying, upscale the final image
+        upscaled_image = image_buffer.resize(
+            (self.width * UPSCALE_FACTOR, self.height * UPSCALE_FACTOR), 
+            Image.NEAREST
+        )
+        upscaled_image.show()  # Display the upscaled image in simulation
 
     def sleep(self):
         logging.info("Simulated EPD going to sleep.")
@@ -41,4 +48,3 @@ class epdconfig:
     @staticmethod
     def module_exit(cleanup=True):
         logging.info("Exiting module...")
-

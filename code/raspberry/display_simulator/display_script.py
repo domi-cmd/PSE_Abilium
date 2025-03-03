@@ -46,11 +46,20 @@ try:
         # Select the page to display
         page_text = pages[num % len(pages)]  # Cycles through the pages
 
-        # Draw the text on the screen
-        time_draw.text((10, 10), page_text, fill=0)
+        # Add a textbox (rectangle) around the text on page1
+        # Define the position and size of the rectangle
+        rect_x1, rect_y1 = 10, 10
+        rect_x2, rect_y2 = epd.width - 10, 50  # Adjust as needed for padding
 
-        time_draw.rectangle((120, 80, 220, 105), fill = 255)
-        time_draw.text((120, 80), time.strftime('%H:%M'), fill = 0)
+        # Draw a white rectangle around the text
+        time_draw.rectangle([rect_x1, rect_y1, rect_x2, rect_y2], outline=0, width=1, fill=255)
+        
+        # Now draw the text inside the rectangle
+        time_draw.text((rect_x1 + 5, rect_y1 + 5), page_text, fill=0)  # Added padding for text
+
+        # Draw time info
+        time_draw.rectangle((120, 80, 220, 105), fill=255)
+        time_draw.text((120, 80), time.strftime('%H:%M'), fill=0)
         epd.displayPartial(epd.getbuffer(time_image))
 
         # Increment the page number and reset if it reaches the last page
