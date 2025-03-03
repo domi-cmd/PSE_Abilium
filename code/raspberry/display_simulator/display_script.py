@@ -11,6 +11,12 @@ import traceback
 
 logging.basicConfig(level=logging.DEBUG)
 
+# Load a DejaVu font from your project folder
+# Path to your .ttf font file
+font_path = "code/raspberry/display_simulator/assets/DejaVuSans-Bold.ttf"  
+# 14 is the font size
+font = ImageFont.truetype(font_path, 14)  
+
 try:
     logging.info("epd2in13_V4 Demo")
 
@@ -58,13 +64,14 @@ try:
 
         # Now draw the text inside the rectangle with padding
         # Added padding for text
-        time_draw.text((rect_x1 + 5, rect_y1 + 5), page_text, fill=0)  
+        time_draw.text((rect_x1 + 5, rect_y1 + 5), page_text, font=font, fill=0)  
 
         # Draw the time information
         # White box for time display (Change fill value to something else than 255 for visibility of box)
-        time_draw.rectangle((120, 80, 220, 105), fill=255)  
-        # Display current time
-        time_draw.text((120, 80), time.strftime('%H:%M'), fill=0)  
+        #time_draw.rectangle((180, 80, 245, 110), fill=255, outline=0, width=1)  
+        # Display current time and day
+        time_draw.text((190, 80), time.strftime('%H:%M'), font=font, fill=0) 
+        time_draw.text((180, 100), "Tuesday", font=font, fill=0)  
 
         # Send the drawn image to the display
         epd.displayPartial(epd.getbuffer(time_image))
