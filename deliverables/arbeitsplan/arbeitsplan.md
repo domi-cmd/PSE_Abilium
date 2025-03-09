@@ -18,9 +18,9 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Dummy Plugin erstellen | Caro Livia Yannis | Ende 1te Iteration | Odoo Plugin Erstellen | ⏳ |
 | MQTT einlesen | Livia Caro | Ende 1te Iteration | Odoo Plugin Erstellen | ⏳ |
 | Traktanden-Raphael | Dominic | 12.3.25(?) | Meeting | ⏳ |
-| Statusbericht 2 | Linus | 09.3.25 | Dokumentation | ⏳ |
-| Protokollabgaben 2 | Yannis | 09.3.25 | Dokumentation | ⏳ |
-| Risikoanalyse 2 | Livia | 09.3.25 | Dokumentation | ⏳ |
+| Statusbericht 2 | Linus | 09.3.25 | Dokumentation | ✅ |
+| Protokollabgaben 2 | Yannis | 09.3.25 | Dokumentation | ✅ |
+| Risikoanalyse 2 | Livia | 09.3.25 | Dokumentation | ✅ |
 | Testkonzept V2 Abgabe | Myroslav | 30.3.25 | Dokumentation | ⏳ |
 | Planning-Game | Alle | 09.3.25 | Meeting | ✅ |
 | Statusbericht 1 | Linus | 02.3.25 | Dokumentation | ✅ |
