@@ -14,14 +14,14 @@ Die Lösung umfasst:
 
 ## Team & Rollen  
 
-| Name          | Rolle                | Verantwortlichkeiten |
-|--------------|----------------------|----------------------|
-| **Carolina Lucca** | **Key Account Manager**  | Kundenkontakt |
-| **Livia Brunner** | **Chief Deliverable Officer**  | Verantwortlich abzugebende Dokumente & Deadlines |
-| **Myroslav Pavlov** | **Quality Evangelist**  | Erstellen Testkonzept & Durchführung Software-Tests |
-| **Linus Marti** | **Master Tracker**  | Erstellen Statusberichte & Überblick Projektstatus |
-| **Yannis Racine** | **Protokollführer**  | Erstellen Sitzungs- & Beschlussprotokolle |
-| **Dominic Kronig** | **Sitzungsleiter**  | Leitung & Vorbereitung Sitzungen |
+| Name          | Rolle                | Verantwortlichkeiten | E-Mails
+|--------------|----------------------|----------------------|-----------------------|
+| **Carolina Lucca** | **Key Account Manager**  | Kundenkontakt |carolina.lucca@students.unibe.ch
+| **Livia Brunner** | **Chief Deliverable Officer**  | Verantwortlich abzugebende Dokumente & Deadlines | livia.brunner@students.unibe.ch
+| **Myroslav Pavlov** | **Quality Evangelist**  | Erstellen Testkonzept & Durchführung Software-Tests | myroslav.pavlov@students.unibe.ch
+| **Linus Marti** | **Master Tracker**  | Erstellen Statusberichte & Überblick Projektstatus | linus.marti@students.unibe.ch
+| **Yannis Racine** | **Protokollführer**  | Erstellen Sitzungs- & Beschlussprotokolle | yannis.racine@students.unibe.ch
+| **Dominic Kronig** | **Sitzungsleiter**  | Leitung & Vorbereitung Sitzungen | dominic.kronig@students.unibe.ch
 
 
 ## Installation & Setup  
