@@ -7,8 +7,9 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Status |
 |------|--------------|----------|---------------|--------|
 | - | - | - | - | - |
+| Traktanden Intern Meeting 2 | Dominic | 12.03.25 | Meeting | ⏳ |
 | Präsentation 2 | Livia | 12.03.25 | Präsentation | 🔄 |
-| Traktanden Standup Meeting 1 | Dominic | 11.03.25 | Meeting | ⏳ |
+| Traktanden Standup Meeting 1 | Dominic | 11.03.25 | Meeting | 🔄 |
 | Odoo Server Installation & Setup | Dominic Linus Myroslav Yannis | Ende 1te Iteration | Odoo aufsetzen | 🔄 |
 | Odoo Server Setup Dokumentation einlesen | Alle | Ende 1te Iteration | Odoo aufsetzen | 🔄 |
 | Raspberry OS installieren & aufsetzen | Alle | Ende 1te Iteration | Raspberry aufsetzen | ✅ |
