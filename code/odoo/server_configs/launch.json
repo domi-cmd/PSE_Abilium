@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Odoo18",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "python": "C:\\Users\\Domi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "console": "integratedTerminal",
+            "program": "C:\\odoo18\\server\\odoo-bin",
+            "args": [
+                "--config=C:\\odoo18\\server\\odoo.conf"
+            ],
+            "cwd": "C:\\odoo18\\server",
+            "env": {},
+            "envFile": "${workspaceFolder}/.env",
+            "debugOptions": [
+                "RedirectOutput"
+            ]
+        }
+    ]
+}
