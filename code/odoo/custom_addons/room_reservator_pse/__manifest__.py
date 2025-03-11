@@ -1,5 +1,5 @@
 {
-    'name': 'Custom Room Reservator IoT',
+    'name': 'Custom Room Reservator IoT:)',
     'version': '1.0',
     'summary': 'A custom Odoo module',
     'description': 'This is a custom Odoo module which allows for calendar feature and IoT connection.',
