@@ -3,7 +3,9 @@ name: Update Issue Counter
 on:
   push:
     branches:
-      - main  # Runs on every push to main
+      - main
+permissions:
+  contents: write 
 
 jobs:
   count_done_issues:
@@ -11,6 +13,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  
+
+      - name: Debug Directory Structure
+        run: ls -R  
 
       - name: Count Completed Issues
         run: |
@@ -23,5 +30,4 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add "deliverables/arbeitsplan/arbeitsplan.md"
-          git commit -m "Updated completed issue count" || echo "No changes to commit"
-          git push
+          git diff --quiet && echo "No changes to commit" || (git commit -m "Updated completed issue count" && git push)
