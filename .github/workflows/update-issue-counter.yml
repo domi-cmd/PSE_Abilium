@@ -1,4 +1,4 @@
-name: Update Issue Counter
+name: Update Issue Counter # Name
 
 on:
   push:
