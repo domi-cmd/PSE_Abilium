@@ -1,44 +1,52 @@
-name: Update Issue Counter # Name
+name: Update Completed Issues Counter
 
 on:
   push:
     paths:
       - 'deliverables/arbeitsplan/arbeitsplan.md'
-      - '.github/workflows/update-issue-counter.yml'
+      - '.github/workflows/update-counter.yml'
 
 jobs:
-  update-counter:
+  update_counter:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v3
+    # Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Count Completed Issues
-        run: |
-          FILE="deliverables/arbeitsplan/arbeitsplan.md"
-          
-          # Debug: Check if the file exists and print its contents
-          echo "Checking file at: $FILE"
-          cat "$FILE"  # Output the file contents to make sure we can see it
+    # Set up Git
+    - name: Set up Git
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
 
-          # Count the number of ✅ symbols
-          COUNT=$(grep -o "✅" "$FILE" | wc -l)
-          echo "Found $COUNT completed issues"  # Show the counted value
+    # Extract and count completed issues
+    - name: Count completed issues and update counter
+      run: |
+        # Define the file path
+        FILE="deliverables/arbeitsplan/arbeitsplan.md"
 
-          # Update the counter line (adjusted for "Overall Completed Issues")
-          sed -i "s/^## Overall Completed Issues: .*/## Overall Completed Issues: $COUNT ✅/" "$FILE"
+        # Check if the file exists and print contents for debugging
+        echo "Checking file at: $FILE"
+        cat "$FILE"
 
-          # Debug: Print the file again to ensure the change is made
-          echo "Updated file contents:"
-          cat "$FILE"
+        # Count the number of "✅" symbols
+        COUNT=$(grep -o "✅" "$FILE" | wc -l)
+        echo "Found $COUNT completed issues"
 
-      - name: Commit the changes
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git add deliverables/arbeitsplan/arbeitsplan.md
-          git commit -m "Update completed issues counter in arbeitsplan.md"
-          
-          # Use the GitHub token for authentication
-          git push https://github-actions:${{ secrets.GH_TOKEN }}@github.com/domi-cmd/PSE_Abilium.git
+        # Update the "Completed Issues" section
+        sed -i "s/^## Overall Completed Issues: .*/## Overall Completed Issues: $COUNT ✅/" "$FILE"
+
+        # Debug: Print updated file contents
+        echo "Updated file contents:"
+        cat "$FILE"
+
+    # Commit the changes if any
+    - name: Commit the changes
+      run: |
+        git add deliverables/arbeitsplan/arbeitsplan.md
+        git commit -m "Update completed issues counter in arbeitsplan.md"
+
+        # Push the changes back to the repository using GITHUB_TOKEN
+        git push https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/domi-cmd/PSE_Abilium.git
