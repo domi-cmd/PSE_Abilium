@@ -5,7 +5,7 @@ on:
     branches:
       - main
 permissions:
-  contents: write 
+  contents: write  # ✅ Grant permission to push changes
 
 jobs:
   count_done_issues:
@@ -14,20 +14,34 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  
+          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ Use GitHub token for authentication
 
       - name: Debug Directory Structure
-        run: ls -R  
+        run: ls -R  # ✅ Check where arbeitsplan.md is located
 
       - name: Count Completed Issues
         run: |
           FILE="deliverables/arbeitsplan/arbeitsplan.md"
+          
+          # Debug: Check if the file exists and print its contents
+          echo "Checking file at: $FILE"
+          cat "$FILE"  # Output the file contents to make sure we can see it
+
+          # Count the number of ✅ symbols
           COUNT=$(grep -o "✅" "$FILE" | wc -l)
+          echo "Found $COUNT completed issues"  # Show the counted value
+
+          # Update the counter line
           sed -i "s/^## Completed Issues: .*/## Completed Issues: $COUNT ✅/" "$FILE"
+
+          # Debug: Print the file again to ensure the change is made
+          echo "Updated file contents:"
+          cat "$FILE"
 
       - name: Commit changes
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add "deliverables/arbeitsplan/arbeitsplan.md"
+          git status  # ✅ Check if changes are detected
           git diff --quiet && echo "No changes to commit" || (git commit -m "Updated completed issue count" && git push)
