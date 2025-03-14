@@ -39,4 +39,6 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git add deliverables/arbeitsplan/arbeitsplan.md
           git commit -m "Update completed issues counter in arbeitsplan.md"
-          git push origin main
+          
+          # Use the GitHub token for authentication
+          git push https://github-actions:${{ secrets.GH_TOKEN }}@github.com/domi-cmd/PSE_Abilium.git
