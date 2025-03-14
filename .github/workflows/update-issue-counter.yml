@@ -2,22 +2,17 @@ name: Update Issue Counter
 
 on:
   push:
-    branches:
-      - main
-permissions:
-  contents: write  # ✅ Grant permission to push changes
+    paths:
+      - 'deliverables/arbeitsplan/arbeitsplan.md'
+      - '.github/workflows/update-issue-counter.yml'
 
 jobs:
-  count_done_issues:
+  update-counter:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ Use GitHub token for authentication
 
-      - name: Debug Directory Structure
-        run: ls -R  # ✅ Check where arbeitsplan.md is located
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
 
       - name: Count Completed Issues
         run: |
@@ -38,10 +33,10 @@ jobs:
           echo "Updated file contents:"
           cat "$FILE"
 
-      - name: Commit changes
+      - name: Commit the changes
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add "deliverables/arbeitsplan/arbeitsplan.md"
-          git status  # ✅ Check if changes are detected
-          git diff --quiet && echo "No changes to commit" || (git commit -m "Updated completed issue count" && git push)
+          git add deliverables/arbeitsplan/arbeitsplan.md
+          git commit -m "Update completed issues counter in arbeitsplan.md"
+          git push origin main
