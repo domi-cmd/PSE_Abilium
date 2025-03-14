@@ -31,8 +31,8 @@ jobs:
           COUNT=$(grep -o "✅" "$FILE" | wc -l)
           echo "Found $COUNT completed issues"  # Show the counted value
 
-          # Update the counter line
-          sed -i "s/^## Completed Issues: .*/## Completed Issues: $COUNT ✅/" "$FILE"
+          # Update the counter line (adjusted for "Overall Completed Issues")
+          sed -i "s/^## Overall Completed Issues: .*/## Overall Completed Issues: $COUNT ✅/" "$FILE"
 
           # Debug: Print the file again to ensure the change is made
           echo "Updated file contents:"
