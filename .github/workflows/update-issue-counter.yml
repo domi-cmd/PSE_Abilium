@@ -1,4 +1,4 @@
-name: Update Completed Issues Counter
+name: Update Completed Issues Counter #Comment for pushing
 
 on:
   push:
