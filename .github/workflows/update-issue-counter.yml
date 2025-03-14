@@ -1,0 +1,27 @@
+name: Update Issue Counter
+
+on:
+  push:
+    branches:
+      - main  # Runs on every push to main
+
+jobs:
+  count_done_issues:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Count Completed Issues
+        run: |
+          FILE="PSE_Abilium/deliverables/arbeitsplan/arbeitsplan.md"
+          COUNT=$(grep -o "✅" "$FILE" | wc -l)
+          sed -i "s/^## Completed Issues: .*/## Completed Issues: $COUNT ✅/" "$FILE"
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add "PSE_Abilium/deliverables/arbeitsplan/arbeitsplan.md"
+          git commit -m "Updated completed issue count" || echo "No changes to commit"
+          git push
