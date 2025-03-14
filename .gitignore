@@ -1,0 +1,35 @@
+# JetBrains (IntelliJ, PhpStorm, WebStorm, etc.)
+.idea/
+
+# VS Code
+.vscode/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Visual Studio
+.vs/
+.vs2019/
+.vs2017/
+
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Python virtual environment
+venv/
+env/
+*.pyc
+
+# Logging files (database)
+*.log
+
+# PostgreSQL database files
+*.sql
+*.sql.gz
