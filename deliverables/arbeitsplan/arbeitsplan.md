@@ -3,6 +3,8 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
+## Overall Completed Issues: 0 ✅
+
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Status |
 |------|--------------|----------|---------------|--------|
