@@ -14,7 +14,7 @@ jobs:
 
       - name: Count Completed Issues
         run: |
-          FILE="PSE_Abilium/deliverables/arbeitsplan/arbeitsplan.md"
+          FILE="deliverables/arbeitsplan/arbeitsplan.md"
           COUNT=$(grep -o "✅" "$FILE" | wc -l)
           sed -i "s/^## Completed Issues: .*/## Completed Issues: $COUNT ✅/" "$FILE"
 
@@ -22,6 +22,6 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add "PSE_Abilium/deliverables/arbeitsplan/arbeitsplan.md"
+          git add "deliverables/arbeitsplan/arbeitsplan.md"
           git commit -m "Updated completed issue count" || echo "No changes to commit"
           git push
