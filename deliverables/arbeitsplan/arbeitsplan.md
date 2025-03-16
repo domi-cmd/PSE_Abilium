@@ -13,8 +13,8 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Traktanden Intern Meeting 2 | Dominic | 12.03.25 | Meeting | 30min | ✅ |
 | Präsentation 2 | Livia | 12.03.25 | Präsentation | - | ✅ |
 | Traktanden Standup Meeting 1 | Dominic | 11.03.25 | Meeting | 30min | ✅ |
-| Odoo Server Installation & Setup | Alle | Ende 1te Iteration | Odoo aufsetzen | 1.5h | 🔄 |
-| Odoo Server Setup Dokumentation einlesen | Alle | Ende 1te Iteration | Odoo aufsetzen | 3h | 🔄 |
+| Odoo Server Installation & Setup | Alle | Ende 1te Iteration | Odoo aufsetzen | 1.5h | ✅ |
+| Odoo Server Setup Dokumentation einlesen | Alle | Ende 1te Iteration | Odoo aufsetzen | 3h | ✅ |
 | Raspberry OS installieren & aufsetzen | Alle | Ende 1te Iteration | Raspberry aufsetzen | 2h | ✅ |
 | Ink Display Setup (Hardware & Software) | Alle | Ende 1te Iteration | Ink Display aufsetzen | 4h | 🔄 |
 | Ink Display einfach Bild darstellen | Alle | Ende 1te Iteration | Ink Display aufsetzen | 3h | 🔄 |
