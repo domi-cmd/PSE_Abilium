@@ -29,7 +29,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Planning-Game | Alle | 09.3.25 | Meeting | 2.5h | ✅ |
 | Statusbericht 1 | Linus | 02.3.25 | Dokumentation | - | ✅ |
 | Protokollabgaben 1 | Yannis | 02.3.25 | Dokumentation | - | ✅ |
-| Präsentation 1 vorbereiten | Caro | 05.3.25 | Präsentationen | - | ✅ |
+| Präsentation 1 vorbereiten | Caro | 05.3.25 | Präsentationen | 6h | ✅ |
 | Risikoanalyse 1 | Livia | 02.3.25 | Dokumentation | - | ✅ |
 | E-Ink Setup Guide | Dominic | - | Setup | 1.5h | ✅ |
 | E-Ink Simulator | Dominic | - | Setup | 3.5h | ✅ |
