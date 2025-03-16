@@ -9,6 +9,10 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Geschätzter Zeitaufwand | Status |
 |------|--------------|----------|---------------|--------|--------|
 | - | - | - | - | - | - |
+| Odoo App Fix Name | Linus | Ende 1te Iteration | Odoo Custom Plugin | 30min | ✅ |
+| Odoo App Try Add Base Calendar | Dominic | Ende 1te Iteration | Odoo Custom Plugin | - | ⏳ |
+| Odoo App Icon - Design | Caro | Ende 1te Iteration | Odoo Custom Plugin | - | ⏳ |
+| Odoo App Icon - How To Place | Yannis & Livia | Ende 1te Iteration | Odoo Custom Plugin | - | ⏳ |
 | Odoo guide | Dominic, Caro | 14.03.25 | Dokumentation | 2h | ✅ |
 | Traktanden Intern Meeting 2 | Dominic | 12.03.25 | Meeting | 30min | ✅ |
 | Präsentation 2 | Livia | 12.03.25 | Präsentation | 5h | ✅ |
@@ -19,7 +23,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Ink Display Setup (Hardware & Software) | Alle | Ende 1te Iteration | Ink Display aufsetzen | 4h | 🔄 |
 | Ink Display einfach Bild darstellen | Alle | Ende 1te Iteration | Ink Display aufsetzen | 3h | 🔄 |
 | Ausprobieren von Odoo (Dev Mode, etc) | Alle | Ende 1te Iteration | Odoo-Testbed aufsetzen | 4h | 🔄 |
-| Dummy Plugin erstellen | Alle | Ende 1te Iteration | Odoo Plugin Erstellen | 5h | ⏳ |
+| Dummy Plugin erstellen | Alle | Ende 1te Iteration | Odoo Plugin Erstellen | 5h | ✅ |
 | MQTT einlesen | Livia Caro | Ende 1te Iteration | Odoo Plugin Erstellen | 2h | 🔄 |
 | Traktanden-Raphael | Dominic | 12.3.25(?) | Meeting | 30min | ⏳ |
 | Statusbericht 2 | Linus | 09.3.25 | Dokumentation | - | ✅ |
