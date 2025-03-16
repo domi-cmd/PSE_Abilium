@@ -16,6 +16,14 @@ Ausserdem haben an der Projektplanung weiter gearbeitet
 
 ## Week 3 : 10.03. - 16.03.
 
+Wir haben alle auf den selben Stand gebracht, indem
+wir die Server bei allen lokal aufgesetzt haben und
+dafür gesorgt haben, dass die Raspberry py bei allen laufen.
+
+![StatusOK.png](statusgrafiken/StatusOK.png)
+
+## Week 4 : 17.03. - 23.03.
+
 ## Grafiken:
 - **![StatusOK.png](statusgrafiken/StatusOK.png)**
 - **![StatusImVerzug.png](statusgrafiken/StatusImVerzug.png)**
