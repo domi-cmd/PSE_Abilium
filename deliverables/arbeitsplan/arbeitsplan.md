@@ -20,7 +20,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Ink Display einfach Bild darstellen | Alle | Ende 1te Iteration | Ink Display aufsetzen | 3h | 🔄 |
 | Ausprobieren von Odoo (Dev Mode, etc) | Alle | Ende 1te Iteration | Odoo-Testbed aufsetzen | 4h | 🔄 |
 | Dummy Plugin erstellen | Alle | Ende 1te Iteration | Odoo Plugin Erstellen | 5h | ⏳ |
-| MQTT einlesen | Livia Caro | Ende 1te Iteration | Odoo Plugin Erstellen | 2h | ⏳ |
+| MQTT einlesen | Livia Caro | Ende 1te Iteration | Odoo Plugin Erstellen | 2h | 🔄 |
 | Traktanden-Raphael | Dominic | 12.3.25(?) | Meeting | 30min | ⏳ |
 | Statusbericht 2 | Linus | 09.3.25 | Dokumentation | - | ✅ |
 | Protokollabgaben 2 | Yannis | 09.3.25 | Dokumentation | - | ✅ |
