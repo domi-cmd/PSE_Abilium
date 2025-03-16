@@ -13,13 +13,13 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Traktanden Intern Meeting 2 | Dominic | 12.03.25 | Meeting | 30min | ✅ |
 | Präsentation 2 | Livia | 12.03.25 | Präsentation | - | ✅ |
 | Traktanden Standup Meeting 1 | Dominic | 11.03.25 | Meeting | 30min | ✅ |
-| Odoo Server Installation & Setup | Dominic Linus Myroslav Yannis | Ende 1te Iteration | Odoo aufsetzen | 1.5h | 🔄 |
+| Odoo Server Installation & Setup | Alle | Ende 1te Iteration | Odoo aufsetzen | 1.5h | 🔄 |
 | Odoo Server Setup Dokumentation einlesen | Alle | Ende 1te Iteration | Odoo aufsetzen | 3h | 🔄 |
 | Raspberry OS installieren & aufsetzen | Alle | Ende 1te Iteration | Raspberry aufsetzen | 2h | ✅ |
 | Ink Display Setup (Hardware & Software) | Alle | Ende 1te Iteration | Ink Display aufsetzen | 4h | 🔄 |
 | Ink Display einfach Bild darstellen | Alle | Ende 1te Iteration | Ink Display aufsetzen | 3h | 🔄 |
 | Ausprobieren von Odoo (Dev Mode, etc) | Alle | Ende 1te Iteration | Odoo-Testbed aufsetzen | 4h | 🔄 |
-| Dummy Plugin erstellen | Caro Livia Yannis | Ende 1te Iteration | Odoo Plugin Erstellen | 5h | ⏳ |
+| Dummy Plugin erstellen | Alle | Ende 1te Iteration | Odoo Plugin Erstellen | 5h | ⏳ |
 | MQTT einlesen | Livia Caro | Ende 1te Iteration | Odoo Plugin Erstellen | 2h | ⏳ |
 | Traktanden-Raphael | Dominic | 12.3.25(?) | Meeting | 30min | ⏳ |
 | Statusbericht 2 | Linus | 09.3.25 | Dokumentation | - | ✅ |
