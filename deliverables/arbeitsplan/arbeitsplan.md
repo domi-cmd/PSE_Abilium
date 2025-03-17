@@ -3,12 +3,13 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 18 ✅
+## Overall Completed Issues: 19 ✅
 
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Geschätzter Zeitaufwand | Status |
 |------|--------------|----------|---------------|--------|--------|
 | - | - | - | - | - | - |
+| Traktanden Intern Meeting 3 | Dominic | 16.03.25 | Meeting | 15min | ✅ |
 | Odoo App Fix Name | Linus | Ende 1te Iteration | Odoo Custom Plugin | 30min | ✅ |
 | Odoo App Try Add Base Calendar | Dominic | Ende 1te Iteration | Odoo Custom Plugin | - | 🔄 |
 | Odoo App Icon - Design | Caro | Ende 1te Iteration | Odoo Custom Plugin | - | ⏳ |
