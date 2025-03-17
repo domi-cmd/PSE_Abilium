@@ -1,0 +1,18 @@
+<odoo>
+    <!-- Define a menu item for your app -->
+    <menuitem id="main_menu" name="My Custom App" sequence="10" />
+
+    <!-- Define a submenu item that will appear under your main menu -->
+    <menuitem id="submenu_my_custom_app" name="Submenu" parent="main_menu" sequence="10" />
+
+    <!-- Define an action to open a model's view when the submenu item is clicked -->
+    <record id="action_my_custom_app" model="ir.actions.act_window">
+        <field name="name">My Custom App View</field>
+        <field name="res_model">my.custom.model</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="your_view_id" />
+    </record>
+
+    <!-- Link the submenu item to the action -->
+    <menuitem id="submenu_my_custom_app_action" parent="submenu_my_custom_app" action="action_my_custom_app" />
+</odoo>

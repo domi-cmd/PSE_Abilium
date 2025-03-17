@@ -8,10 +8,9 @@
     'license': 'LGPL-3',
     'depends': ['base'],
     'data': [
-        'views/custom_model_views.xml',
-        'security/ir.model.access.csv',
+        'views/calendar_view.xml',
+        'views/custom_model_views.xml',  # This defines the menu items
     ],
     'installable': True,
     'application': True,
-    'auto_install': False,
 }
