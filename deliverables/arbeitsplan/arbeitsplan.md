@@ -6,12 +6,13 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Overall Completed Issues: 23 ✅
 
 ## Aufgabenliste
-| Task | Verantwortlich | Deadline | Abhängigkeiten | Geschätzter Zeitaufwand | Status |
+| Task | Verantwortlich | Deadline | Abhängigkeiten | Geschätzter / Tatsächlicher Zeitaufwand | Status |
 |------|--------------|----------|---------------|--------|--------|
 | - | - | - | - | - | - |
+| Traktanden-Kunden 2 | Dominic | 20.03.25 | Meeting | 30min / - | 🔄 |
 | Testkonzept V2 Abgabe | Myroslav | 30.03.25 | Dokumentation | - | ⏳ |
 | Testkonzept V1 | Myroslav | 16.03.25 | Dokumentation | 4h | ✅ |
-| MIT Lizenz hinzufügen | Dominic | Ende 1te Iteration | Meeting | 15min | ✅ |
+| MIT Lizenz hinzufügen | Dominic | Ende 1te Iteration | Dokumentation | 15min | ✅ |
 | Traktanden Intern Meeting 3 | Dominic | 16.03.25 | Meeting | 15min | ✅ |
 | Odoo App Fix Name | Linus | Ende 1te Iteration | Odoo Custom Plugin | 30min | ✅ |
 | Odoo App Try Add Base Calendar | Dominic | Ende 1te Iteration | Odoo Custom Plugin | - | 🔄 |
