@@ -3,12 +3,15 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 19 ✅
+## Overall Completed Issues: 23 ✅
 
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Geschätzter Zeitaufwand | Status |
 |------|--------------|----------|---------------|--------|--------|
 | - | - | - | - | - | - |
+| Testkonzept V2 Abgabe | Myroslav | 30.03.25 | Dokumentation | - | ⏳ |
+| Testkonzept V1 | Myroslav | 16.03.25 | Dokumentation | 4h | ✅ |
+| MIT Lizenz hinzufügen | Dominic | Ende 1te Iteration | Meeting | 15min | ✅ |
 | Traktanden Intern Meeting 3 | Dominic | 16.03.25 | Meeting | 15min | ✅ |
 | Odoo App Fix Name | Linus | Ende 1te Iteration | Odoo Custom Plugin | 30min | ✅ |
 | Odoo App Try Add Base Calendar | Dominic | Ende 1te Iteration | Odoo Custom Plugin | - | 🔄 |
@@ -26,11 +29,10 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Ausprobieren von Odoo (Dev Mode, etc) | Alle | Ende 1te Iteration | Odoo-Testbed aufsetzen | 4h | 🔄 |
 | Dummy Plugin erstellen | Alle | Ende 1te Iteration | Odoo Plugin Erstellen | 5h | ✅ |
 | MQTT einlesen | Livia Caro | Ende 1te Iteration | Odoo Plugin Erstellen | 2h | 🔄 |
-| Traktanden-Raphael | Dominic | 19.3.25 | Meeting | 30min | 🔄 |
+| Traktanden-Raphael 2 | Dominic | 19.3.25 | Meeting | 30min | ✅ |
 | Statusbericht 2 | Linus | 09.3.25 | Dokumentation | 30min | ✅ |
 | Protokollabgaben 2 | Yannis | 09.3.25 | Dokumentation | - | ✅ |
 | Risikoanalyse 2 | Livia | 09.3.25 | Dokumentation | 30 min | ✅ |
-| Testkonzept V2 Abgabe | Myroslav | 30.3.25 | Dokumentation | - | ⏳ |
 | Planning-Game | Alle | 09.3.25 | Meeting | 2.5h | ✅ |
 | Statusbericht 1 | Linus | 02.3.25 | Dokumentation | 30min | ✅ |
 | Protokollabgaben 1 | Yannis | 02.3.25 | Dokumentation | - | ✅ |
