@@ -3,13 +3,13 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 26 ✅
+## Overall Completed Issues: 28 ✅
 
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
 |------|--------------|----------|---------------|--------|--------|----------|
 | - | - | - | - | - | - |
-| Template für Issues | Dominic | 19.03.25 | Dokumentation | 30min / - | 🔄 | - |
+| Template für Issues | Dominic | 19.03.25 | Dokumentation | 1h / 30min | ✅ | - |
 | E-Mail Kundenmeeting Einladung | Caro | 19.03.25 | Meeting | 15min / 15min | ✅ | - |
 | Current Sprint Erkennung für Arbeitsplan | Dominic | 20.03.25 | Dokumentation | 1h / 30min | ✅ | - |
 | Traktanden-Kunden 2 | Dominic | 20.03.25 | Meeting | 30min / 30min | ✅ | - |
@@ -30,7 +30,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Raspberry OS installieren & aufsetzen | Alle | 20.03.25 | Raspberry aufsetzen | 2h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Ink Display Setup (Hardware & Software) | Alle | 20.03.25 | Ink Display aufsetzen | 4h | 🔄 | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Ink Display einfach Bild darstellen | Alle | 20.03.25 | Ink Display aufsetzen | 3h | 🔄 | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
-| Ausprobieren von Odoo (Dev Mode, etc) | Alle | 20.03.25 | Odoo-Testbed aufsetzen | 4h | 🔄 | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
+| Ausprobieren von Odoo (Dev Mode, etc) | Alle | 20.03.25 | Odoo-Testbed aufsetzen | 4h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Dummy Plugin erstellen | Alle | 20.03.25 | Odoo Plugin Erstellen | 5h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | MQTT einlesen | Livia Caro | 20.03.25 | Odoo Plugin Erstellen | 2h | 🔄 | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Traktanden-Raphael 2 | Dominic | 19.3.25 | Meeting | 30min | ✅ | - |
