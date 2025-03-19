@@ -30,5 +30,5 @@ TO BE ADDED
 ## Quellen  
 - [Odoo – Open Source ERP-System](https://www.odoo.com)  
 
-## Lizenz  (TO BE ADDED)
-Dieses Projekt steht unter der MIT Lizenz.(?)
+## Lizenz
+Dieses Projekt steht unter der MIT Lizenz. Weitere Informationen finden Sie in der [LICENSE-Datei](./LICENSE).
