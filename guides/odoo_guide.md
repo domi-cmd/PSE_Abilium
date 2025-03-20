@@ -38,7 +38,7 @@ The first step is to head to odoos homepage and download the Odoo18 Community Ve
 
   Username: openpg 
 
-  Password: opengpwd
+  Password: openpgpwd
 
 - When setup is finished, uncheck "Start odoo" and go to the next step in the guide.
 
