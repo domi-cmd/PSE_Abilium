@@ -1,0 +1,38 @@
+
+
+services:
+  db:
+    image: postgres:15
+    container_name: odoo-db
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_DB: postgres
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+    networks:
+      - odoo-net
+
+  odoo:
+    image: odoo:18
+    command: --addons-path=/mnt/extra-addons,/usr/lib/python3/dist-packages/odoo/addons
+    container_name: odoo-app
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    environment:
+      HOST: odoo-db
+      USER: odoo
+      PASSWORD: odoo
+    volumes:
+      - odoo-data:/var/lib/odoo
+      - ../custom_addons:/mnt/extra-addons  # <-- Mount the addons folder
+    networks:
+      - odoo-net
+
+volumes:
+  odoo-db-data:
+  odoo-data:
+networks:
+  odoo-net:
