@@ -1,0 +1,10 @@
+<odoo>
+    <!-- Defines the visible "app"/menu on the sidebar after the module has been installed & activated. -->
+    <!-- TODO: Add our icon in the static/description/ folder. -->
+    <!-- TODO: IMPORTANT: It has to be 100x100 pixels and has to be called "icon.png" for odoo to recognize it. -->
+    <menuitem id="menu_meeting_management" name="Meeting Room Management" sequence="10"
+              web_icon="meeting_room_booking,static/description/icon.png"/>
+
+    <!-- Defines the submenu for our app called "Rooms", hence the parent is defined as the main menu above. -->
+    <menuitem id="menu_meeting_rooms" name="Rooms" parent="menu_meeting_management" action="action_meeting_rooms" sequence="10"/>
+</odoo>
