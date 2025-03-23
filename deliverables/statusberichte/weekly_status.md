@@ -24,6 +24,15 @@ dafür gesorgt haben, dass die Raspberry py bei allen laufen.
 
 ## Week 4 : 17.03. - 23.03.
 
+Wir haben die erste Iteration abgeschlossen, ein Kundenmeeting 
+gehalten und ein im Kalender sichtbares Addon erstellt.
+
+![StatusOK.png](statusgrafiken/StatusOK.png)
+
+## Week 5 : 24.03. - 30.03.
+
+## Week 6 : 31.03. - 06.04.
+
 ## Grafiken:
 - **![StatusOK.png](statusgrafiken/StatusOK.png)**
 - **![StatusImVerzug.png](statusgrafiken/StatusImVerzug.png)**
