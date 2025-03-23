@@ -8,6 +8,12 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
 |------|--------------|----------|---------------|--------|--------|----------|
+| Verändern von Sitzungszimmern | Linus | TBD | - | - / 3h | ⏳ | ![number_2]
+| Löschen von Sitzungszimmern | Linus | TBD | - | - / 2h | ⏳ | ![number_2]
+| Erstellen von Sitzungszimmern | Linus | TBD | - | - / 2h | ⏳ | ![number_2]
+| Mockups designen | Carolina | TBD | - | - / 3h - 5h | ⏳ | ![number_2]
+| Verbindung zwischen Odoo & Raspb. | Myroslav, Livia, Yannis | TBD | - | - / TBD | ⏳ | ![number_2]
+| Protokoll wählen | Myroslav, Livia, Yannis | TBD | - | - / TBD | ⏳ | ![number_2]
 | Modul sichtbar machen auf Sidebar | Dominic | TBD | - | - / 2h | ⏳ | ![number_2]
 | Kernfunktionen der App (Basic Struktur) | Dominic | TBD | - | - / 2h | ⏳ | ![number_2]
 | Modul aktivierbar/installierbar machen | Dominic | TBD | - | - / 5h | ⏳ | ![number_2]
