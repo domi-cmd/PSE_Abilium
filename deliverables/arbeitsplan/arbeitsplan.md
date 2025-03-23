@@ -8,7 +8,10 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
 |------|--------------|----------|---------------|--------|--------|----------|
-| - | - | - | - | - | - |
+| Modul sichtbar machen auf Sidebar | Dominic | TBD | - | - / 2h | ⏳ | ![number_2]
+| Kernfunktionen der App (Basic Struktur) | Dominic | TBD | - | - / 2h | ⏳ | ![number_2]
+| Modul aktivierbar/installierbar machen | Dominic | TBD | - | - / 5h | ⏳ | ![number_2]
+| Modul unter App sichtbar machen | Dominic | TBD | - | - / 3h | - | ![number_2]
 | Helfen mit Odoo Setup | Dominic | - | Setup | 4h / - | ✅ | - |
 | Template für Issues | Dominic | 19.03.25 | Dokumentation | 1h / 30min | ✅ | - |
 | E-Mail Kundenmeeting Einladung | Caro | 19.03.25 | Meeting | 15min / 15min | ✅ | - |
