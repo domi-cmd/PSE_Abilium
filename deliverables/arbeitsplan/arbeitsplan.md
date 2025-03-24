@@ -14,16 +14,17 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
 |------|--------------|----------|---------------|--------|--------|----------|
-| Verändern von Sitzungszimmern | Linus | TBD | - | - / 3h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Löschen von Sitzungszimmern | Linus | TBD | - | - / 2h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Erstellen von Sitzungszimmern | Linus | TBD | - | - / 2h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Mockups designen | Carolina | TBD | - | - / 3h - 5h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Verbindung zwischen Odoo & Raspb. | Myroslav, Livia, Yannis | TBD | - | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Protokoll wählen | Myroslav, Livia, Yannis | TBD | - | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Modul sichtbar machen auf Sidebar | Dominic | TBD | 25.03.25 | 1h / 2h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Kernfunktionen der App (Basic Struktur) | Dominic | 22.03.25 | - | 30min / 2h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Modul aktivierbar/installierbar machen | Dominic | 25.03.25 | - | 2h / 5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Modul unter App sichtbar machen | Dominic | 22.03.25 | - | 30min / 3h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Traktanden Standup Meeting 2 | Dominic | 24.03.25 | Meeting | - / 30min | 🔄 | - |
+| Verändern von Sitzungszimmern | Linus | TBD | Admin Room Module | - / 3h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Löschen von Sitzungszimmern | Linus | TBD | Admin Room Module | - / 2h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Erstellen von Sitzungszimmern | Linus | TBD | Admin Room Module | - / 2h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Mockups designen | Carolina | TBD | Admin Room Module | - / 3h - 5h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Verbindung zwischen Odoo & Raspb. | Myroslav, Livia, Yannis | TBD | Odoo & Raspb. Connection | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Protokoll wählen | Myroslav, Livia, Yannis | TBD | Odoo & Raspb. Connection | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Modul sichtbar machen auf Sidebar | Dominic | 25.03.25 | Admin Room Module | 1h / 2h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Kernfunktionen der App (Basic Struktur) | Dominic | 22.03.25 | Admin Room Module | 30min / 2h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Modul aktivierbar/installierbar machen | Dominic | 25.03.25 | Admin Room Module | 2h / 5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Modul unter App sichtbar machen | Dominic | 22.03.25 | Admin Room Module | 30min / 3h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Helfen mit Odoo Setup | Dominic | - | Setup | 4h / - | ✅ | - |
 | Template für Issues | Dominic | 19.03.25 | Dokumentation | 1h / 30min | ✅ | - |
 | E-Mail Kundenmeeting Einladung | Caro | 19.03.25 | Meeting | 15min / 15min | ✅ | - |
