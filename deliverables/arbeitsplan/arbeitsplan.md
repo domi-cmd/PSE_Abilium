@@ -3,21 +3,27 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 31 ✅
+## Overall Completed Issues: 36 ✅
+
+## Statuslegende
+- ✅ Abgeschlossen
+- 🔄 In Bearbeitung
+- ⏳ Offen
+- 🚨 Overdue
 
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
 |------|--------------|----------|---------------|--------|--------|----------|
-| Verändern von Sitzungszimmern | Linus | TBD | - | - / 3h | ⏳ | ![number_2]
-| Löschen von Sitzungszimmern | Linus | TBD | - | - / 2h | ⏳ | ![number_2]
-| Erstellen von Sitzungszimmern | Linus | TBD | - | - / 2h | ⏳ | ![number_2]
-| Mockups designen | Carolina | TBD | - | - / 3h - 5h | ⏳ | ![number_2]
-| Verbindung zwischen Odoo & Raspb. | Myroslav, Livia, Yannis | TBD | - | - / TBD | ⏳ | ![number_2]
-| Protokoll wählen | Myroslav, Livia, Yannis | TBD | - | - / TBD | ⏳ | ![number_2]
-| Modul sichtbar machen auf Sidebar | Dominic | TBD | - | - / 2h | ⏳ | ![number_2]
-| Kernfunktionen der App (Basic Struktur) | Dominic | TBD | - | - / 2h | ⏳ | ![number_2]
-| Modul aktivierbar/installierbar machen | Dominic | TBD | - | - / 5h | ⏳ | ![number_2]
-| Modul unter App sichtbar machen | Dominic | TBD | - | - / 3h | - | ![number_2]
+| Verändern von Sitzungszimmern | Linus | TBD | - | - / 3h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Löschen von Sitzungszimmern | Linus | TBD | - | - / 2h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Erstellen von Sitzungszimmern | Linus | TBD | - | - / 2h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Mockups designen | Carolina | TBD | - | - / 3h - 5h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Verbindung zwischen Odoo & Raspb. | Myroslav, Livia, Yannis | TBD | - | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Protokoll wählen | Myroslav, Livia, Yannis | TBD | - | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Modul sichtbar machen auf Sidebar | Dominic | TBD | 25.03.25 | 1h / 2h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Kernfunktionen der App (Basic Struktur) | Dominic | 22.03.25 | - | 30min / 2h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Modul aktivierbar/installierbar machen | Dominic | 25.03.25 | - | 2h / 5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Modul unter App sichtbar machen | Dominic | 22.03.25 | - | 30min / 3h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Helfen mit Odoo Setup | Dominic | - | Setup | 4h / - | ✅ | - |
 | Template für Issues | Dominic | 19.03.25 | Dokumentation | 1h / 30min | ✅ | - |
 | E-Mail Kundenmeeting Einladung | Caro | 19.03.25 | Meeting | 15min / 15min | ✅ | - |
@@ -56,12 +62,13 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | E-Ink Setup Guide | Dominic | - | Setup | 1.5h | ✅ | - |
 | E-Ink Simulator | Dominic | - | Setup | 3.5h | ✅ | - |
 
-
-## Statuslegende
-- ✅ Abgeschlossen
-- 🔄 In Bearbeitung
-- ⏳ Offen
-- 🚨 Overdue
+## Icons Sprint
+![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e)
+![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)
+![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)
+![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4)
+![number-5](https://github.com/user-attachments/assets/5291c3c6-1edf-4b7e-b917-f295ddcf9b6b)
+![number-6](https://github.com/user-attachments/assets/14aaa3f9-8ea0-4603-a5e9-d4507dc9185c)
 
 ## Hinweise
 - Tasks umfassen Programmierung, Planung, Design, Wissenserwerb, Testen, Dokumentation und Präsentationen.
