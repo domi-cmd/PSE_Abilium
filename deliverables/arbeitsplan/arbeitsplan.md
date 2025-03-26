@@ -3,7 +3,7 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 36 ✅
+## Overall Completed Issues: 38 ✅
 
 ## Statuslegende
 - ✅ Abgeschlossen
@@ -14,7 +14,8 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
 |------|--------------|----------|---------------|--------|--------|----------|
-| Traktanden Standup Meeting 2 | Dominic | 24.03.25 | Meeting | - / 30min | 🔄 | - |
+| Traktanden Team Meeting 3 | Dominic | 24.03.25 | Meeting | 10min / 15min | ✅ | - |
+| Traktanden Standup Meeting 2 | Dominic | 24.03.25 | Meeting | 30min / 30min | ✅ | - |
 | Verändern von Sitzungszimmern | Linus | TBD | Admin Room Module | - / 3h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Löschen von Sitzungszimmern | Linus | TBD | Admin Room Module | - / 2h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Erstellen von Sitzungszimmern | Linus | TBD | Admin Room Module | - / 2h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
