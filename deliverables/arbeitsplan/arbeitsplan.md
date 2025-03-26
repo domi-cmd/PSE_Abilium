@@ -19,8 +19,8 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Verändern von Sitzungszimmern | Linus | TBD | Admin Room Module | - / 3h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Löschen von Sitzungszimmern | Linus | TBD | Admin Room Module | - / 2h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Erstellen von Sitzungszimmern | Linus | TBD | Admin Room Module | - / 2h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Mockups designen | Carolina | TBD | Admin Room Module | - / 3h - 5h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Verbindung zwischen Odoo & Raspb. | Myroslav, Livia, Yannis | TBD | Odoo & Raspb. Connection | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Mockups designen | Carolina | 31.03.25 | Admin Room Module | - / 3h - 5h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Verbindung zwischen Odoo & Raspb. | Myroslav, Livia, Yannis | 06.04.25 | Odoo & Raspb. Connection | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Protokoll wählen | Myroslav, Livia, Yannis | TBD | Odoo & Raspb. Connection | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Modul sichtbar machen auf Sidebar | Dominic | 25.03.25 | Admin Room Module | 1h / 2h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Kernfunktionen der App (Basic Struktur) | Dominic | 22.03.25 | Admin Room Module | 30min / 2h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
