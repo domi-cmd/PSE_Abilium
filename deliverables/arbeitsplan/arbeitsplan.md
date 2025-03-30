@@ -3,7 +3,7 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 43 ✅
+## Overall Completed Issues: 45 ✅
 
 ## Statuslegende
 - ✅ Abgeschlossen
@@ -18,7 +18,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Verbindung zwischen Odoo & Raspb. | Myroslav, Livia, Yannis | 06.04.25 | Odoo & Raspb. Connection | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Protokoll wählen | Myroslav, Livia, Yannis | TBD | Odoo & Raspb. Connection | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Testkonzept V2 Abgabe | Myroslav | 30.03.25 | Dokumentation | - | ⏳ | - |
-| MQTT einlesen | Livia Caro | 20.03.25 | Odoo Plugin Erstellen | 2h | 🚨 | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
+| MQTT einlesen | Livia Caro | 20.03.25 | Odoo Plugin Erstellen | 2h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Odoo App Icon - Design | Caro | 10.04.25 | Odoo Custom Plugin | - | 🔄 | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Helfen mit Docker Desktop Setup | Dominic | - | Setup | 1h / - | ✅ | - |
 | Traktanden Team Meeting 3 | Dominic | 24.03.25 | Meeting | 10min / 15min | ✅ | - |
@@ -48,7 +48,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Odoo Server Installation & Setup | Alle | 20.03.25 | Odoo aufsetzen | 1.5h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Odoo Server Setup Dokumentation einlesen | Alle | 20.03.25 | Odoo aufsetzen | 3h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Raspberry OS installieren & aufsetzen | Alle | 20.03.25 | Raspberry aufsetzen | 2h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
-| Odoo App Try Add Base Calendar | Dominic | 20.03.25 | Odoo Custom Plugin | - | 🚨 | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
+| Odoo App Try Add Base Calendar | Dominic | 20.03.25 | Odoo Custom Plugin | 4h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Ink Display Setup (Hardware & Software) | Alle | 20.03.25 | Ink Display aufsetzen | 4h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Ink Display einfach Bild darstellen | Alle | 20.03.25 | Ink Display aufsetzen | 3h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Ausprobieren von Odoo (Dev Mode, etc) | Alle | 20.03.25 | Odoo-Testbed aufsetzen | 4h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
