@@ -31,7 +31,15 @@ gehalten und ein im Kalender sichtbares Addon erstellt.
 
 ## Week 5 : 24.03. - 30.03.
 
+Wir haben die ein MQTT Server zur Kommunikation mit den 
+Raspberry pi zum Laufen gebracht und mit dem Erstellen von 
+Mock Ansichten begonnen.
+
+![StatusOK.png](statusgrafiken/StatusOK.png)
+
 ## Week 6 : 31.03. - 06.04.
+
+## Week 7 : 07.04. - 13.04.
 
 ## Grafiken:
 - **![StatusOK.png](statusgrafiken/StatusOK.png)**
