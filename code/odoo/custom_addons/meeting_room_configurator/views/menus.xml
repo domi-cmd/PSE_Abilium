@@ -1,10 +1,37 @@
 <odoo>
-    <!-- Defines the visible "app"/menu on the sidebar after the module has been installed & activated. -->
-    <!-- TODO: Add our icon in the static/description/ folder. -->
-    <!-- TODO: IMPORTANT: It has to be 100x100 pixels and has to be called "icon.png" for odoo to recognize it. -->
-    <menuitem id="menu_meeting_configurator" name="Meeting Room Configurator" sequence="10"
+    <!-- Main menu for your module -->
+    <menuitem id="menu_meeting_configurator" name="Meeting Room Configurator" sequence="1"
               web_icon="meeting_room_booking,static/description/icon.png"/>
 
-    <!-- Defines the submenu for our app called "Rooms", hence the parent is defined as the main menu above. -->
-    <menuitem id="menu_meeting_rooms" name="Rooms" parent="menu_meeting_configurator" action="action_meeting_rooms" sequence="10"/>
+    <!-- Submenu for Calendar, referencing the action in the Calendar module -->
+    <menuitem 
+        id="calendar_submenu"  
+        name="Calendar" 
+        parent="menu_meeting_configurator"  
+        action="calendar.action_calendar_event"
+        groups="base.group_user"
+        sequence="5"/>
+
+    <!-- Main 'Configuration' submenu -->
+    <menuitem 
+        id="menu_configuration" 
+        name="Configuration" 
+        parent="menu_meeting_configurator" 
+        sequence="10"/>
+
+    <!-- 'Manage Rooms' as a child of 'Configuration' -->
+    <menuitem 
+        id="menu_manage_rooms" 
+        name="Manage Rooms" 
+        parent="menu_configuration" 
+        action="action_meeting_rooms" 
+        sequence="10"/>
+
+    <!-- 'Manage Room-Raspberry Connections' as a child of 'Configuration' -->
+    <menuitem 
+        id="menu_manage_room_raspberry_connections" 
+        name="Manage Room-Raspberry Connections" 
+        parent="menu_configuration"  
+        action="action_raspberry_connections" 
+        sequence="20"/>
 </odoo>
