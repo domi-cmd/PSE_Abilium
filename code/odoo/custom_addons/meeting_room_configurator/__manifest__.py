@@ -1,4 +1,5 @@
 {
+    # TODO: Rename the app via the 'name' variable to something more fitting such as "PSE Room Booking"
     'name': 'Meeting Room Configurator',
     'summary': 'App to create, delete and manage meeting rooms.',
     'description': '''
@@ -14,7 +15,6 @@
         'calendar',
     ],
     # Currently, there is no icon for our app yet, so the line below is not useful yet.
-    # TODO: Add the icon in the specified path (odoo requires the path to look exactly as written here).
     'images': ['static/description/icon.png'],
     'data': [
         

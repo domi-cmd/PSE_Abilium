@@ -6,5 +6,7 @@ class MeetingRoom(models.Model):
 
     name = fields.Char(string='Room Name', required=True)
     capacity = fields.Integer(string='Capacity', required=True)
+    # TODO: Split "location" up into "Street", "City", and "Floor"
     location = fields.Char(string='Location')
     availability = fields.Boolean(string='Available', default=True)
+    # TODO: Add a "Description" variable
