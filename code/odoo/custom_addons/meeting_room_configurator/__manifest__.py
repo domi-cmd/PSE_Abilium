@@ -11,6 +11,7 @@
     'website': 'https://github.com/domi-cmd/PSE_Abilium',
     'depends': [
         'base',
+        'calendar',
     ],
     # Currently, there is no icon for our app yet, so the line below is not useful yet.
     # TODO: Add the icon in the specified path (odoo requires the path to look exactly as written here).
