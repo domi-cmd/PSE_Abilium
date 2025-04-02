@@ -22,8 +22,8 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Add Rasp-Room Connection Menu (Template) To Module | Dominic | 10.04.25 | Admin Room Module | 30min / - | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Add Calendar To Module | Dominic | 10.04.25 | Admin Room Module | 4h / - | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Mockups designen | Carolina | 31.03.25 | Admin Room Module | - / 3h - 5h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Verbindung zwischen Odoo & Raspb. | Myroslav, Livia, Yannis | 06.04.25 | Odoo & Raspb. Connection | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Protokoll wählen | Myroslav, Livia, Yannis | TBD | Odoo & Raspb. Connection | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Verbindung zwischen Odoo & Raspb. | Myroslav, Livia, Yannis | 06.04.25 | Odoo & Raspb. Connection | - / 5h | 🔄 | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Protokoll wählen | Myroslav, Livia, Yannis | TBD | Odoo & Raspb. Connection | 15 min / 30 min | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Testkonzept V2 Abgabe | Myroslav | 30.03.25 | Dokumentation | - | ⏳ | - |
 | MQTT einlesen | Livia Caro | 20.03.25 | Odoo Plugin Erstellen | 2h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Odoo App Icon - Design | Caro | 10.04.25 | Odoo Custom Plugin | - | 🔄 | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
