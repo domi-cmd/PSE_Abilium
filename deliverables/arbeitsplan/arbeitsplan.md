@@ -3,7 +3,7 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 45 ✅
+## Overall Completed Issues: 47 ✅
 
 ## Statuslegende
 - ✅ Abgeschlossen
@@ -14,6 +14,8 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
 |------|--------------|----------|---------------|--------|--------|----------|
+| Add Rasp-Room Connection Menu (Template) To Module | Dominic | 10.04.25 | Admin Room Module | 30min / - | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Add Calendar To Module | Dominic | 10.04.25 | Admin Room Module | 4h / - | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Mockups designen | Carolina | 31.03.25 | Admin Room Module | - / 3h - 5h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Verbindung zwischen Odoo & Raspb. | Myroslav, Livia, Yannis | 06.04.25 | Odoo & Raspb. Connection | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Protokoll wählen | Myroslav, Livia, Yannis | TBD | Odoo & Raspb. Connection | - / TBD | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
