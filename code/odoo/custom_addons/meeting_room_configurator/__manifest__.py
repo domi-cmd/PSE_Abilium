@@ -14,15 +14,13 @@
         'base',
         'calendar',
     ],
-    # Currently, there is no icon for our app yet, so the line below is not useful yet.
     'images': ['static/description/icon.png'],
     'data': [
-        
         'security/ir.model.access.csv',
         'views/room_views.xml',
+        'views/rasp_connection_views.xml',
         'views/actions.xml',
         'views/menus.xml',
-        
     ],
     
     'installable': True,

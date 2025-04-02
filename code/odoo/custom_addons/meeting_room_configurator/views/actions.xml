@@ -18,14 +18,11 @@
     </record>
 
 
-    <!-- TODO: Add further actions for the other required models, e.g. room-raspi-assignment -->
-
+    <!-- Action for the Raspberry Connection -->
     <record id="action_raspberry_connections" model="ir.actions.act_window">
-    <field name="name">Manage Raspberry Connections</field>
-    <field name="res_model">rasproom.connection</field>
-    <field name="view_mode">list,form</field>
-    <field name="target">current</field>
+        <field name="name">Manage Raspberry Connections</field>
+        <field name="res_model">rasproom.connection</field>
+        <field name="view_mode">list,form</field>
+        <field name="target">current</field>
     </record>
-
-    
 </odoo>

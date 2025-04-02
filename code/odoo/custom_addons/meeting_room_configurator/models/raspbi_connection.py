@@ -5,8 +5,6 @@ class RoomRaspConnection(models.Model):
     _description = 'Raspberry & Room Connection'
 
     name = fields.Char(string='Connection Name', required=True)
-    roomName = fields.Char(string='Room Name', required=True)
+    room_id = fields.Many2one('meeting.room', string='Room', required=True)
     raspName = fields.Char(string='Raspberry Name', required=True)
-    capacity = fields.Integer(string='Capacity', required=True)
-    location = fields.Char(string='Location')
-    availability = fields.Boolean(string='Available', default=True)
+    status = fields.Boolean(string='Active', default=True)
