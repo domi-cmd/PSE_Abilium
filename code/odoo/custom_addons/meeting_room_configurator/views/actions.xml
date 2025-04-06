@@ -15,6 +15,8 @@
             - a form view for a detailed description and editing of said description (room name, ort, etc). 
         -->
         <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_meeting_room_tree"/>  <!-- cleaner by adressing using view_id -->
+        <field name="target">current</field> <!-- ensures full-page, not popup -->
     </record>
 
 
@@ -24,5 +26,6 @@
         <field name="res_model">rasproom.connection</field>
         <field name="view_mode">list,form</field>
         <field name="target">current</field>
+        <!-- TODO: Add the view_id as for clean addressing of target. See action above.-->
     </record>
 </odoo>

@@ -21,6 +21,7 @@
         'views/rasp_connection_views.xml',
         'views/actions.xml',
         'views/menus.xml',
+        'views/calendar_event_views.xml',
     ],
     
     'installable': True,

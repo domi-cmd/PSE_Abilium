@@ -1,1 +1,1 @@
-from . import room, raspbi_connection
+from . import room, raspbi_connection, calendar_event
