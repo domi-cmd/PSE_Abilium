@@ -18,7 +18,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Add "Choose Room" Variable and other module related variables to integrated calendar | UP FOR GRABS | 06.04.25 | Odoo Calendar | - / 1.5h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Make Room-Raspy Config read rooms from the Room Creator/Config (only display valid/existing rooms to choose from) | Dominic | 06.04.25 | Room-Rasp Config | 1.5h / 1.5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Rename Module/App to a more fitting name | UP FOR GRABS | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Remove Leftover/Redundant Custom Modules | UP FOR GRABS | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Remove Leftover/Redundant Custom Modules | Linus | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Add Room Variables From Mockup To Odoo | UP FOR GRABS | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Add "Confirm"/"Save and close" button to room creation in odoo | UP FOR GRABS | 06.04.25 | Room Config | - / 1.5h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Traktanden Intern Meeting 9 | Dominic | 06.04.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
