@@ -39,6 +39,10 @@ Mock Ansichten begonnen.
 
 ## Week 6 : 31.03. - 06.04.
 
+Diese Woche haben wir den Kalender in Odoo eingebunden, sowie 
+die Module nach spezifikation der Kunden neu organisiert und begonnen MQTT 
+im Odoo module einzubinden.
+
 ## Week 7 : 07.04. - 13.04.
 
 ## Grafiken:
