@@ -14,12 +14,13 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
 |------|--------------|----------|---------------|--------|--------|----------|
+| Implement Customer Feedback in Updated Mockups | Caro | 07.04.25 | - |- / 3h|🔄| ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994)|
 | Make integrated calendar read data (existing rooms etc) from room configurator | Dominic | 06.04.25 | Odoo Calendar | 1h / 1.5h  | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Add "Choose Room" Variable and other module related variables to integrated calendar | Dominic | 06.04.25 | Odoo Calendar | 4.5h / 1.5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Make Room-Raspy Config read rooms from the Room Creator/Config (only display valid/existing rooms to choose from) | Dominic | 06.04.25 | Room-Rasp Config | 1.5h / 1.5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Rename Module/App to a more fitting name | UP FOR GRABS | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Remove Leftover/Redundant Custom Modules | Linus | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Add Room Variables From Mockup To Odoo | UP FOR GRABS | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Add Room Variables From Mockup To Odoo | Caro | 07.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Add "Confirm"/"Save and close" button to room creation in odoo | Dominic | 06.04.25 | Room Config | - / 1.5h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Traktanden Intern Meeting 9 | Dominic | 06.04.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
 | Statusbericht 9 | Linus | 27.04.25 | Dokumentation | 30min / - | 🔄 | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
@@ -48,13 +49,13 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Traktanden Standup Meeting 3 | Dominic | 31.03.25 | Meeting | 30min / 30min | ✅ | - |
 | Add Rasp-Room Connection Menu (Template) To Module | Dominic | 10.04.25 | Admin Room Module | 30min / - | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Add Calendar To Module | Dominic | 10.04.25 | Admin Room Module | 4h / - | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Mockups designen | Carolina | 31.03.25 | Admin Room Module | - / 3h - 5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Mockups designen | Carolina | 31.03.25 | Admin Room Module | 4.5h / 3h - 5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Verbindung zwischen Odoo & Broker. | Myroslav, Livia, Yannis | 13.04.25 | Odoo & Raspb. Connection | - / 13 SP | 🔄 | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Verbindung zwischen Raspi & Broker. | Myroslav, Livia, Yannis | 06.04.25 | Odoo & Raspb. Connection | 6 SP / 13 SP | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Protokoll wählen | Myroslav, Livia, Yannis | TBD | Odoo & Raspb. Connection | 15 min / 30 min | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Testkonzept V2 Abgabe | Myroslav | 30.03.25 | Dokumentation | - | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | MQTT einlesen | Livia Caro | 20.03.25 | Odoo Plugin Erstellen | 2h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
-| Odoo App Icon - Design | Caro | 10.04.25 | Odoo Custom Plugin | - | 🔄 | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Odoo App Icon - Design | Caro | 10.04.25 | Odoo Custom Plugin | 2h / 2h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Helfen mit Docker Desktop Setup | Dominic | - | Setup | 1h / - | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Traktanden Team Meeting 3 | Dominic | 24.03.25 | Meeting | 10min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Traktanden Standup Meeting 2 | Dominic | 24.03.25 | Meeting | 30min / 30min | ✅ |![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
