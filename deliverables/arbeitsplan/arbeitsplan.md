@@ -21,28 +21,28 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Remove Leftover/Redundant Custom Modules | UP FOR GRABS | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Add Room Variables From Mockup To Odoo | UP FOR GRABS | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Add "Confirm"/"Save and close" button to room creation in odoo | UP FOR GRABS | 06.04.25 | Room Config | - / 1.5h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Traktanden Intern Meeting 9 | Dominic | 06.04.25 | Meeting | 15min / - | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
+| Traktanden Intern Meeting 9 | Dominic | 06.04.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
 | Statusbericht 9 | Linus | 27.04.25 | Dokumentation | 30min / - | 🔄 | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
 | Protokollabgaben 9 | Yannis | 27.04.25 | Dokumentation | 1.5h / - | 🔄 | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
 | Risikoanalyse 9 | Livia | 27.04.25 | Dokumentation | 30 min / - | 🔄 | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
 | Statusbericht 8 | Linus | 20.04.25 | Dokumentation | 30min / - | 🔄 | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
-| Traktanden Intern Meeting 8 | Dominic | 02.04.25 | Meeting | 15min / - | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
+| Traktanden Intern Meeting 8 | Dominic | 02.04.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
 | Protokollabgaben 8 | Yannis | 20.04.25 | Dokumentation | 1.5h / - | 🔄 | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
 | Risikoanalyse 8 | Livia | 20.04.25 | Dokumentation | 30 min / - | 🔄 | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
 | Statusbericht 7 | Linus | 13.04.25 | Dokumentation | 30min / - | 🔄 | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
-| Traktanden Intern Meeting 7 | Dominic | 30.03.25 | Meeting | 15min / - | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
+| Traktanden Intern Meeting 7 | Dominic | 30.03.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
 | Protokollabgaben 7 | Yannis | 13.04.25 | Dokumentation | 1.5h / - | 🔄 | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
 | Risikoanalyse 7 | Livia | 13.04.25 | Dokumentation | 30 min / - | 🔄 | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
 | Statusbericht 6 | Linus | 06.04.25 | Dokumentation | 30min / - | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
-| Traktanden Intern Meeting 6 | Dominic | 26.03.25 | Meeting | 15min / - | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
+| Traktanden Intern Meeting 6 | Dominic | 26.03.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
 | Protokollabgaben 6 | Yannis | 06.04.25 | Dokumentation | 1.5h / - | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Risikoanalyse 6 | Livia | 06.04.25 | Dokumentation | 30 min / 40 min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
-| Traktanden Intern Meeting 5 | Dominic | 23.03.25 | Meeting | 15min / - | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e)|
+| Traktanden Intern Meeting 5 | Dominic | 23.03.25 | Meeting | 15min / 15min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e)|
 | Statusbericht 5 | Linus | 30.03.25 | Dokumentation | 30min / - | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Protokollabgaben 5 | Yannis | 30.03.25 | Dokumentation | 1.5h / - | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Risikoanalyse 5 | Livia | 30.03.25 | Dokumentation | 30 min / 40 min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Statusbericht 4 | Linus | 23.03.25 | Dokumentation | 30min / - | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
-| Traktanden Intern Meeting 4 | Dominic | 20.03.25 | Meeting | 15min / - | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e)|
+| Traktanden Intern Meeting 4 | Dominic | 20.03.25 | Meeting | 15min / 15min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e)|
 | Protokollabgaben 4 | Yannis | 23.03.25 | Dokumentation | 1.5h / - | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Risikoanalyse 4 | Livia | 23.03.25 | Dokumentation | 30 min / 30min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Traktanden Standup Meeting 3 | Dominic | 31.03.25 | Meeting | 30min / 30min | ✅ | - |
@@ -54,10 +54,10 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Protokoll wählen | Myroslav, Livia, Yannis | TBD | Odoo & Raspb. Connection | 15 min / 30 min | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Testkonzept V2 Abgabe | Myroslav | 30.03.25 | Dokumentation | - | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | MQTT einlesen | Livia Caro | 20.03.25 | Odoo Plugin Erstellen | 2h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
-| Odoo App Icon - Design | Caro | 10.04.25 | Odoo Custom Plugin | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) | 🔄 | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Odoo App Icon - Design | Caro | 10.04.25 | Odoo Custom Plugin | - | 🔄 | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Helfen mit Docker Desktop Setup | Dominic | - | Setup | 1h / - | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Traktanden Team Meeting 3 | Dominic | 24.03.25 | Meeting | 10min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Traktanden Standup Meeting 2 | Dominic | 24.03.25 | Meeting | 30min / 30min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
+| Traktanden Standup Meeting 2 | Dominic | 24.03.25 | Meeting | 30min / 30min | ✅ |![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Verändern von Sitzungszimmern | Linus, Dominic | TBD | Admin Room Module | 20min / 3h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Löschen von Sitzungszimmern | Linus, Dominic | TBD | Admin Room Module | 20min / 2h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Erstellen von Sitzungszimmern | Linus, Dominic | TBD | Admin Room Module | 20min / 2h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
@@ -72,7 +72,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Traktanden-Kunden 2 | Dominic | 20.03.25 | Meeting | 30min / 30min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Testkonzept V1 | Myroslav | 16.03.25 | Dokumentation | 4h / - | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | MIT Lizenz hinzufügen | Dominic | 20.03.25 | Dokumentation | 15min / - | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
-| Traktanden Intern Meeting 3 | Dominic | 16.03.25 | Meeting | 15min / - | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
+| Traktanden Intern Meeting 3 | Dominic | 16.03.25 | Meeting | 15min / 15min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Odoo App Fix Name | Linus | 20.03.25 | Odoo Custom Plugin | 30min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Odoo App Icon - How To Place | Yannis & Livia | 20.03.25 | Odoo Custom Plugin | - | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
 | Odoo guide | Dominic, Caro | 14.03.25 | Dokumentation | 2h / - | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
