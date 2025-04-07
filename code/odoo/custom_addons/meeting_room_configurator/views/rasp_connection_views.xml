@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
-                <field name="room_id"/>
+                <field name="room_id" options="{'no_create': True}"/>
                 <field name="raspName"/>
                 <field name="status"/>
             </list>
@@ -23,7 +23,7 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="room_id"/>
+                        <field name="room_id" options="{'no_create': True}"/>
                         <field name="raspName"/>
                         <field name="status"/>
                     </group>

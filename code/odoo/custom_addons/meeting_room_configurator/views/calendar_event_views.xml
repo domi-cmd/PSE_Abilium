@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <!-- Move custom fields after the 'location' field -->
                 <xpath expr="//field[@name='location']" position="after">
-                    <field name="meeting_room"/>
+                    <field name="meeting_room" options="{'no_create': True}" />
                 </xpath>
             </field>
         </record>
@@ -21,7 +21,7 @@
             <field name="arch" type="xml">
                 <!-- Add custom fields after the 'description' field -->
                 <xpath expr="//field[@name='description']" position="after">
-                    <field name="meeting_room"/>
+                    <field name="meeting_room" options="{'no_create': True}" />
                 </xpath>
             </field>
         </record>
