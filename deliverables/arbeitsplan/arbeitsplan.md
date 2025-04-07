@@ -3,7 +3,7 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 71 ✅
+## Overall Completed Issues: 73 ✅
 
 ## Statuslegende
 - ✅ Abgeschlossen
@@ -14,6 +14,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
 |------|--------------|----------|---------------|--------|--------|----------|
+| Create Overview and Progress Tabloid for User Stories in UserStories.md | Dominic | 07.04.25 | - | 45min / 30min | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994)|
 | Implement Customer Feedback in Updated Mockups | Caro | 07.04.25 | - |- / 3h|🔄| ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994)|
 | Make integrated calendar read data (existing rooms etc) from room configurator | Dominic | 06.04.25 | Odoo Calendar | 1h / 1.5h  | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Add "Choose Room" Variable and other module related variables to integrated calendar | Dominic | 06.04.25 | Odoo Calendar | 4.5h / 1.5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
