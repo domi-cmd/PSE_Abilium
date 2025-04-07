@@ -22,7 +22,7 @@
 | Odoo-Benutzer: Erstellung Termin (Erstellung Sitzungszimmer) | 2 SP | ⏳ | - | - |
 | Odoo-Benutzer: Raumfilter (Grösse) | 2 SP | ⏳ | - | - |
 | Odoo-Benutzer: Vorort Raum reservieren können (zb für eine Stunde blockieren) | 8 SP | ⏳ | - | - |
-| Odoo-Admin: Sitzungszimmer inaktivieren | 3 SP | ⏳ | - | - |
+| Odoo-Admin: Sitzungszimmer inaktivieren | 3 SP | 🔄 | Räume können "Unavailable gemacht werden von Admin, jedoch immernoch auswählbar im Moment | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
 
 
 ## Icons Sprint
