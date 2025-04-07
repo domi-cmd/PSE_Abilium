@@ -3,7 +3,7 @@
 - 🔄 In Bearbeitung
 - ⏳ Offen
 
-## Progress: 3/14 User-Stories  &  19/75 Story-Points Completed!
+## Progress: 4/14 User-Stories  &  21/75 Story-Points Completed!
 
 
 
@@ -19,7 +19,7 @@
 | Odoo-Admin: RoomID & RaspberryID verwalten (Zuweisung) | 5 SP | 🔄 | Configuration View für Zuweisung(Erstellung) von Raum-Raspberry Verbindungen existiert, Räume werden vom Room Model gelesen. Verbindung mit Raspi fehlt? | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
 | Raspi: Anzeigen von Fehlfunktionen | 5 SP | ⏳ | - | - |
 | Odoo-Admin: Events erstellen und löschen | 3 SP | ⏳ | - | - |
-| Odoo-Benutzer: Erstellung Termin (Erstellung Sitzungszimmer) | 2 SP | ⏳ | - | - |
+| Odoo-Benutzer: Erstellung Termin (Erstellung Sitzungszimmer) | 2 SP | ✅ | Done | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
 | Odoo-Benutzer: Raumfilter (Grösse) | 2 SP | ⏳ | - | - |
 | Odoo-Benutzer: Vorort Raum reservieren können (zb für eine Stunde blockieren) | 8 SP | ⏳ | - | - |
 | Odoo-Admin: Sitzungszimmer inaktivieren | 3 SP | 🔄 | Räume können "Unavailable gemacht werden von Admin, jedoch immernoch auswählbar im Moment | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
