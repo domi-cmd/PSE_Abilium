@@ -18,7 +18,10 @@
                 <!-- TODO: Add a "Description" variable -->
                 <field name="name"/>  <!-- Name of the meeting room -->
                 <field name="capacity"/>  <!-- Capacity of the meeting room -->
-                <field name="location"/>  <!-- Location of the meeting room -->
+                <field name="street"/>  <!-- street of the meeting room -->
+                <field name="city"/>  <!-- city of the meeting room -->
+                <field name="floor"/>  <!-- floor of the meeting room -->
+                <field name="description"/>  <!-- Input field for room description -->
                 <field name="availability"/>  <!-- Availability status of the room -->
             </list>
         </field>
@@ -38,7 +41,10 @@
                         <!-- TODO: Add a "Description" variable -->
                         <field name="name"/>  <!-- Input field for room name -->
                         <field name="capacity"/>  <!-- Input field for room capacity -->
-                        <field name="location"/>  <!-- Input field for room location -->
+                        <field name="street"/>  <!-- Input field for room location street -->
+                        <field name="city"/>  <!-- Input field for room location city -->
+                        <field name="floor"/>  <!-- Input field for room floor -->
+                        <field name="description"/>  <!-- Input field for room description -->
                         <field name="availability"/>  <!-- Input field for room availability -->
                     </group>
                 </sheet>
