@@ -3,7 +3,7 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 73 ✅
+## Overall Completed Issues: 77 ✅
 
 ## Statuslegende
 - ✅ Abgeschlossen
@@ -14,15 +14,18 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
 |------|--------------|----------|---------------|--------|--------|----------|
-| Create Overview and Progress Tabloid for User Stories in UserStories.md | Dominic | 07.04.25 | - | 45min / 30min | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994)|
+| Rename Module/App to a more fitting name | UP FOR GRABS | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Remove Leftover/Redundant Custom Modules | Linus | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Add Room Variables From Mockup To Odoo | Caro | 07.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Add "Confirm"/"Save and close" button to room creation in odoo | Dominic | 06.04.25 | Room Config | 1.5h / 1.5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Traktanden Standup Meeting 4 | Dominic | 07.04.25 | Meeting | 30min / 30min | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| User Story "Odoo-Admin: Sitzungszimmer inaktivieren" | Dominic | 07.04.25 | Odoo Calendar-Room Module | 1.5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994)|
+| Disable User Function To Create New Room When Doing A Reservation | Dominic | 07.04.25 | Odoo Calendar-Room Module | 45min / 30min | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994)|
+| Create Overview and Progress Tabloid for User Stories in UserStories.md | Dominic | 07.04.25 | Dokumentation | 45min / 30min | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994)|
 | Implement Customer Feedback in Updated Mockups | Caro | 07.04.25 | - |- / 3h|🔄| ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994)|
 | Make integrated calendar read data (existing rooms etc) from room configurator | Dominic | 06.04.25 | Odoo Calendar | 1h / 1.5h  | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Add "Choose Room" Variable and other module related variables to integrated calendar | Dominic | 06.04.25 | Odoo Calendar | 4.5h / 1.5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Make Room-Raspy Config read rooms from the Room Creator/Config (only display valid/existing rooms to choose from) | Dominic | 06.04.25 | Room-Rasp Config | 1.5h / 1.5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Rename Module/App to a more fitting name | UP FOR GRABS | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Remove Leftover/Redundant Custom Modules | Linus | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Add Room Variables From Mockup To Odoo | Caro | 07.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Add "Confirm"/"Save and close" button to room creation in odoo | Dominic | 06.04.25 | Room Config | - / 1.5h | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Traktanden Intern Meeting 9 | Dominic | 06.04.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
 | Statusbericht 9 | Linus | 27.04.25 | Dokumentation | 30min / - | 🔄 | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
 | Protokollabgaben 9 | Yannis | 27.04.25 | Dokumentation | 1.5h / - | 🔄 | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
