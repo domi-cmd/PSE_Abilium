@@ -14,8 +14,6 @@
         <field name="arch" type="xml">
             <list>  <!-- Define a list view -->
                 <!-- Display fields in the tree view -->
-                <!-- TODO: Split "location" up into "Street", "City", and "Floor" -->
-                <!-- TODO: Add a "Description" variable -->
                 <field name="name"/>  <!-- Name of the meeting room -->
                 <field name="capacity"/>  <!-- Capacity of the meeting room -->
                 <field name="street"/>  <!-- street of the meeting room -->
@@ -37,8 +35,6 @@
             <form>  <!-- Define a form view -->
                 <sheet>  <!-- Main container for the form -->
                     <group>  <!-- Group fields for better organization -->
-                        <!-- TODO: Split "location" up into "Street", "City", and "Floor" -->
-                        <!-- TODO: Add a "Description" variable -->
                         <field name="name"/>  <!-- Input field for room name -->
                         <field name="capacity"/>  <!-- Input field for room capacity -->
                         <field name="street"/>  <!-- Input field for room location street -->
