@@ -14,7 +14,7 @@ services:
       - odoo-net
 
   odoo:
-    image: odoo:18
+    build: .
     command: --addons-path=/mnt/extra-addons,/usr/lib/python3/dist-packages/odoo/addons
     container_name: odoo-app
     depends_on:
