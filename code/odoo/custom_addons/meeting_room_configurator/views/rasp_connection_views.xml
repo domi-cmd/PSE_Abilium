@@ -27,8 +27,8 @@
                     <group>
                         <group string="Room Configuration">
                             <field name="room_id"/>
-                            <field name="raspName"/>
-                            <field name="status"/>
+                            <field name="rasp_name"/>
+                            <field name="active"/>
                         </group>
                         <group string="MQTT Configuration">
                             <field name="use_mqtt"/>
@@ -78,11 +78,11 @@
         <field name="name">rasproom.connection.tree</field>
         <field name="model">rasproom.connection</field>
         <field name="arch" type="xml">
-            <list decoration-danger="mqtt_connection_state == 'error'" decoration-success="mqtt_connection_state == 'connected'" decoration-muted="not status">
+            <list decoration-danger="mqtt_connection_state == 'error'" decoration-success="mqtt_connection_state == 'connected'" decoration-muted="not active">
                 <field name="name"/>
                 <field name="room_id"/>
-                <field name="raspName"/>
-                <field name="status" widget="boolean_toggle"/>
+                <field name="rasp_name"/>
+                <field name="active" widget="boolean_toggle"/>
                 <field name="use_mqtt"/>
                 <field name="mqtt_broker"/>
                 <field name="mqtt_port"/>
@@ -108,10 +108,10 @@
             <search>
                 <field name="name"/>
                 <field name="room_id"/>
-                <field name="raspName"/>
+                <field name="rasp_name"/>
                 <field name="mqtt_broker"/>
                 <separator/>
-                <filter string="Active" name="active" domain="[('status', '=', True)]"/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
                 <filter string="Using MQTT" name="use_mqtt" domain="[('use_mqtt', '=', True)]"/>
                 <filter string="Connected" name="connected" domain="[('mqtt_connection_state', '=', 'connected')]"/>
                 <group expand="0" string="Group By">
