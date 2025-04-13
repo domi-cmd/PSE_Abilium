@@ -45,6 +45,19 @@ im Odoo module einzubinden.
 
 ## Week 7 : 07.04. - 13.04.
 
+Wir haben die Verbindung zwischen Raspberry pi und Odoo module weiter entwickelt, 
+einige UI Elemente weiter bearbeitet und am Einbinden der Rooms als resource gearbeitet. 
+
+![StatusOK.png](statusgrafiken/StatusOK.png)
+
+## Week 8 : 14.04. - 20.04.
+
+Abgabe der 2. Iteration (15.04)
+
+## Week 9 : 21.04. - 27.04.
+
+
+
 ## Grafiken:
 - **![StatusOK.png](statusgrafiken/StatusOK.png)**
 - **![StatusImVerzug.png](statusgrafiken/StatusImVerzug.png)**
