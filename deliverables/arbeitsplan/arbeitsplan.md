@@ -15,7 +15,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
 |------|--------------|----------|---------------|--------|--------|----------|
 | Rename Module/App to a more fitting name | UP FOR GRABS | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Remove Leftover/Redundant Custom Modules | Linus | 06.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
+| Remove Leftover/Redundant Custom Modules | Linus | 06.04.25 | Room Config | 30min / 30min | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Add Room Variables From Mockup To Odoo | Caro | 07.04.25 | Room Config | - / 30min | ⏳ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Add "Confirm"/"Save and close" button to room creation in odoo | Dominic | 06.04.25 | Room Config | 1.5h / 1.5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Traktanden Standup Meeting 4 | Dominic | 07.04.25 | Meeting | 30min / 30min | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
