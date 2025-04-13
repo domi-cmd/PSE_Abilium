@@ -3,6 +3,7 @@ import logging
 import json
 from datetime import datetime
 import threading
+import time
 
 _logger = logging.getLogger(__name__)
 
@@ -50,6 +51,7 @@ class RoomRaspConnection(models.Model):
     # MQTT client instances stored as class variables (not stored in database)
     _mqtt_clients = {}
     _mqtt_threads = {}
+    _mqtt_running = {}  # Track if thread should continue running
     
     # Lock for thread safety
     _mqtt_lock = threading.Lock()
@@ -82,7 +84,7 @@ class RoomRaspConnection(models.Model):
         
         try:
             # Create a temporary client for testing
-            client_id = self.mqtt_client_id or f"odoo-test-{self.id}"
+            client_id = self.mqtt_client_id or f"odoo-test-{self.id}-{int(time.time())}"
             client = mqtt.Client(client_id=client_id)
             
             if self.mqtt_username:
@@ -91,24 +93,52 @@ class RoomRaspConnection(models.Model):
             if self.mqtt_use_tls:
                 client.tls_set()
             
-            # Connect with a short timeout
-            client.connect(self.mqtt_broker, self.mqtt_port, keepalive=10)
+            # Set a short connection timeout
+            client.connect_async(self.mqtt_broker, self.mqtt_port, keepalive=10)
             
-            # Disconnect immediately
-            client.disconnect()
+            # Start loop with timeout
+            client.loop_start()
             
-            self.mqtt_last_connection = fields.Datetime.now()
-            self.mqtt_connection_state = 'connected'
+            # Wait for connection with timeout
+            connection_timeout = 5  # 5 seconds timeout
+            start_time = time.time()
+            connected = False
             
-            return {
-                'type': 'ir.actions.client',
-                'tag': 'display_notification',
-                'params': {
-                    'title': _("MQTT Connection Test"),
-                    'message': _("Successfully connected to MQTT broker."),
-                    'type': 'success',
+            while time.time() - start_time < connection_timeout:
+                if client.is_connected():
+                    connected = True
+                    break
+                time.sleep(0.1)
+            
+            # Stop the network loop
+            client.loop_stop()
+            
+            # Disconnect if connected
+            if connected:
+                client.disconnect()
+                self.mqtt_last_connection = fields.Datetime.now()
+                self.mqtt_connection_state = 'connected'
+                
+                return {
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': _("MQTT Connection Test"),
+                        'message': _("Successfully connected to MQTT broker."),
+                        'type': 'success',
+                    }
                 }
-            }
+            else:
+                self.mqtt_connection_state = 'error'
+                return {
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': _("MQTT Connection Test"),
+                        'message': _("Connection timeout. Could not connect to broker."),
+                        'type': 'danger',
+                    }
+                }
                 
         except Exception as e:
             self.mqtt_connection_state = 'error'
@@ -141,7 +171,7 @@ class RoomRaspConnection(models.Model):
                         'mqtt_connection_state': 'connected',
                         'mqtt_last_connection': fields.Datetime.now()
                     })
-                    _logger.info(f"MQTT connected successfully.")
+                    _logger.info(f"MQTT connected successfully for {connection.name}.")
                 else:
                     error_messages = {
                         1: "Connection refused - incorrect protocol version",
@@ -200,17 +230,83 @@ class RoomRaspConnection(models.Model):
     
     def _mqtt_loop(self):
         """Run the MQTT client loop in a separate thread"""
-        _logger.info("Starting MQTT client loop")
+        connection_id = self.id
+        _logger.info(f"Starting MQTT client loop for connection {connection_id}")
+        
         try:
             # Get the client for this instance
-            client = self._mqtt_clients.get(self.id)
+            client = self._mqtt_clients.get(connection_id)
             if client:
-                # Run the network loop forever
-                client.loop_forever()
+                # Use loop_start() instead of loop_forever() for better control
+                client.loop_start()
+                
+                # Check if connected with timeout
+                connection_timeout = 10  # 10 seconds timeout
+                start_time = time.time()
+                connected = False
+                
+                while time.time() - start_time < connection_timeout:
+                    if client.is_connected():
+                        connected = True
+                        break
+                    time.sleep(0.5)
+                
+                if not connected:
+                    _logger.error(f"MQTT connection timeout for connection {connection_id}")
+                    with api.Environment.manage():
+                        new_cr = self.env.registry.cursor()
+                        try:
+                            env = api.Environment(new_cr, self.env.uid, self.env.context)
+                            connection = env['rasproom.connection'].browse(connection_id)
+                            connection.write({'mqtt_connection_state': 'error'})
+                            new_cr.commit()
+                        except Exception as e:
+                            _logger.error(f"Error updating connection status: {str(e)}")
+                            new_cr.rollback()
+                        finally:
+                            new_cr.close()
+                    
+                    # Stopping the loop
+                    client.loop_stop()
+                    return
+                
+                # Keep running while connection is active
+                while self._mqtt_running.get(connection_id, False):
+                    # Just check periodically if we should keep running
+                    time.sleep(1)
+                
+                # Cleanup when done
+                client.loop_stop()
+                
         except Exception as e:
             _logger.error(f"MQTT loop error: {str(e)}")
+            
+            # Update connection state to error
+            with api.Environment.manage():
+                new_cr = self.env.registry.cursor()
+                try:
+                    env = api.Environment(new_cr, self.env.uid, self.env.context)
+                    connection = env['rasproom.connection'].browse(connection_id)
+                    connection.write({'mqtt_connection_state': 'error'})
+                    new_cr.commit()
+                except Exception as nested_e:
+                    _logger.error(f"Error updating connection status: {str(nested_e)}")
+                    new_cr.rollback()
+                finally:
+                    new_cr.close()
         finally:
-            _logger.info("MQTT client loop ended")
+            _logger.info(f"MQTT client loop ended for connection {connection_id}")
+            
+            # Ensure we clean up if the thread exits unexpectedly
+            with self._mqtt_lock:
+                if connection_id in self._mqtt_clients:
+                    try:
+                        self._mqtt_clients[connection_id].loop_stop()
+                    except:
+                        pass
+                    
+                    # Clean up references
+                    self._mqtt_running[connection_id] = False
     
     def connect_mqtt(self):
         """Connect to the MQTT broker"""
@@ -235,8 +331,8 @@ class RoomRaspConnection(models.Model):
             try:
                 self.write({'mqtt_connection_state': 'connecting'})
                 
-                # Create a new client
-                client_id = self.mqtt_client_id or f"odoo-{self.id}"
+                # Create a new client with a unique ID to avoid conflicts
+                client_id = self.mqtt_client_id or f"odoo-{self.id}-{int(time.time())}"
                 new_client = mqtt.Client(client_id=client_id, userdata={'connection_id': self.id})
                 
                 # Set callbacks
@@ -251,11 +347,14 @@ class RoomRaspConnection(models.Model):
                 if self.mqtt_use_tls:
                     new_client.tls_set()
                 
-                # Connect to broker
-                new_client.connect(self.mqtt_broker, self.mqtt_port, keepalive=self.mqtt_keep_alive)
+                # Connect to broker (using async connection)
+                new_client.connect_async(self.mqtt_broker, self.mqtt_port, keepalive=self.mqtt_keep_alive)
                 
                 # Store the client in the class dictionary
                 self._mqtt_clients[self.id] = new_client
+                
+                # Mark this connection as running
+                self._mqtt_running[self.id] = True
                 
                 # Start the background thread
                 thread = threading.Thread(target=self._mqtt_loop)
@@ -272,6 +371,8 @@ class RoomRaspConnection(models.Model):
                 self.write({'mqtt_connection_state': 'error'})
                 if self.id in self._mqtt_clients:
                     del self._mqtt_clients[self.id]
+                if self.id in self._mqtt_running:
+                    del self._mqtt_running[self.id]
                 return False
 
     def disconnect_mqtt(self):
@@ -279,22 +380,34 @@ class RoomRaspConnection(models.Model):
         self.ensure_one()
         
         with self._mqtt_lock:
+            # First mark this connection as not running to stop the thread
+            self._mqtt_running[self.id] = False
+            
             if self.id in self._mqtt_clients:
                 try:
+                    # Stop the network loop
+                    self._mqtt_clients[self.id].loop_stop()
+                    
                     # Disconnect cleanly
                     self._mqtt_clients[self.id].disconnect()
                     
                     # Give the client time to process the disconnect
-                    import time
-                    time.sleep(1)
+                    time.sleep(0.5)
                     
                 except Exception as e:
                     _logger.error(f"Error during MQTT disconnect: {str(e)}")
                 
                 # Clean up references
                 del self._mqtt_clients[self.id]
-                if self.id in self._mqtt_threads:
-                    del self._mqtt_threads[self.id]
+            
+            if self.id in self._mqtt_threads:
+                # Wait for thread to finish with timeout
+                if threading.current_thread() != self._mqtt_threads[self.id]:
+                    try:
+                        self._mqtt_threads[self.id].join(timeout=2.0)
+                    except:
+                        pass
+                del self._mqtt_threads[self.id]
             
             self.write({'mqtt_connection_state': 'disconnected'})
             return True
