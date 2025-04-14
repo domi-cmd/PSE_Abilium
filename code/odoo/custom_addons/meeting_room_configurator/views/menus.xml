@@ -1,7 +1,9 @@
 <odoo>
-    <!-- Main menu for your module -->
-    <menuitem id="menu_meeting_configurator" name="Meeting Room Configurator" sequence="1"
-              web_icon="meeting_room_booking,static/description/icon.png"/>
+    <!-- Main menu for our module -->
+    <menuitem id="menu_meeting_configurator" 
+        name="Meeting Room Configurator" 
+        sequence="1" 
+        web_icon="meeting_room_booking,static/description/icon.png"/>
 
     <!-- Submenu for Calendar, referencing the action in the Calendar module -->
     <menuitem 
@@ -17,21 +19,6 @@
         id="menu_configuration" 
         name="Configuration" 
         parent="menu_meeting_configurator" 
-        sequence="10"/>
-
-    <!-- 'Manage Rooms' as a child of 'Configuration' -->
-    <menuitem 
-        id="menu_manage_rooms" 
-        name="Manage Rooms" 
-        parent="menu_configuration" 
-        action="action_meeting_rooms" 
-        sequence="10"/>
-
-    <!-- 'Manage Room-Raspberry Connections' as a child of 'Configuration' -->
-    <menuitem 
-        id="menu_manage_room_raspberry_connections" 
-        name="Manage Room-Raspberry Connections" 
-        parent="menu_configuration"  
         action="action_raspberry_connections" 
-        sequence="20"/>
+        sequence="10"/>
 </odoo>
