@@ -17,7 +17,6 @@
     'images': ['static/description/icon.png'],
     'data': [
         'security/ir.model.access.csv',
-        'views/room_views.xml',
         'views/rasp_connection_views.xml',
         'views/actions.xml',
         'views/menus.xml',

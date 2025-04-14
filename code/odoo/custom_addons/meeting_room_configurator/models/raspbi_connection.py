@@ -6,7 +6,12 @@ class RoomRaspConnection(models.Model):
     # _inherit = ['mail.thread', 'mail.activity.mixin'] - Commented out as not needed as of now
 
     name = fields.Char(string='Connection Name', required=True, tracking=True)
-    room_id = fields.Many2one('meeting.room', string='Room', required=True, tracking=True)
+    room_name = fields.Char(string='Room', required=True, tracking=True)
+    capacity = fields.Integer(string='Capacity', required=True)
+    street = fields.Char(string='Street')
+    city = fields.Char(string='City')
+    floor = fields.Char(string='Floor')
+    description = fields.Char(string='Description')
     raspName = fields.Char(string='Raspberry Name', required=True, tracking=True)
     status = fields.Boolean(string='Active', default=True, tracking=True)
     

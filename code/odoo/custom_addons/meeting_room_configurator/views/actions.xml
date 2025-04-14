@@ -1,25 +1,4 @@
 <odoo>
-
-    <!-- Base action allowing users to open, interact with and delete new meeting rooms. -->
-    <!-- Defines a "window action" for our 'meeting.room' model -->
-    <record id="action_meeting_rooms" model="ir.actions.act_window">
-        <field name="name">Rooms</field>
-        <!-- 
-        The model to which this action will be applied to defined as "res_model".
-        This module will probably have other models later on, for assigning rooms to raspbi's etc. 
-        -->
-        <field name="res_model">meeting.room</field> 
-        <!-- 
-        Defines the types of vies that this window action entails, namely:
-            - a list view for a table-like overview of all current meeting-room entries in the model.
-            - a form view for a detailed description and editing of said description (room name, ort, etc). 
-        -->
-        <field name="view_mode">list,form</field>
-        <field name="view_id" ref="view_meeting_room_tree"/>  <!-- cleaner by adressing using view_id -->
-        <field name="target">current</field> <!-- ensures full-page, not popup -->
-    </record>
-
-
     <!-- Action for the Raspberry Connection -->
     <record id="action_raspberry_connections" model="ir.actions.act_window">
         <field name="name">Manage Raspberry Connections</field>

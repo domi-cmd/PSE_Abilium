@@ -20,9 +20,14 @@
                         </div>
                         <group>
                             <group>
-                                <field name="room_id"/>
+                                <field name="room_name"/>
                                 <field name="raspName"/>
                                 <field name="status"/>
+                                <field name="capacity"/>
+                                <field name="street"/>
+                                <field name="city"/>
+                                <field name="floor"/>
+                                <field name="description"/>
                             </group>
                         </group>
                         
@@ -75,7 +80,12 @@
             <field name="arch" type="xml">
                 <list>
                     <field name="name"/>
-                    <field name="room_id"/>
+                    <field name="room_name"/>
+                    <field name="capacity"/>
+                    <field name="street"/>
+                    <field name="city"/>
+                    <field name="floor"/>
+                    <field name="description"/>
                     <field name="raspName"/>
                     <field name="status"/>
                     <field name="use_mqtt"/>
@@ -95,13 +105,18 @@
             <field name="arch" type="xml">
                 <search>
                     <field name="name"/>
-                    <field name="room_id"/>
+                    <field name="room_name"/>
+                    <field name="capacity"/>
+                    <field name="street"/>
+                    <field name="city"/>
+                    <field name="floor"/>
+                    <field name="description"/>
                     <field name="raspName"/>
                     <separator/>
                     <filter string="Active" name="active" domain="[('status', '=', True)]"/>
                     <filter string="Using MQTT" name="use_mqtt" domain="[('use_mqtt', '=', True)]"/>
                     <group expand="0" string="Group By">
-                        <filter string="Room" name="group_by_room" context="{'group_by': 'room_id'}"/>
+                        <filter string="Room" name="group_by_room" context="{'group_by': 'room_name'}"/>
                         <filter string="Connection Status" name="group_by_status" context="{'group_by': 'mqtt_connection_state'}"/>
                     </group>
                 </search>
