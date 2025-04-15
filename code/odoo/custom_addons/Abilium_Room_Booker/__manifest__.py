@@ -1,6 +1,5 @@
 {
-    # TODO: Rename the app via the 'name' variable to something more fitting such as "PSE Room Booking"
-    'name': 'Meeting Room Configurator',
+    'name': 'Abilium Room Booker',
     'summary': 'App to create, delete and manage meeting rooms.',
     'description': '''
         Create, manage and delete meeting rooms, assign their ID and match it to its respective Ink Display ID.
