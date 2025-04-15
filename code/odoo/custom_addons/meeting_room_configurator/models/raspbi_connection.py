@@ -5,6 +5,7 @@ import threading
 import time
 import ssl
 from contextlib import contextmanager
+import json
 
 _logger = logging.getLogger(__name__)
 
@@ -32,11 +33,12 @@ class MqttConnectionManager:
         self._connections = {}
         self._lock = threading.RLock()
     
-    def register(self, connection_id, client, thread=None):
+    def register(self, connection_id, client, thread=None, publisher_thread=None):
         with self._lock:
             self._connections[connection_id] = {
                 'client': client,
                 'thread': thread,
+                'publisher_thread': publisher_thread,
                 'timestamp': time.time()
             }
     
@@ -52,6 +54,11 @@ class MqttConnectionManager:
                         client.loop_stop()
                     except Exception as e:
                         _logger.error("Error disconnecting client: %s", e)
+                
+                pub_thread = conn.get('publisher_thread')
+                if pub_thread and pub_thread.is_alive():
+                    pub_thread.do_run = False  # Signal thread to stop
+
                 return True
         return False
     
@@ -246,7 +253,8 @@ class RoomRaspConnection(models.Model):
                     
                 client = mqtt.Client(
                     client_id=connection.mqtt_client_id or f'odoo-{connection_id}-{int(time.time())}'[:23],
-                    userdata={'connection_id': connection_id}
+                    userdata={'connection_id': connection_id},
+                    protocol=mqtt.MQTTv311
                 )
                 
                 # Configure client
@@ -269,6 +277,9 @@ class RoomRaspConnection(models.Model):
                 
                 # Register client
                 self.mqtt_manager.register(connection_id, client)
+                
+                # Start periodic publisher
+                self._start_data_publisher(connection_id, client)
                 
                 # Update status
                 connection.write({'mqtt_connection_state': 'connecting'})
@@ -344,7 +355,7 @@ class RoomRaspConnection(models.Model):
         try:
             # Create a temporary client for testing
             client_id = f'odoo-test-{self.id}-{int(time.time())}'[:23]
-            client = mqtt.Client(client_id=client_id)
+            client = mqtt.Client(client_id=client_id, protocol=mqtt.MQTTv311)
             
             if self.mqtt_username:
                 client.username_pw_set(self.mqtt_username, self.mqtt_password)
@@ -384,6 +395,8 @@ class RoomRaspConnection(models.Model):
             return self._show_notification("MQTT Test", f"Error: {str(e)}", 'danger')
 
     def publish_test_message(self):
+
+        _logger.info(f"[MQTT] publish_test_message called for record ID {self.id}")
         """Publish test message to MQTT broker"""
         self.ensure_one()
         
@@ -396,12 +409,15 @@ class RoomRaspConnection(models.Model):
         client = self.mqtt_manager.get_client(self.id)
         if not client or not client.is_connected():
             return self._show_notification("MQTT Publish", "Not connected to MQTT broker", 'danger')
+        else:
+            _logger.info(f"Publishing test message to topic '{topic}' with payload '{payload}'")
             
         try:
             topic = f"{self.mqtt_topic_prefix}{self.rasp_name}/test"
             payload = "Test message from Odoo"
             qos = int(self.mqtt_qos or 0)
             result = client.publish(topic, payload, qos=qos)
+            _logger.info(f"Publishing test message to topic '{topic}' with payload '{payload}'")
             
             if result.rc == mqtt.MQTT_ERR_SUCCESS:
                 return self._show_notification("MQTT Publish", f"Test message published to {topic}", 'success')
@@ -515,3 +531,39 @@ class RoomRaspConnection(models.Model):
             return self._show_notification("MQTT Connection", "Disconnected from MQTT broker", 'info')
         else:
             return self._show_notification("MQTT Connection", "Failed to disconnect", 'danger')
+        
+
+    def _start_data_publisher(self, connection_id, client):
+        def publish_loop():
+            t = threading.currentThread()
+            while getattr(t, "do_run", True):
+                try:
+                    with self._get_new_cursor() as cr:
+                        env = api.Environment(cr, self.env.uid, {})
+                        connection = env['rasproom.connection'].browse(connection_id)
+                        if not connection.exists() or not connection.active:
+                            break
+                        
+                        # Example room data
+                        room_data = {
+                            'room': connection.room_id.name,
+                            'raspberry': connection.rasp_name,
+                            'timestamp': fields.Datetime.now().isoformat(),
+                            'capacity': connection.room_id.capacity if hasattr(connection.room_id, 'capacity') else None
+                        }
+
+                        topic = f"{connection.mqtt_topic_prefix}{connection.rasp_name}/data"
+                        payload = json.dumps(room_data)
+                        qos = int(connection.mqtt_qos or 0)
+
+                        result = client.publish(topic, payload, qos=qos)
+                        _logger.info("Published room data to %s: %s", topic, payload)
+
+                except Exception as e:
+                    _logger.error("Error in data publishing thread: %s", e)
+
+                time.sleep(15)
+
+        thread = threading.Thread(target=publish_loop, daemon=True)
+        thread.start()
+        self.mqtt_manager._connections[connection_id]['publisher_thread'] = thread
