@@ -3,7 +3,7 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 85 ✅
+## Overall Completed Issues: 90 ✅
 
 ## Statuslegende
 - ✅ Abgeschlossen
@@ -14,11 +14,11 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
 |------|--------------|----------|---------------|--------|--------|----------|
+| Odoo integrate module completely into existing calendar | Dominic | 20.04.25 | Room Config | 3.5h / 1h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
 |Analyse Iteration 2|Alle|20.04.25|Raspberry|1.5h/ |🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
 |Mockup Odoo mit Raspberry |Livia|13.04.25|Raspberry|2h/1.5|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
 |Mockup Raspberry|Livia|16.04|Raspberry|1h/ 1h| ✅ |![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
 | Traktanden-Kunden 3 | Dominic | 15.03.25 | Meeting | 30min / 30min | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
-| Odoo integrate module completely into existing calendar | Dominic | 20.04.25 | Room Config | 2h / 1h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
 | Bugfix Odoo Illegal Room Variables | Dominic | 20.04.25 | Room Config | 1h / 1h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
 | Merge Odoo Configuration Modules One | Dominic | 14.04.25 | Room Config | 2.5h / 2h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
 | Rename Module/App to a more fitting name | Dominic | 06.04.25 | Room Config | 45min / 30min | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
