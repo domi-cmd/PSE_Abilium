@@ -1,24 +1,8 @@
 <odoo>
-    <!-- Main menu for our module -->
-    <menuitem id="menu_abilium_booker" 
-        name="Abilium Room Booker" 
-        sequence="1" 
-        web_icon="meeting_room_booking,static/description/icon.png"/>
-
-    <!-- Submenu for Calendar, referencing the action in the Calendar module -->
-    <menuitem 
-        id="calendar_submenu"  
-        name="Calendar" 
-        parent="menu_abilium_booker"  
-        action="calendar.action_calendar_event"
-        groups="base.group_user"
-        sequence="5"/>
-
-    <!-- Main 'Configuration' submenu -->
-    <menuitem 
-        id="menu_configuration" 
-        name="Configuration" 
-        parent="menu_abilium_booker" 
-        action="action_raspberry_connections" 
-        sequence="10"/>
+    <!-- Configuration Menu under Calendar -->
+    <menuitem id="menu_configuration"
+              name="Room Raspberry Connections"
+              parent="calendar.calendar_menu_config"
+              action="action_raspberry_connections"
+              sequence="30"/>
 </odoo>
