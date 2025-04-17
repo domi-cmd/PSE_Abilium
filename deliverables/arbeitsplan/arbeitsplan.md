@@ -14,7 +14,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
 | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
 |------|--------------|----------|---------------|--------|--------|----------|
-| Config file für Raspberry erstellen | Myroslav | 20.04.25 | Raspberry | / 5h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+| User Story: Configuration von Raspberry | Myroslav | 20.04.25 | Raspberry | / 5h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
 | Odoo integrate module completely into existing calendar | Dominic | 20.04.25 | Room Config | 3.5h / 1h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
 |Analyse Iteration 2|Alle|20.04.25|Raspberry|1.5h/ |🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
 |Mockup Odoo mit Raspberry |Livia|13.04.25|Raspberry|2h/1.5|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
