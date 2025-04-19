@@ -12,6 +12,8 @@
     'depends': [
         'base',
         'calendar',
+        'contacts', # for res.partner -> displaying rooms in calendar
+        'resource', # for declaring as a resource
     ],
     'images': ['static/description/icon.png'],
     'data': [
