@@ -74,6 +74,7 @@
         </record>
 
         <!-- List View (formerly Tree View) -->
+        <!-- TODO: Add comments -->
         <record id="view_rasproom_connection_tree" model="ir.ui.view">
             <field name="name">rasproom.connection.tree</field>
             <field name="model">rasproom.connection</field>
@@ -82,6 +83,7 @@
                     <field name="name"/>
                     <field name="room_name"/>
                     <field name="capacity"/>
+                    <!-- TODO: Add logic for calculation location based on given street etc -->
                     <field name="street"/>
                     <field name="city"/>
                     <field name="floor"/>
@@ -99,11 +101,13 @@
         </record>
 
         <!-- Search View -->
+        <!-- TODO: Add comments -->
         <record id="view_rasproom_connection_search" model="ir.ui.view">
             <field name="name">rasproom.connection.search</field>
             <field name="model">rasproom.connection</field>
             <field name="arch" type="xml">
                 <search>
+                    <!-- TODO: Add logic for calculation location based on given street etc -->
                     <field name="name"/>
                     <field name="room_name"/>
                     <field name="capacity"/>
@@ -124,6 +128,7 @@
         </record>
 
         <!-- Action -->
+        <!-- TODO: Add comments -->
         <record id="action_rasproom_connection" model="ir.actions.act_window">
             <field name="name">Raspberry Connections</field>
             <field name="res_model">rasproom.connection</field>

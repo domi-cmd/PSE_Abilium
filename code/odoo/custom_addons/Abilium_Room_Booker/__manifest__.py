@@ -4,7 +4,7 @@
     'description': '''
         Create, manage and delete meeting rooms, assign their ID and match it to its respective Ink Display ID.
     ''',
-    'version': '0.1.0',
+    'version': '1.0.0',
     'category': 'Productivity',
     'license': 'LGPL-3', 
     'author': 'PSE Abilium Team 2025',

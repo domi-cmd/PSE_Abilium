@@ -40,6 +40,7 @@ class RoomRaspConnection(models.Model):
         return room
     
     # MQTT Configuration Fields
+    # TODO: Add comments
     use_mqtt = fields.Boolean(string='Use MQTT', default=False, tracking=True)
     mqtt_broker = fields.Char(string='MQTT Broker', help="Hostname or IP address of the MQTT broker", tracking=True)
     mqtt_port = fields.Integer(string='MQTT Port', default=1883, tracking=True)
