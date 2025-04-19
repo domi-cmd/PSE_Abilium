@@ -18,9 +18,7 @@
     'images': ['static/description/icon.png'],
     'data': [
         'security/ir.model.access.csv',
-        'views/rasp_connection_views.xml',
-        'views/actions.xml',
-        'views/menus.xml',
+        'views/connection_configuration_views.xml',
         'views/calendar_event_views.xml',
     ],
     
