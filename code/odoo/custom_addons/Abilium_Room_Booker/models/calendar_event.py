@@ -7,6 +7,6 @@ class CalendarEvent(models.Model):
     meeting_room = fields.Many2one(
         'rasproom.connection', 
         string="Choose Meeting Room", 
-        required=True,
+        required=False,
         domain=[('status', '=', True)]  # Ensure only available rooms are shown
     )
