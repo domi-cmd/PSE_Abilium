@@ -26,12 +26,6 @@
 - **2. April – Planning Game 3** 🎲
 - **30. April – Planning Game 4** 🎲
 
-## 🔍 Code Reviews
-- **12. März – Code Review** 🔎
-- **2. April – Code Review** 🔎
-- **30. April – Code Review** 🔎
-- **14. Mai – Code Review** 🔎
-
 ## 🏖️ Pausen & Feiertage
 - **9. April – Unterrichtsfrei (SUB Jubiläum)** 🎉
 - **16.–23. April – Osterferien** 🐰
