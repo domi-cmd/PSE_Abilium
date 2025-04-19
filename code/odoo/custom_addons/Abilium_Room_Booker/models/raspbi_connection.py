@@ -14,6 +14,30 @@ class RoomRaspConnection(models.Model):
     description = fields.Char(string='Description')
     raspName = fields.Char(string='Raspberry Name', required=True, tracking=True)
     status = fields.Boolean(string='Active', default=True, tracking=True)
+    resource_id = fields.Many2one('resource.resource', string="Resource", ondelete='cascade')
+    partner_id = fields.Many2one('res.partner', string="Related Contact")
+
+
+    @api.model
+    def create(self, vals):
+        vals = dict(vals)  # make sure we can modify vals
+        if not vals.get('resource_id'):
+            # Create a linked resource if not given
+            resource = self.env['resource.resource'].create({
+                'name': vals.get('name'),
+                'resource_type': 'material',
+                'calendar_id': self.env.ref('resource.resource_calendar_std').id,  # <-- This line sets availability
+            })
+            vals['resource_id'] = resource.id
+        room = super().create(vals)
+
+        if not vals.get('partner_id'):
+            partner = self.env['res.partner'].create({
+                'name': room.name,
+                'resource_calendar_id': resource.calendar_id.id,  # optional
+            })
+            room.partner_id = partner
+        return room
     
     # MQTT Configuration Fields
     use_mqtt = fields.Boolean(string='Use MQTT', default=False, tracking=True)

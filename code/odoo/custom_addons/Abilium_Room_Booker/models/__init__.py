@@ -1,1 +1,1 @@
-from . import raspbi_connection, calendar_event
+from . import raspbi_connection, calendar_event, partner_extension
