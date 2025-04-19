@@ -3,7 +3,7 @@
 - 🔄 In Bearbeitung
 - ⏳ Offen
 
-## Progress: 8/14 User-Stories  &  45/75 Story-Points Completed!
+## Progress: 9/17 User-Stories  &  45/75 Story-Points Completed!
 
 
 
