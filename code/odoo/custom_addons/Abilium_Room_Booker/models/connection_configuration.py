@@ -16,7 +16,11 @@ class RoomRaspConnection(models.Model):
     status = fields.Boolean(string='Active', default=True, tracking=True)
     resource_id = fields.Many2one('resource.resource', string="Resource", ondelete='cascade')
     partner_id = fields.Many2one('res.partner', string="Related Contact")
-
+    room_calendar_id = fields.Many2one(
+        related='partner_id.resource_calendar_id',
+        string="Room Calendar",
+        readonly=True
+    )
 
     @api.model
     def create(self, vals):
@@ -34,7 +38,8 @@ class RoomRaspConnection(models.Model):
         if not vals.get('partner_id'):
             partner = self.env['res.partner'].create({
                 'name': room.name,
-                'resource_calendar_id': resource.calendar_id.id,  # optional
+                'resource_calendar_id': resource.calendar_id.id,
+                'is_room': True,
             })
             room.partner_id = partner
         return room
