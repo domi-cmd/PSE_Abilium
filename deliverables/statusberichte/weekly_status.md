@@ -43,6 +43,8 @@ Diese Woche haben wir den Kalender in Odoo eingebunden, sowie
 die Module nach spezifikation der Kunden neu organisiert und begonnen MQTT 
 im Odoo module einzubinden.
 
+![StatusOK.png](statusgrafiken/StatusOK.png)
+
 ## Week 7 : 07.04. - 13.04.
 
 Wir haben die Verbindung zwischen Raspberry pi und Odoo module weiter entwickelt, 
@@ -52,7 +54,11 @@ einige UI Elemente weiter bearbeitet und am Einbinden der Rooms als resource gea
 
 ## Week 8 : 14.04. - 20.04.
 
-Abgabe der 2. Iteration (15.04)
+Diese Woche haben wir die 2. Iteration beendet. Wir haben ausserdem den 
+Räumen mit res.partner einen Kalender zugewiesen und Test erste Daten 
+von Odoo auf den Raspberry Pi anzeigen lassen.
+
+![StatusOK.png](statusgrafiken/StatusOK.png)
 
 ## Week 9 : 21.04. - 27.04.
 
