@@ -1,14 +1,17 @@
 <odoo>
     <data>
-        <!-- Inherit the calendar event form and move custom fields right after the 'location' field -->
+        <!-- Inherit the calendar event form and add room_ids field -->
         <record id="view_calendar_event_form" model="ir.ui.view">
             <field name="name">calendar.event.form.custom</field>
             <field name="model">calendar.event</field>
             <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
             <field name="arch" type="xml">
-                <!-- Move custom fields after the 'location' field -->
-                <xpath expr="//field[@name='location']" position="after">
-                    <field name="meeting_room" options="{'no_create': True}" />
+                <!-- Add Room field below Attendees -->
+                <xpath expr="//field[@name='partner_ids']" position="attributes">
+                    <attribute name="domain">[('is_room', '=', False)]</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_ids']" position="after">
+                    <field name="room_ids" widget="many2many_tags" options="{'no_create': True}"/>
                 </xpath>
             </field>
         </record>
@@ -19,9 +22,12 @@
             <field name="model">calendar.event</field>
             <field name="inherit_id" ref="calendar.view_calendar_event_form_quick_create"/>
             <field name="arch" type="xml">
-                <!-- Add custom fields after the 'description' field -->
-                <xpath expr="//field[@name='description']" position="after">
-                    <field name="meeting_room" options="{'no_create': True}" />
+                <!-- Add Room field below Attendees -->
+                <xpath expr="//field[@name='partner_ids']" position="attributes">
+                    <attribute name="domain">[('is_room', '=', False)]</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_ids']" position="after">
+                    <field name="room_ids" widget="many2many_tags" options="{'no_create': True}"/>
                 </xpath>
             </field>
         </record>
