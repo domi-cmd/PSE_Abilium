@@ -1,23 +1,12 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 class CalendarEvent(models.Model):
     _inherit = 'calendar.event'
 
-    room_ids = fields.Many2many(
-        'res.partner',
-        'calendar_event_room_rel',
-        'event_id',
-        'room_partner_id',
-        string='Rooms',
-        domain=[('is_room', '=', True)],
-    )
+    meeting_room = fields.Many2one("res.partner", compute="_compute_room", store=True)
 
-    # Add custom fields
-    meeting_room = fields.Many2one(
-        'rasproom.connection', 
-        string="Choose Meeting Room", 
-        # TODO: Check if this should be set to 'False'?
-        required=False,
-        # Ensure only available rooms are shown
-        domain=[('status', '=', True)]  
-    )
+    @api.depends("partner_ids")
+    def _compute_room(self):
+        for record in self:
+            record.meeting_room = record.partner_ids.filtered(lambda p:p.is_room)
+

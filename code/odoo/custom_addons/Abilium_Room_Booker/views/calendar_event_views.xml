@@ -6,12 +6,9 @@
             <field name="model">calendar.event</field>
             <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
             <field name="arch" type="xml">
-                <!-- Add Room field below Attendees -->
-                <xpath expr="//field[@name='partner_ids']" position="attributes">
-                    <attribute name="domain">[('is_room', '=', False)]</attribute>
-                </xpath>
-                <xpath expr="//field[@name='partner_ids']" position="after">
-                    <field name="room_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                <!-- Move custom fields after the 'location' field -->
+                <xpath expr="//field[@name='location']" position="after">
+                    <field name="meeting_room" options="{'no_create': True}" />
                 </xpath>
             </field>
         </record>
@@ -22,12 +19,9 @@
             <field name="model">calendar.event</field>
             <field name="inherit_id" ref="calendar.view_calendar_event_form_quick_create"/>
             <field name="arch" type="xml">
-                <!-- Add Room field below Attendees -->
-                <xpath expr="//field[@name='partner_ids']" position="attributes">
-                    <attribute name="domain">[('is_room', '=', False)]</attribute>
-                </xpath>
-                <xpath expr="//field[@name='partner_ids']" position="after">
-                    <field name="room_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                <!-- Add custom fields after the 'description' field -->
+                <xpath expr="//field[@name='description']" position="after">
+                    <field name="meeting_room" options="{'no_create': True}" />
                 </xpath>
             </field>
         </record>
