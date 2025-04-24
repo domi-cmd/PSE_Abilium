@@ -15,7 +15,7 @@ services:
 
   odoo:
     image: odoo:18
-    command: --addons-path=/mnt/extra-addons,/usr/lib/python3/dist-packages/odoo/addons
+    command: --addons-path=/mnt/extra-addons,/usr/lib/python3/dist-packages/odoo/addons -u Abilium_Room_Booker
     container_name: odoo-app
     depends_on:
       - db
