@@ -18,7 +18,6 @@ services:
     # temp added -u to update database in case of changes
     command: --addons-path=/mnt/extra-addons,/usr/lib/python3/dist-packages/odoo/addons -u Abilium_Room_Booker
     build: .
-    command: --addons-path=/mnt/extra-addons,/usr/lib/python3/dist-packages/odoo/addons
     container_name: odoo-app
     depends_on:
       - db
