@@ -29,50 +29,105 @@
                                 <field name="floor"/>
                                 <field name="description"/>
                             </group>
-                        </group>
-                        
-                        <notebook>
-                            <page string="MQTT Configuration" name="mqtt_config">
-                                <group>
-                                    <field name="use_mqtt"/>
-                                </group>
-                                
-                                <group invisible="not use_mqtt">
-                                    <group string="Broker Settings">
-                                        <field name="mqtt_broker" 
-                                               required="use_mqtt"/>
-                                        <field name="mqtt_port" 
-                                               required="use_mqtt"/>
-                                        <field name="mqtt_username"/>
-                                        <field name="mqtt_password" password="True"/>
-                                        <field name="mqtt_use_tls"/>
-                                    </group>
-                                    <group string="Connection Options">
-                                        <field name="mqtt_client_id" 
-                                               required="use_mqtt"/>
-                                        <field name="mqtt_topic_prefix"/>
-                                        <field name="mqtt_qos"/>
-                                        <field name="mqtt_keep_alive"/>
-                                    </group>
-                                </group>
-                                
-                                <group invisible="not use_mqtt">
-                                    <group string="Connection Status">
-                                        <field name="mqtt_connection_state" 
-                                               decoration-success="mqtt_connection_state == 'connected'"
-                                               decoration-info="mqtt_connection_state == 'connecting'"
-                                               decoration-danger="mqtt_connection_state == 'error'"
-                                               decoration-muted="mqtt_connection_state == 'disconnected'"/>
-                                        <field name="mqtt_last_connection"/>
-                                    </group>
-                                </group>
-                            </page>
-                        </notebook>
-                    </sheet>
-                </form>
-            </field>
-        </record>
+    <!-- Form View -->
+    <record id="view_rasproom_connection_form" model="ir.ui.view">
+        <field name="name">rasproom.connection.form</field>
+        <field name="model">rasproom.connection</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="test_mqtt_connection" string="Test MQTT Connection"
+                            type="object" class="oe_highlight"
+                            invisible="not use_mqtt"/>
+                    <button name="connect_mqtt" string="Connect"
+                            type="object" class="btn-success"
+                            invisible="not use_mqtt or mqtt_connection_state == 'connected'"/>
+                    <button name="disconnect_mqtt" string="Disconnect"
+                            type="object" class="btn-danger"
+                            invisible="not use_mqtt or mqtt_connection_state != 'connected'"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Connection Name"/>
+                        </h1>
+                    </div>
 
+                    <group>
+                        <group string="Room Configuration">
+                            <field name="room_id"/>
+                            <field name="rasp_name"/>
+                            <field name="active"/>
+                        </group>
+                        <group string="MQTT Configuration">
+                            <field name="use_mqtt"/>
+                        </group>
+                    </group>
+
+                    <group invisible="not use_mqtt">
+                        <group string="Broker Settings">
+                            <field name="mqtt_broker" required="use_mqtt"/>
+                            <field name="mqtt_port" required="use_mqtt"/>
+                            <field name="mqtt_username"/>
+                            <field name="mqtt_password" password="True"/>
+                            <field name="mqtt_use_tls"/>
+                        </group>
+                        <group string="Connection Options">
+                            <field name="mqtt_client_id" placeholder="Leave empty for auto-generation"/>
+                            <field name="mqtt_topic_prefix"/>
+                            <field name="mqtt_qos"/>
+                            <field name="mqtt_keep_alive"/>
+                        </group>
+                    </group>
+
+                    <group invisible="not use_mqtt">
+                        <group string="Connection Status">
+                            <field name="mqtt_connection_state"
+                                   decoration-success="mqtt_connection_state == 'connected'"
+                                   decoration-info="mqtt_connection_state == 'connecting'"
+                                   decoration-danger="mqtt_connection_state == 'error'"
+                                   decoration-muted="mqtt_connection_state == 'disconnected'"/>
+                            <field name="mqtt_last_connection"/>
+                        </group>
+                    </group>
+                </sheet>
+                <!-- Uncomment if you want to use chatter
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+                -->
+            </form>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="view_rasproom_connection_tree" model="ir.ui.view">
+        <field name="name">rasproom.connection.tree</field>
+        <field name="model">rasproom.connection</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="mqtt_connection_state == 'error'" decoration-success="mqtt_connection_state == 'connected'" decoration-muted="not active">
+                <field name="name"/>
+                <field name="room_id"/>
+                <field name="rasp_name"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="use_mqtt"/>
+                <field name="mqtt_broker"/>
+                <field name="mqtt_port"/>
+                <field name="mqtt_connection_state"
+                       decoration-success="mqtt_connection_state == 'connected'"
+                       decoration-info="mqtt_connection_state == 'connecting'"
+                       decoration-danger="mqtt_connection_state == 'error'"
+                       decoration-muted="mqtt_connection_state == 'disconnected'"/>
+                <field name="mqtt_last_connection"/>
+                <button name="connect_mqtt" string="Connect" type="object" icon="fa-plug"
+                        invisible="not use_mqtt or mqtt_connection_state == 'connected'"/>
+                <button name="disconnect_mqtt" string="Disconnect" type="object" icon="fa-power-off"
+                        invisible="not use_mqtt or mqtt_connection_state != 'connected'"/>
+            </list>
+        </field>
+    </record>
         <!-- List View (formerly Tree View) -->
         <!-- TODO: Add comments -->
         <record id="view_rasproom_connection_tree" model="ir.ui.view">
@@ -91,7 +146,7 @@
                     <field name="raspName"/>
                     <field name="status"/>
                     <field name="use_mqtt"/>
-                    <field name="mqtt_connection_state" 
+                    <field name="mqtt_connection_state"
                            decoration-success="mqtt_connection_state == 'connected'"
                            decoration-info="mqtt_connection_state == 'connecting'"
                            decoration-danger="mqtt_connection_state == 'error'"
@@ -100,6 +155,27 @@
             </field>
         </record>
 
+    <!-- Search View -->
+    <record id="view_rasproom_connection_search" model="ir.ui.view">
+        <field name="name">rasproom.connection.search</field>
+        <field name="model">rasproom.connection</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="room_id"/>
+                <field name="rasp_name"/>
+                <field name="mqtt_broker"/>
+                <separator/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Using MQTT" name="use_mqtt" domain="[('use_mqtt', '=', True)]"/>
+                <filter string="Connected" name="connected" domain="[('mqtt_connection_state', '=', 'connected')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Room" name="group_by_room" context="{'group_by': 'room_id'}"/>
+                    <filter string="Connection Status" name="group_by_status" context="{'group_by': 'mqtt_connection_state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
         <!-- Search View -->
         <!-- TODO: Add comments -->
         <record id="view_rasproom_connection_search" model="ir.ui.view">
@@ -157,4 +233,23 @@
               parent="calendar.calendar_menu_config"
               action="action_raspberry_connections"
               sequence="30"/>
+    <!-- Action -->
+    <record id="action_rasproom_connection" model="ir.actions.act_window">
+        <field name="name">MQTT Connections</field>
+        <field name="res_model">rasproom.connection</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_rasproom_connection_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first MQTT Connection!
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item (to be placed within your module) -->
+    <!-- <menuitem id="menu_rasproom_connection"
+              name="MQTT Connections"
+              action="action_rasproom_connection"
+              parent="your_parent_menu"
+              sequence="20"/> -->
 </odoo>
