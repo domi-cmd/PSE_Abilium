@@ -28,7 +28,7 @@
                             <group string="Room Configuration">
                                 <field name="room_name"/>
                                 <field name="raspName"/>
-                                <field name="status"/>
+                                <field name="active"/>
                                 <field name="capacity"/>
                                 <field name="street"/>
                                 <field name="city"/>
@@ -87,7 +87,7 @@
             <field name="model">rasproom.connection</field>
             <field name="arch" type="xml">
                 <list decoration-danger="mqtt_connection_state == 'error'" 
-                    decoration-success="mqtt_connection_state == 'connected'" decoration-muted="not status">
+                    decoration-success="mqtt_connection_state == 'connected'" decoration-muted="not active">
                     <field name="name"/>
                     <field name="room_name"/>
                     <field name="capacity"/>
@@ -97,7 +97,7 @@
                     <field name="floor"/>
                     <field name="description"/>
                     <field name="raspName"/>
-                    <field name="status"/>
+                    <field name="active"/>
                     <field name="use_mqtt"/>
                     <field name="mqtt_broker"/>
                     <field name="mqtt_port"/>
@@ -132,7 +132,7 @@
                     <field name="description"/>
                     <field name="raspName"/>
                     <separator/>
-                    <filter string="Active" name="active" domain="[('status', '=', True)]"/>
+                    <filter string="Active" name="active" domain="[('active', '=', True)]"/>
                     <filter string="Using MQTT" name="use_mqtt" domain="[('use_mqtt', '=', True)]"/>
                     <filter string="Connected" name="connected" domain="[('mqtt_connection_state', '=', 'connected')]"/>
                     <group expand="0" string="Group By">
