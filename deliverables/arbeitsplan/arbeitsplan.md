@@ -3,7 +3,7 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 96 ✅
+## Overall Completed Issues: 98 ✅
 
 ## Statuslegende
 - ✅ Abgeschlossen
@@ -14,9 +14,10 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
  | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
  |------|--------------|----------|---------------|--------|--------|----------|
+ | Resolve merge conflicts of branches into main | Dominic | - | Odoo | 2h / - | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Fix Odoo bugs due to branch merging | Dominic | - | Odoo | 7h / 2h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Add computed fields for room location in Odoo calendar | UP FOR GRABS | 04.05.25 | Odoo | - / 2.5h | ⏳ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Prepare, cleanup and refactor code for pushing to customer repo | Dominic | 04.05.25 | Odoo | 30min / 1.5h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- | Fix Odoo bugs due to branch merging | UP FOR GRABS | - | Odoo | - / 2h | ⏳ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Write Issues for 2nd half Sprint Odoo | Dominic | 28.04.25 | Meeting | 30min / 30min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Traktanden Standup Meeting 29.04.25 | Dominic | 28.04.25 | Meeting | 25min / 20min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Traktanden Standup Meeting 24.04.25 | Dominic | 24.04.25 | Meeting | 15min / 30min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
