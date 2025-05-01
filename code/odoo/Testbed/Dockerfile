@@ -2,7 +2,8 @@ FROM odoo:18
 
 USER root
 
-# Install paho-mqtt using pip with override flag
-RUN pip install --break-system-packages paho-mqtt
+RUN apt-get update && \
+    apt-get install -y python3-pip && \
+    pip3 install --break-system-packages paho-mqtt
 
 USER odoo
