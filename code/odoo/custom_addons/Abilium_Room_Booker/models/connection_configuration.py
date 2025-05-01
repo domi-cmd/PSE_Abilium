@@ -3,7 +3,7 @@ from odoo import models, fields, api
 class RoomRaspConnection(models.Model):
     _name = 'rasproom.connection'
     _description = 'Raspberry & Room Connection'
-    # _inherit = ['mail.thread', 'mail.activity.mixin'] - Commented out as not needed as of now
+    _inherit = ['mail.thread', 'mail.activity.mixin'] #Commented out as not needed as of now
 
     name = fields.Char(string='Connection Name', required=True, tracking=True)
     room_name = fields.Char(string='Room', required=True, tracking=True)
