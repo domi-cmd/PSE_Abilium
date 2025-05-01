@@ -1,4 +1,21 @@
-from odoo import models, fields, api
+# -*- coding: utf-8 -*-
+from odoo import api, fields, models, _
+import logging
+import threading
+import time
+import ssl
+from contextlib import contextmanager
+import json
+
+_logger = logging.getLogger(__name__)
+
+try:
+    import paho.mqtt.client as mqtt
+    HAS_MQTT = True
+except ImportError:
+    HAS_MQTT = False
+    _logger.warning("paho-mqtt library not installed. MQTT functionality disabled")
+    
 
 class RoomRaspConnection(models.Model):
     _name = 'rasproom.connection'
