@@ -75,6 +75,7 @@ class MqttConnectionManager:
 class RoomRaspConnection(models.Model):
     _name = 'rasproom.connection'
     _description = 'Raspberry & Room Connection'
+    _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin'] #Commented out as not needed as of now
 
     name = fields.Char(string='Connection Name', required=True, tracking=True)
