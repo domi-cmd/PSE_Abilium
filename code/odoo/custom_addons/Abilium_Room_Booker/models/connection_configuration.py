@@ -509,10 +509,27 @@ class RoomRaspConnection(models.Model):
         return result
 
     def unlink(self):
-        """Disconnect MQTT before deletion"""
+        """Disconnect MQTT, remove partner from calendar, clean filters, and delete partner"""
+        CalendarEvent = self.env['calendar.event']
+        CalendarFilter = self.env['calendar.filters']
+
         for record in self:
             record.disconnect_mqtt()
-            
+
+            partner = record.partner_id
+            if partner:
+                # Remove partner from all calendar events
+                events = CalendarEvent.search([('partner_ids', 'in', partner.id)])
+                for event in events:
+                    event.partner_ids = [(3, partner.id)]
+
+                # Remove from calendar filters (to avoid FK constraint failure)
+                filters = CalendarFilter.search([('partner_id', '=', partner.id)])
+                filters.unlink()
+
+                # Now safe to delete partner
+                partner.unlink()
+
         return super().unlink()
 
     @api.model
