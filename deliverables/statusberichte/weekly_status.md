@@ -62,6 +62,20 @@ von Odoo auf den Raspberry Pi anzeigen lassen.
 
 ## Week 9 : 21.04. - 27.04.
 
+Holidays
+
+## Week 10 : 28.04. - 05.04.
+
+Diese Woche haben wir die Installation der Raspberrys stark vereinfacht,
+wir haben die Informationen des raspberry.connection im Kalender 
+darstellen lassen und die verschiedenen Branch versionen wieder in main integriert.
+
+## Week 11 : 05.05. - 05.11.
+
+Ende 3. Iteration.
+
+## Week 12 : 
+
 
 
 ## Grafiken:
