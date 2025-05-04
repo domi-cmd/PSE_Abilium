@@ -3,7 +3,7 @@ from odoo import models, fields, api
 class CalendarEvent(models.Model):
     _inherit = 'calendar.event'
 
-    meeting_room = fields.Many2one("res.partner", compute="_compute_room", store=True)
+    meeting_room = fields.Many2many("res.partner", compute="_compute_room", store=True)
     location = fields.Char(compute="_compute_location", store=True)
 
     # add attendee to field if has is_room=True
