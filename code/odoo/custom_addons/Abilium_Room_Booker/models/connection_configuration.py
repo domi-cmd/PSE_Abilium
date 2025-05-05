@@ -471,7 +471,7 @@ class RoomRaspConnection(models.Model):
         for record in records:
             if not record.partner_id:
                 partner = self.env['res.partner'].create({
-                    'name': record.name,
+                    'name': record.room_name,
                     'resource_calendar_id': record.resource_id.calendar_id.id,
                     'is_room': True,
                 })
