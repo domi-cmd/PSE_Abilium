@@ -64,7 +64,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  | Risikoanalyse 9 | Livia | 27.04.25 | Dokumentation | 30 min / - | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Statusbericht 8 | Linus | 20.04.25 | Dokumentation | 30min / 30min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Traktanden Intern Meeting 8 | Dominic | 02.04.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
- | Protokollabgaben 8 | Yannis | 20.04.25 | Dokumentation | 1.5h / 2h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Protokollabgaben 8 | Caro | 20.04.25 | Dokumentation | 1.5h / 2h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Risikoanalyse 8 | Livia | 20.04.25 | Dokumentation | 45 min/30 min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Statusbericht 7 | Linus | 13.04.25 | Dokumentation | 30min / 20min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
  | Traktanden Intern Meeting 7 | Dominic | 30.03.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
