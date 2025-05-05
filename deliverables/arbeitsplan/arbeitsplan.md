@@ -20,7 +20,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  |Bug fix: Zugriff auf Odoo Atendees|Yannis|07.05.2025|Raspberry|-/4h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |Nächste freie Reservationen anzeigen|Yannis, Livia, Myroslav|07.05.2025|Raspberry|-/15h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |Ersteller*in des Raums anzeigen|Yannis, Livia|07.05.2025|Raspberry|-/10h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
- |Testen des conf file.|Yannis, Caro|04.05.2025|Raspberry|2h/1h|✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ |Testen des conf file.|Yannis, Caro, Livia; Testpersonen: Livia und Caro; Beobachter: Yannis|04.05.2025|Raspberry|2h/1h|✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |UI Testing Odoo|Caro|06.05.2025|Odoo|-/2h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
 |writing Constraints Odoo|Caro|06.05.2025|Odoo|-/5h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |Erstellen eines conf. files|Yannis, Myroslav|07.05.2025|Raspberry|20h/22h|✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
