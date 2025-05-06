@@ -95,6 +95,16 @@ class RoomRaspConnection(models.Model):
         string="Room Calendar",
         readonly=True
     )
+    #Constraint to ensure that the name is unique
+    @api.constrains('name')
+    def _check_unique_name(self):
+        for record in self:
+            existing = self.search([
+                ('name', '=', record.name),
+                ('id', '!=', record.id)
+            ])
+            if existing:
+                raise ValidationError(f"The connection name '{record.name}' is already in use.")
 
     #Constraint to ensure that the raspberry name is unique
     @api.constrains('raspName')
