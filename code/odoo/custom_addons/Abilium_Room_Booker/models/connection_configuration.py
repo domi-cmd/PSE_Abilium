@@ -6,6 +6,7 @@ import time
 import ssl
 from contextlib import contextmanager
 import json
+from odoo.exceptions import ValidationError #for constraints
 
 _logger = logging.getLogger(__name__)
 
@@ -99,8 +100,12 @@ class RoomRaspConnection(models.Model):
 
     #TODO: Constraint to ensure that the raspberry name is unique
 
-    #TODO: Constraint to ensure that the capacity is greater than 0
-
+    #Constraint to ensure that the capacity is greater than 0
+    @api.constrains('capacity')
+    def _check_capacity(self):
+        for record in self:
+            if record.capacity < 1:
+                raise ValidationError("The capacity of the room must be at least 1.")
 
     
     # MQTT Configuration Fields
