@@ -96,9 +96,27 @@ class RoomRaspConnection(models.Model):
         readonly=True
     )
 
-    #TODO: Constraint to ensure that the room name is unique
-
-    #TODO: Constraint to ensure that the raspberry name is unique
+    #Constraint to ensure that the raspberry name is unique
+    @api.constrains('raspName')
+    def _check_unique_raspberry_name(self):
+        for record in self:
+            existing = self.search([
+                ('raspName', '=', record.raspName),
+                ('id', '!=', record.id)
+            ])
+            if existing:
+                raise ValidationError(f"The raspberry name '{record.raspName}' is already in use.")
+    
+    #Constraint to ensure that the room name is unique
+    @api.constrains('room_name')
+    def _check_unique_room_name(self):
+        for record in self:
+            existing = self.search([
+                ('room_name', '=', record.room_name),
+                ('id', '!=', record.id)
+            ])
+            if existing:
+                raise ValidationError(f"The room name '{record.room_name}' is already in use.")
 
     #Constraint to ensure that the capacity is greater than 0
     @api.constrains('capacity')
