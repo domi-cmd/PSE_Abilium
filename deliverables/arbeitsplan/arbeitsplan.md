@@ -26,8 +26,8 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  |Erstellen eines conf. files|Yannis, Myroslav|07.05.2025|Raspberry|20h/22h|✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |Bestzt/nicht besetzt auf Raspberry|Yannis, Livia|07.05.2025|Raspberry|/10h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  | Write more team Issues for 2nd half Sprint Odoo | Dominic | 01.05.25 | - | 30min / 30min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- | Odoo Res Partner: Add computed fields for room location in Odoo calendar | UP FOR GRABS | 04.05.25 | Odoo | - / 2.5h | ⏳ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- | Odoo Res Partner: Show/select the room name instead of the connection name | UP FOR GRABS | 04.05.25 | Odoo | 30min / - | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Odoo Res Partner: Add computed fields for room location in Odoo calendar | Linus | 04.05.25 | Odoo | - / 2.5h | ⏳ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Odoo Res Partner: Show/select the room name instead of the connection name | Dominic | 04.05.25 | Odoo | 30min / - | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Odoo Res Partner: Remove resp partner when connection is deleted | Dominic | 04.05.25 | Odoo | 1h / 1h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Odoo add boolean toggles for "Active" and "Use Mqtt" in RoomRaspConnec View | UP FOR GRABS | 04.05.25 | Odoo | - / 30min | ⏳ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Remove MQTT Connector Class from RoomRaspConnec File | UP FOR GRABS | 04.05.25 | Odoo | - / 1h | ⏳ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
