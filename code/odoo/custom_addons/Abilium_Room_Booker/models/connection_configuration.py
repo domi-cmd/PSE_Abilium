@@ -94,6 +94,14 @@ class RoomRaspConnection(models.Model):
         string="Room Calendar",
         readonly=True
     )
+
+    #TODO: Constraint to ensure that the room name is unique
+
+    #TODO: Constraint to ensure that the raspberry name is unique
+
+    #TODO: Constraint to ensure that the capacity is greater than 0
+
+
     
     # MQTT Configuration Fields
     # TODO: Add comments
