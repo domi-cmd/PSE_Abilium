@@ -6,6 +6,7 @@ import time
 import ssl
 from contextlib import contextmanager
 import json
+from odoo.exceptions import ValidationError #for constraints
 
 _logger = logging.getLogger(__name__)
 
@@ -94,6 +95,46 @@ class RoomRaspConnection(models.Model):
         string="Room Calendar",
         readonly=True
     )
+    #Constraint to ensure that the name is unique
+    @api.constrains('name')
+    def _check_unique_name(self):
+        for record in self:
+            existing = self.search([
+                ('name', '=', record.name),
+                ('id', '!=', record.id)
+            ])
+            if existing:
+                raise ValidationError(f"The connection name '{record.name}' is already in use.")
+
+    #Constraint to ensure that the raspberry name is unique
+    @api.constrains('raspName')
+    def _check_unique_raspberry_name(self):
+        for record in self:
+            existing = self.search([
+                ('raspName', '=', record.raspName),
+                ('id', '!=', record.id)
+            ])
+            if existing:
+                raise ValidationError(f"The raspberry name '{record.raspName}' is already in use.")
+    
+    #Constraint to ensure that the room name is unique
+    @api.constrains('room_name')
+    def _check_unique_room_name(self):
+        for record in self:
+            existing = self.search([
+                ('room_name', '=', record.room_name),
+                ('id', '!=', record.id)
+            ])
+            if existing:
+                raise ValidationError(f"The room name '{record.room_name}' is already in use.")
+
+    #Constraint to ensure that the capacity is greater than 0
+    @api.constrains('capacity')
+    def _check_capacity(self):
+        for record in self:
+            if record.capacity < 1:
+                raise ValidationError("The capacity of the room must be at least 1.")
+
     
     # MQTT Configuration Fields
     # TODO: Add comments
