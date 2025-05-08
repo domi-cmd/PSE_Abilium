@@ -16,16 +16,16 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
  |------|--------------|----------|---------------|--------|--------|----------|
  | Remove MQTT Connector Class from RoomRaspConnec File | Dominic | 04.05.25 | Odoo | - / 1h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | User Story: Configuration von Raspberry | Myroslav | 20.04.25 | Raspberry | - / 5h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | User Story: Configuration von Raspberry | Myroslav,Yannis | 20.04.25 | Raspberry | - / 10h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Mockup Odoo mit Raspberry | Livia | 13.04.25 | Raspberry| 2h / 1.5h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- |Ersteller*in des Raums anzeigen|Yannis, Livia|07.05.2025|Raspberry|-/10h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ |Ersteller*in des Raums anzeigen|Yannis, Livia|07.05.2025|Raspberry| 3h / 2h |🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |UI Testing Odoo|Caro|06.05.2025|Odoo|-/2h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |writing Constraints Odoo|Caro|06.05.2025|Odoo|-/5h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
- |Besetzt/nicht besetzt auf Raspberry|Yannis, Livia|07.05.2025|Raspberry|/10h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ |Besetzt/nicht besetzt auf Raspberry|Yannis, Livia|07.05.2025|Raspberry| 4h / 5h |🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |Vortrag Myroslav|Myroslav|08.05.2025|Generell|-/4h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |Demo Raspberry und Conf file beim Kundenmeeting|Yannis, Livia|07.05.2025|Raspberry|-/3h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
- |Bug fix: Zugriff auf Odoo Atendees|Yannis|07.05.2025|Raspberry|-/4h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
- |Nächste freie Reservationen anzeigen|Yannis, Livia, Myroslav|07.05.2025|Raspberry|-/15h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ |Bug fix: Zugriff auf Odoo Atendees|Yannis|07.05.2025|Raspberry|6h / 4h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ |Nächste freie Reservationen anzeigen|Yannis|07.05.2025|Raspberry| 10h / 8h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  | Traktanden Intern Meeting 04.05 | Dominic | 04.05.25 | Meeting | 15min / 15min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Traktanden Intern Meeting 17.05 | Dominic | 17.5.25 | Meeting | 15min / 15min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Traktanden Intern Meeting 04.05 | Dominic | 04.05.25 | Meeting | 15min / 15min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
