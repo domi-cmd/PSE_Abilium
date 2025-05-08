@@ -65,24 +65,24 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  | Make Room-Raspy Config read rooms from the Room Creator/Config (only display valid/existing rooms to choose from) | Dominic | 06.04.25 | Room-Rasp Config | 1.5h / 1.5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
  | Traktanden Intern Meeting 9 | Dominic | 06.04.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
  | Statusbericht 9 | Linus | 27.04.25 | Dokumentation | 30min / - | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- | Protokollabgaben 9 | Yannis | 27.04.25 | Dokumentation | 1.5h / - | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- | Risikoanalyse 9 | Livia | 27.04.25 | Dokumentation | 30 min / - | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Protokollabgaben 9 | Yannis | 27.04.25 | Dokumentation | 1.5h / 2h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Risikoanalyse 9 | Livia | 27.04.25 | Dokumentation | 30min / - | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Statusbericht 8 | Linus | 20.04.25 | Dokumentation | 30min / 30min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Traktanden Intern Meeting 8 | Dominic | 02.04.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
  | Protokollabgaben 8 | Caro | 20.04.25 | Dokumentation | 1.5h / 2h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- | Risikoanalyse 8 | Livia | 20.04.25 | Dokumentation | 45 min/30 min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Risikoanalyse 8 | Livia | 20.04.25 | Dokumentation | 45min / 30min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Statusbericht 7 | Linus | 13.04.25 | Dokumentation | 30min / 20min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
  | Traktanden Intern Meeting 7 | Dominic | 30.03.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
  | Protokollabgaben 7 | Yannis | 13.04.25 | Dokumentation | 1.5h / 2h | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
- | Risikoanalyse 7 | Livia | 13.04.25 | Dokumentation | 30 min / 20 min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
- | Statusbericht 6 | Linus | 06.04.25 | Dokumentation | 30min / 30 min| ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
+ | Risikoanalyse 7 | Livia | 13.04.25 | Dokumentation | 30min / 20min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
+ | Statusbericht 6 | Linus | 06.04.25 | Dokumentation | 30min / 30min| ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
  | Traktanden Intern Meeting 6 | Dominic | 26.03.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
- | Protokollabgaben 6 | Yannis | 06.04.25 | Dokumentation | 1.5h / - | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
- | Risikoanalyse 6 | Livia | 06.04.25 | Dokumentation | 30 min / 40 min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
+ | Protokollabgaben 6 | Yannis | 06.04.25 | Dokumentation | 1h / 2h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
+ | Risikoanalyse 6 | Livia | 06.04.25 | Dokumentation | 30min / 40min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
  | Traktanden Intern Meeting 5 | Dominic | 23.03.25 | Meeting | 15min / 15min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e)|
  | Statusbericht 5 | Linus | 30.03.25 | Dokumentation | 30min / 25min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
- | Protokollabgaben 5 | Yannis | 30.03.25 | Dokumentation | 1.5h / 1.5 h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
- | Risikoanalyse 5 | Livia | 30.03.25 | Dokumentation | 30 min / 40 min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
+ | Protokollabgaben 5 | Yannis | 30.03.25 | Dokumentation | 1.5h / 1.5h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
+ | Risikoanalyse 5 | Livia | 30.03.25 | Dokumentation | 30min / 40min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
  | Statusbericht 4 | Linus | 23.03.25 | Dokumentation | 30min / - | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
  | Traktanden Intern Meeting 4 | Dominic | 20.03.25 | Meeting | 15min / 15min | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e)|
  | Protokollabgaben 4 | Yannis | 23.03.25 | Dokumentation | 1.5h / 2.5h | ✅ | ![number_1](https://github.com/user-attachments/assets/bbe38118-da83-4838-b7c0-5f99985cf19e) |
