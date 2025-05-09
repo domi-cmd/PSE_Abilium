@@ -21,12 +21,12 @@
                     <sheet>
                         <div class="oe_title">
                             <h1>
-                                <field name="name" placeholder="Connection Name"/>
+                                <field name="name" placeholder="Room Name"/>
                             </h1>
                         </div>
                         <group>
                             <group string="Room Configuration">
-                                <field name="room_name"/>
+                                <field name="profile_image" widget="image" class="oe_avatar"/>
                                 <field name="raspName"/>
                                 <field name="active"/>
                                 <field name="capacity"/>
@@ -89,7 +89,7 @@
                 <list decoration-danger="mqtt_connection_state == 'error'" 
                     decoration-success="mqtt_connection_state == 'connected'" decoration-muted="not active">
                     <field name="name"/>
-                    <field name="room_name"/>
+                    <field name="profile_image" widget="image" class="oe_avatar"/>
                     <field name="capacity"/>
                     <!-- TODO: Add logic for calculation location based on given street etc -->
                     <field name="street"/>
@@ -124,7 +124,7 @@
                 <search>
                     <!-- TODO: Add logic for calculation location based on given street etc -->
                     <field name="name"/>
-                    <field name="room_name"/>
+                    <field name="profile_image" widget="image" class="oe_avatar"/>
                     <field name="capacity"/>
                     <field name="street"/>
                     <field name="city"/>
@@ -136,7 +136,7 @@
                     <filter string="Using MQTT" name="use_mqtt" domain="[('use_mqtt', '=', True)]"/>
                     <filter string="Connected" name="connected" domain="[('mqtt_connection_state', '=', 'connected')]"/>
                     <group expand="0" string="Group By">
-                        <filter string="Room" name="group_by_room" context="{'group_by': 'room_name'}"/>
+                        <filter string="Room" name="group_by_room" context="{'group_by': 'name'}"/>
                         <filter string="Connection Status" name="group_by_status" context="{'group_by': 'mqtt_connection_state'}"/>
                     </group>
                 </search>

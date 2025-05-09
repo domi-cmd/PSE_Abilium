@@ -79,8 +79,8 @@ class RoomRaspConnection(models.Model):
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin'] #Commented out as not needed as of now
 
-    name = fields.Char(string='Connection Name', required=True, tracking=True)
-    room_name = fields.Char(string='Room', required=True, tracking=True)
+    name = fields.Char(string='Room Name', required=True, tracking=True)
+    profile_image = fields.Binary(string="Profile Image", attachment=True)
     capacity = fields.Integer(string='Capacity', required=True)
     street = fields.Char(string='Street')
     city = fields.Char(string='City')
@@ -104,7 +104,7 @@ class RoomRaspConnection(models.Model):
                 ('id', '!=', record.id)
             ])
             if existing:
-                raise ValidationError(f"The connection name '{record.name}' is already in use.")
+                raise ValidationError(f"The room name '{record.name}' is already in use.")
 
     #Constraint to ensure that the raspberry name is unique
     @api.constrains('raspName')
@@ -116,17 +116,7 @@ class RoomRaspConnection(models.Model):
             ])
             if existing:
                 raise ValidationError(f"The raspberry name '{record.raspName}' is already in use.")
-    
-    #Constraint to ensure that the room name is unique
-    @api.constrains('room_name')
-    def _check_unique_room_name(self):
-        for record in self:
-            existing = self.search([
-                ('room_name', '=', record.room_name),
-                ('id', '!=', record.id)
-            ])
-            if existing:
-                raise ValidationError(f"The room name '{record.room_name}' is already in use.")
+
 
     #Constraint to ensure that the capacity is greater than 0
     @api.constrains('capacity')
@@ -511,10 +501,16 @@ class RoomRaspConnection(models.Model):
 
         for record in records:
             if not record.partner_id:
+                street = record.street or ''
+                if record.floor:
+                  street += ', Floor: ' + record.floor
                 partner = self.env['res.partner'].create({
-                    'name': record.room_name,
+                    'name': record.name,
                     'resource_calendar_id': record.resource_id.calendar_id.id,
                     'is_room': True,
+                    'image_1920': record.profile_image or False,
+                    'city': record.city,
+                    'street': street,
                 })
                 record.partner_id = partner
 
@@ -635,10 +631,10 @@ class RoomRaspConnection(models.Model):
                         
                         # Example room data
                         room_data = {
-                            'room': connection.room_name,
+                            'room': connection.name,
                             'raspberry': connection.raspName,
                             'timestamp': fields.Datetime.now().isoformat(),
-                            'capacity': connection.capacity if hasattr(connection.room_name, 'capacity') else None
+                            'capacity': connection.capacity if hasattr(connection.name, 'capacity') else None
                         }
 
                         topic = f"{connection.mqtt_topic_prefix}{connection.raspName}/data"

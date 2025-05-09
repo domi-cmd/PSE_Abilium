@@ -7,3 +7,4 @@ class ResPartner(models.Model):
     resource_calendar_id = fields.Many2one('resource.calendar', string="Working Hours")
     # field is_room defined as Boolean is called "Is Room?"
     is_room = fields.Boolean(string="Is Room?")
+
