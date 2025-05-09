@@ -15,6 +15,8 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
  | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
  |------|--------------|----------|---------------|--------|--------|----------|
+ | Refactor res.partner | Linus | 21.05.25 | Odoo | 1.5 / 1h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Add Profile Image to res.partner | Linus | 21.05.25 | Odoo | 30min / 30min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Remove MQTT Connector Class from RoomRaspConnec File | Dominic | 04.05.25 | Odoo | - / 1h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | User Story: Configuration von Raspberry | Myroslav,Yannis | 20.04.25 | Raspberry | - / 10h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Mockup Odoo mit Raspberry | Livia | 13.04.25 | Raspberry| 2h / 1.5h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
@@ -34,7 +36,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  |Testen des conf file.|Yannis, Caro, Livia; Testpersonen: Livia und Caro; Beobachter: Yannis|04.05.2025|Raspberry|2h/1h|✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |Erstellen eines conf. files|Yannis, Myroslav|07.05.2025|Raspberry|20h/22h|✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  | Write more team Issues for 2nd half Sprint Odoo | Dominic | 01.05.25 | - | 30min / 30min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- | Odoo Res Partner: Add computed fields for room location in Odoo calendar | Linus | 04.05.25 | Odoo | - / 2.5h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Odoo Res Partner: Add computed fields for room location in Odoo calendar | Linus | 04.05.25 | Odoo | 5 / 2.5h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Odoo Res Partner: Show/select the room name instead of the connection name | Dominic | 04.05.25 | Odoo | 30min / - | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Odoo Res Partner: Remove resp partner when connection is deleted | Dominic | 04.05.25 | Odoo | 1h / 1h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Odoo add boolean toggles for "Active" and "Use Mqtt" in RoomRaspConnec View | UP FOR GRABS | 04.05.25 | Odoo | - / 30min | ⏳ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
