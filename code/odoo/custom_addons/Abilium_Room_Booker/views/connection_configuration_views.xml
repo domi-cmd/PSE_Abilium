@@ -186,5 +186,6 @@
               name="Room Raspberry Connections"
               parent="calendar.calendar_menu_config"
               action="action_raspberry_connections"
-              sequence="30"/>
+              sequence="30"
+              groups="base.group_system"/>
 </odoo>
