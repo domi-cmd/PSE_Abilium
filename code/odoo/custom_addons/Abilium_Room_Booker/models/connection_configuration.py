@@ -19,22 +19,38 @@ except ImportError:
 
 
 class MqttConnectionManager:
-    """Singleton to manage MQTT connections across Odoo instances"""
+    """Singleton to manage MQTT connections across Odoo instances.
+    
+    Used by:
+        - RoomRaspConnection.connect_mqtt()
+        - RoomRaspConnection.disconnect_mqtt()
+        - RoomRaspConnection._reconnect_mqtt()
+        - RoomRaspConnection._mqtt_loop_start()
+        - RoomRaspConnection._cron_mqtt_connection_monitor()
+        - RoomRaspConnection.publish_test_message()
+    """
     _instance = None
     _connections = {}
     _lock = threading.RLock()
     
     def __new__(cls):
+        """Ensure only one instance exists."""
         if cls._instance is None:
             cls._instance = super(MqttConnectionManager, cls).__new__(cls)
             cls._instance._init()
         return cls._instance
     
     def _init(self):
+        """Initialize the internal state."""
         self._connections = {}
         self._lock = threading.RLock()
     
     def register(self, connection_id, client, thread=None, publisher_thread=None):
+        """Registers a new MQTT client to the manager with optional threads.
+        
+        Called by:
+            - RoomRaspConnection._mqtt_loop_start()
+        """
         with self._lock:
             self._connections[connection_id] = {
                 'client': client,
@@ -44,6 +60,12 @@ class MqttConnectionManager:
             }
     
     def unregister(self, connection_id):
+        """Unregisters and cleanly disconnects a client by connection_id.
+        
+        Called by:
+            - RoomRaspConnection.disconnect_mqtt()
+            - RoomRaspConnection._reconnect_mqtt()
+        """
         with self._lock:
             if connection_id in self._connections:
                 conn = self._connections.pop(connection_id)
@@ -64,11 +86,22 @@ class MqttConnectionManager:
         return False
     
     def get_client(self, connection_id):
+        """Returns the MQTT client instance for a given connection ID.
+        
+        Called by:
+            - RoomRaspConnection.publish_test_message()
+            - RoomRaspConnection._cron_mqtt_connection_monitor()
+        """
         with self._lock:
             conn = self._connections.get(connection_id)
             return conn.get('client') if conn else None
     
     def is_connected(self, connection_id):
+        """Checks if the MQTT client is currently connected.
+        
+        Called by:
+            - RoomRaspConnection._cron_mqtt_connection_monitor()
+        """
         client = self.get_client(connection_id)
         return client and client.is_connected()
 
@@ -95,9 +128,11 @@ class RoomRaspConnection(models.Model):
         string="Room Calendar",
         readonly=True
     )
-    #Constraint to ensure that the name is unique
+
+    # All following constraints are to enforce uniqueness of variables (specified in docstrings)
     @api.constrains('name')
     def _check_unique_name(self):
+        """Ensure that the connection name is unique."""
         for record in self:
             existing = self.search([
                 ('name', '=', record.name),
@@ -105,10 +140,10 @@ class RoomRaspConnection(models.Model):
             ])
             if existing:
                 raise ValidationError(f"The connection name '{record.name}' is already in use.")
-
-    #Constraint to ensure that the raspberry name is unique
+            
     @api.constrains('raspName')
     def _check_unique_raspberry_name(self):
+        """Ensure that the Raspberry Pi name is unique."""
         for record in self:
             existing = self.search([
                 ('raspName', '=', record.raspName),
@@ -117,9 +152,9 @@ class RoomRaspConnection(models.Model):
             if existing:
                 raise ValidationError(f"The raspberry name '{record.raspName}' is already in use.")
     
-    #Constraint to ensure that the room name is unique
     @api.constrains('room_name')
     def _check_unique_room_name(self):
+        """Ensure that the room name is unique."""
         for record in self:
             existing = self.search([
                 ('room_name', '=', record.room_name),
@@ -128,23 +163,21 @@ class RoomRaspConnection(models.Model):
             if existing:
                 raise ValidationError(f"The room name '{record.room_name}' is already in use.")
 
-    #Constraint to ensure that the capacity is greater than 0
     @api.constrains('capacity')
     def _check_capacity(self):
+        """Ensure that the room capacity is greater than zero."""
         for record in self:
             if record.capacity < 1:
                 raise ValidationError("The capacity of the room must be at least 1.")
 
     
     # MQTT Configuration Fields
-    # TODO: Add comments
     use_mqtt = fields.Boolean(string='Use MQTT', default=True)
     mqtt_broker = fields.Char(string='MQTT Broker', default='test.mosquitto.org')
     mqtt_port = fields.Integer(string='MQTT Port', default=8883)
     mqtt_username = fields.Char(string='MQTT Username')
     mqtt_password = fields.Char(string='MQTT Password', password=True)
     mqtt_topic_prefix = fields.Char(string='Topic Prefix', default='test/room/')
-    # outdated: mqtt_topic_prefix = fields.Char(string='Topic Prefix', default='meeting/room/', tracking=True)
     mqtt_use_tls = fields.Boolean(string='Use TLS', default=True)
     mqtt_client_id = fields.Char(string='Client ID', help="Leave empty for auto-generation")
     mqtt_qos = fields.Selection([
@@ -168,11 +201,22 @@ class RoomRaspConnection(models.Model):
 
     @property
     def mqtt_manager(self):
+        """Access the MQTT connection manager singleton."""
         return MqttConnectionManager()
 
     @contextmanager
     def _get_new_cursor(self):
-        """Get a new cursor for thread-safe operations"""
+        """Context manager for acquiring a new database cursor (thread-safe).
+    
+        Used internally by:
+            - _update_connection_status()
+            - _on_connect()
+            - _on_disconnect()
+            - _on_message()
+            - _mqtt_loop_start()
+            - _reconnect_mqtt()
+            - _start_data_publisher()
+        """
         new_cr = self.pool.cursor()
         try:
             yield new_cr
@@ -181,7 +225,11 @@ class RoomRaspConnection(models.Model):
 
     @api.depends('mqtt_connection_state')
     def _compute_connection_state_display(self):
-        """Compute CSS class for connection state display"""
+        """Computes the UI display class based on the MQTT connection state.
+    
+        Automatically triggered when 'mqtt_connection_state' changes.
+        Used in UI views (via computed field).
+        """
         state_mapping = {
             'connected': 'text-success',
             'connecting': 'text-warning',
@@ -192,7 +240,14 @@ class RoomRaspConnection(models.Model):
             record.connection_state_display = state_mapping.get(record.mqtt_connection_state, 'text-muted')
 
     def _update_connection_status(self, connection_id, state, error_msg=False):
-        """Update connection status in a thread-safe way"""
+        """Thread-safe update of MQTT connection status in the database.
+    
+        Called by:
+            - _on_connect()
+            - _on_disconnect()
+            - _mqtt_loop_start()
+            - _reconnect_mqtt()
+        """
         try:
             with self._get_new_cursor() as cr:
                 env = api.Environment(cr, self.env.uid, {})
@@ -213,7 +268,15 @@ class RoomRaspConnection(models.Model):
             _logger.error("Failed to update connection status: %s", e)
 
     def _on_connect(self, client, userdata, flags, rc):
-        """Callback when MQTT client connects"""
+        """MQTT on_connect callback. Handles subscription and status update.
+    
+        Registered by:
+            - _mqtt_loop_start()
+
+        Calls:
+            - _update_connection_status()
+            - _get_new_cursor()
+        """
         connection_id = userdata.get('connection_id')
         
         if not connection_id:
@@ -248,7 +311,15 @@ class RoomRaspConnection(models.Model):
             _logger.error("Error in on_connect callback: %s", e)
 
     def _on_disconnect(self, client, userdata, rc):
-        """Callback when MQTT client disconnects"""
+        """MQTT on_disconnect callback. Manages reconnection and error handling.
+    
+        Registered by:
+            - _mqtt_loop_start()
+
+        Calls:
+            - _update_connection_status()
+            - _reconnect_mqtt()
+        """
         connection_id = userdata.get('connection_id')
         
         if not connection_id:
@@ -274,7 +345,12 @@ class RoomRaspConnection(models.Model):
             _logger.error("Error in on_disconnect callback: %s", e)
 
     def _on_message(self, client, userdata, message):
-        """Callback when MQTT message is received"""
+        """MQTT message handler. Processes inbound messages from broker.
+        Callback when MQTT message is received
+    
+        Registered by:
+            - _mqtt_loop_start()
+        """
         connection_id = userdata.get('connection_id')
         
         if not connection_id:
@@ -298,7 +374,21 @@ class RoomRaspConnection(models.Model):
             _logger.error("Error in on_message callback: %s", e)
 
     def _mqtt_loop_start(self, connection_id):
-        """Start MQTT client loop in a separate thread"""
+        """Initializes and starts the MQTT client and its event loop in a thread.
+    
+        Called by:
+            - connect_mqtt()
+            - _reconnect_mqtt()
+
+        Registers callbacks:
+            - _on_connect
+            - _on_disconnect
+            - _on_message
+
+        Calls:
+            - mqtt_manager.register()
+            - _start_data_publisher()
+        """
         try:
             with self._get_new_cursor() as cr:
                 env = api.Environment(cr, self.env.uid, {})
@@ -346,7 +436,11 @@ class RoomRaspConnection(models.Model):
             self._update_connection_status(connection_id, 'error', str(e))
 
     def _reconnect_mqtt(self, connection_id):
-        """Attempt to reconnect MQTT"""
+        """Attempts to reconnect to the MQTT broker after a disconnection.
+    
+        Called by:
+            - _on_disconnect() via Timer
+        """
         try:
             with self._get_new_cursor() as cr:
                 env = api.Environment(cr, self.env.uid, {})
@@ -367,7 +461,13 @@ class RoomRaspConnection(models.Model):
             _logger.error("Reconnection attempt failed: %s", e)
 
     def connect_mqtt(self):
-        """Connect to MQTT broker"""
+        """Public method to initiate MQTT connection (connect to MQTT broker).
+    
+        Called by:
+            - action_connect()
+            - create()
+            - write()
+        """
         self.ensure_one()
         
         if not HAS_MQTT:
@@ -389,7 +489,14 @@ class RoomRaspConnection(models.Model):
         return True
 
     def disconnect_mqtt(self):
-        """Disconnect from MQTT broker"""
+        """Public method to cleanly disconnect from MQTT broker.
+    
+        Called by:
+            - connect_mqtt()
+            - write()
+            - unlink()
+            - action_disconnect()
+        """
         self.ensure_one()
         
         # Unregister from manager (handles client disconnection)
@@ -399,7 +506,11 @@ class RoomRaspConnection(models.Model):
         return True
 
     def test_mqtt_connection(self):
-        """Test MQTT connection"""
+        """Manually tests connection to the MQTT broker (UI button in Odoo).
+    
+        Used by:
+            - UI testing button
+        """
         self.ensure_one()
         
         if not HAS_MQTT:
@@ -451,7 +562,25 @@ class RoomRaspConnection(models.Model):
             return self._show_notification("MQTT Test", f"Error: {str(e)}", 'danger')
 
     def publish_test_message(self):
+        """Publishes a test message to the MQTT broker for this connection.
 
+        Logs and verifies:
+            - MQTT Python library availability
+            - Whether MQTT is enabled for the current record
+            - Whether the MQTT client is connected
+
+        Constructs:
+            - Topic as '<mqtt_topic_prefix><raspName>/test'
+            - Payload as 'Test message from Odoo'
+
+        Calls:
+            - self.mqtt_manager.get_client()
+            - client.publish()
+            - self._show_notification()
+
+        Returns:
+            - Notification message indicating success, failure, or error
+        """
         _logger.info(f"[MQTT] publish_test_message called for record ID {self.id}")
         """Publish test message to MQTT broker"""
         self.ensure_one()
@@ -484,7 +613,14 @@ class RoomRaspConnection(models.Model):
             return self._show_notification("MQTT Publish", f"Error: {str(e)}", 'danger')
 
     def _show_notification(self, title, message, notification_type='info'):
-        """Show notification in UI"""
+        """Helper to show a UI notification message in Odoo.
+    
+        Used by:
+            - test_mqtt_connection()
+            - publish_test_message()
+            - action_connect()
+            - action_disconnect()
+        """
         return {
             'type': 'ir.actions.client',
             'tag': 'display_notification',
@@ -498,6 +634,14 @@ class RoomRaspConnection(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
+        """Overrides default create method to optionally auto-connect to MQTT.
+
+        Called by:
+            - ORM when a new RoomRaspConnection record is created.
+
+        Calls:
+            - connect_mqtt() if 'auto_connect' is True
+        """
         for vals in vals_list:
             if not vals.get('resource_id'):
                 resource = self.env['resource.resource'].create({
@@ -525,7 +669,16 @@ class RoomRaspConnection(models.Model):
 
 
     def write(self, vals):
-        """Update records and manage MQTT connections"""
+        """Overrides default write method to manage MQTT connections on updates.
+        Updates records and manages MQTT connections
+
+        Called by:
+            - ORM when RoomRaspConnection records are updated.
+
+        Calls:
+            - disconnect_mqtt()
+            - connect_mqtt()
+        """
         # Normalize 'status' to 'active' if present
         if 'status' in vals:
             vals['active'] = vals.pop('status')
@@ -550,7 +703,15 @@ class RoomRaspConnection(models.Model):
         return result
 
     def unlink(self):
-        """Disconnect MQTT, remove partner from calendar, clean filters, and delete partner"""
+        """Overrides default unlink method to ensure MQTT disconnection on deletion.
+        Disconnects MQTT, removes partner from calendar, cleans filters, and deletes partner
+
+        Called by:
+            - ORM when RoomRaspConnection records are deleted.
+
+        Calls:
+            - disconnect_mqtt()
+        """
         CalendarEvent = self.env['calendar.event']
         CalendarFilter = self.env['calendar.filters']
 
@@ -575,7 +736,16 @@ class RoomRaspConnection(models.Model):
 
     @api.model
     def _cron_mqtt_connection_monitor(self):
-        """Cron job to monitor and maintain MQTT connections"""
+        """Cron job that checks MQTT connections and attempts reconnection if needed.
+
+        Called by:
+            - Odoo scheduler (cron job).
+
+        Calls:
+            - mqtt_manager.get_client()
+            - mqtt_manager.is_connected()
+            - _reconnect_mqtt()
+        """
         connections = self.search([
             ('use_mqtt', '=', True),
             ('active', '=', True)
@@ -596,7 +766,12 @@ class RoomRaspConnection(models.Model):
                 _logger.error("Monitor error for %s: %s", connection.name, e)
 
     def action_connect(self):
-        """UI action to connect to MQTT broker"""
+        """UI button action (in Odoo) to manually initiate MQTT connection (broker).
+
+        Calls:
+            - connect_mqtt()
+            - _show_notification()
+        """
         self.ensure_one()
         
         if not self.use_mqtt:
@@ -611,7 +786,12 @@ class RoomRaspConnection(models.Model):
             return self._show_notification("MQTT Connection", error_msg, 'danger')
             
     def action_disconnect(self):
-        """UI action to disconnect from MQTT broker"""
+        """UI button action (in Odoo) to manually disconnect from MQTT (broker).
+
+        Calls:
+            - disconnect_mqtt()
+            - _show_notification()
+        """
         self.ensure_one()
         
         result = self.disconnect_mqtt()
@@ -623,6 +803,14 @@ class RoomRaspConnection(models.Model):
         
 
     def _start_data_publisher(self, connection_id, client):
+        """Starts a background thread to publish periodic data to a topic.
+
+        Called by:
+            - _mqtt_loop_start()
+
+        Calls:
+            - _get_new_cursor()
+        """
         def publish_loop():
             t = threading.currentThread()
             while getattr(t, "do_run", True):
