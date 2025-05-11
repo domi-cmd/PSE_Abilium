@@ -159,90 +159,6 @@ class RoomRaspConnection(models.Model):
         except Exception as e:
             _logger.error("Failed to update connection status: %s", e)
 
-    def _on_connect(self, client, userdata, flags, rc):
-        """Callback when MQTT client connects"""
-        connection_id = userdata.get('connection_id')
-        
-        if not connection_id:
-            return
-            
-        try:
-            if rc == 0:
-                # Connection successful
-                self._update_connection_status(connection_id, 'connected')
-                
-                # Subscribe to topics
-                with self._get_new_cursor() as cr:
-                    env = api.Environment(cr, self.env.uid, {})
-                    connection = env['rasproom.connection'].browse(connection_id)
-                    if connection.exists():
-                        topic = f"{connection.mqtt_topic_prefix}{connection.raspName}/#"
-                        client.subscribe(topic, int(connection.mqtt_qos or 0))
-                        _logger.info("Subscribed to %s", topic)
-            else:
-                # Connection failed
-                errors = {
-                    1: "Incorrect protocol version",
-                    2: "Invalid client identifier",
-                    3: "Server unavailable",
-                    4: "Bad credentials",
-                    5: "Not authorized"
-                }
-                error_msg = errors.get(rc, f"Unknown error: {rc}")
-                self._update_connection_status(connection_id, 'error', error_msg)
-                
-        except Exception as e:
-            _logger.error("Error in on_connect callback: %s", e)
-
-    def _on_disconnect(self, client, userdata, rc):
-        """Callback when MQTT client disconnects"""
-        connection_id = userdata.get('connection_id')
-        
-        if not connection_id:
-            return
-            
-        try:
-            if rc == 0:
-                # Normal disconnection
-                self._update_connection_status(connection_id, 'disconnected')
-            else:
-                # Unexpected disconnection
-                error_msg = f"Unexpected disconnect (code {rc})"
-                self._update_connection_status(connection_id, 'error', error_msg)
-                
-                # Schedule reconnection attempt
-                with self._get_new_cursor() as cr:
-                    env = api.Environment(cr, self.env.uid, {})
-                    connection = env['rasproom.connection'].browse(connection_id)
-                    if connection.exists() and connection.active and connection.use_mqtt:
-                        threading.Timer(5.0, lambda: self._reconnect_mqtt(connection_id)).start()
-                        
-        except Exception as e:
-            _logger.error("Error in on_disconnect callback: %s", e)
-
-    def _on_message(self, client, userdata, message):
-        """Callback when MQTT message is received"""
-        connection_id = userdata.get('connection_id')
-        
-        if not connection_id:
-            return
-            
-        try:
-            with self._get_new_cursor() as cr:
-                env = api.Environment(cr, self.env.uid, {})
-                connection = env['rasproom.connection'].browse(connection_id)
-                
-                if not connection.exists():
-                    return
-                    
-                topic = message.topic
-                payload = message.payload.decode('utf-8')
-                _logger.info("Received message: %s - %s", topic, payload)
-                
-                # Process message (implement your message handling logic here)
-                
-        except Exception as e:
-            _logger.error("Error in on_message callback: %s", e)
 
     def _mqtt_loop_start(self, connection_id):
         """Start MQTT client loop in a separate thread"""
@@ -261,9 +177,9 @@ class RoomRaspConnection(models.Model):
                 )
                 
                 # Configure client
-                client.on_connect = self._on_connect
-                client.on_disconnect = self._on_disconnect
-                client.on_message = self._on_message
+                client.on_connect = self.mqtt_manager.on_connect
+                client.on_disconnect = self.mqtt_manager.on_disconnect
+                client.on_message = self.mqtt_manager.on_message
                 client.enable_logger(_logger)
                 
                 if connection.mqtt_username:
@@ -292,26 +208,7 @@ class RoomRaspConnection(models.Model):
             _logger.error("Failed to start MQTT loop: %s", e)
             self._update_connection_status(connection_id, 'error', str(e))
 
-    def _reconnect_mqtt(self, connection_id):
-        """Attempt to reconnect MQTT"""
-        try:
-            with self._get_new_cursor() as cr:
-                env = api.Environment(cr, self.env.uid, {})
-                connection = env['rasproom.connection'].browse(connection_id)
-                
-                if not connection.exists() or not connection.active or not connection.use_mqtt:
-                    return
-                    
-                _logger.info("Attempting to reconnect MQTT for %s", connection.name)
-                
-                # Force disconnect and clean up
-                self.mqtt_manager.unregister(connection_id)
-                
-                # Start new connection
-                self._mqtt_loop_start(connection_id)
-                
-        except Exception as e:
-            _logger.error("Reconnection attempt failed: %s", e)
+    
 
     def connect_mqtt(self):
         """Connect to MQTT broker"""
