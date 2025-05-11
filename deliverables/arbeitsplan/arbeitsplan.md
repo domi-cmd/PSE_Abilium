@@ -21,8 +21,8 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  | User Story: Configuration von Raspberry | Myroslav,Yannis | 20.04.25 | Raspberry | - / 10h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Mockup Odoo mit Raspberry | Livia | 13.04.25 | Raspberry| 2h / 1.5h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  |Ersteller*in des Raums anzeigen|Yannis, Livia|07.05.2025|Raspberry| 3h / 2h |🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
- |UI Testing Odoo|Caro|06.05.2025|Odoo| -/2h |🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
- |writing Constraints Odoo|Caro|06.05.2025|Odoo|-/5h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ |UI Testing Odoo|Caro|06.05.2025|Odoo| 2h /2h |🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ |writing Constraints Odoo|Caro|06.05.2025|Odoo|4h /5h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |Besetzt/nicht besetzt auf Raspberry|Yannis, Livia|07.05.2025|Raspberry| 4h / 5h |🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |Vortrag Myroslav|Myroslav|08.05.2025|Generell|-/4h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |Demo Raspberry und Conf file beim Kundenmeeting|Yannis, Livia|07.05.2025|Raspberry| -/3h |🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
