@@ -86,7 +86,7 @@
             <field name="arch" type="xml">
                 <list decoration-danger="mqtt_connection_state == 'error'" 
                     decoration-success="mqtt_connection_state == 'connected'" decoration-muted="not active">
-                    <!-- Basic meeting room fields for the list view -->
+                    <!-- Room Configuration: Fields related to room details -->
                     <field name="name"/>
                     <field name="room_name"/>
                     <field name="capacity"/>
@@ -122,6 +122,7 @@
             <field name="model">rasproom.connection</field>
             <field name="arch" type="xml">
                 <search>
+                    <!-- Room Configuration: Fields related to room details -->
                     <field name="name"/>
                     <field name="room_name"/>
                     <field name="capacity"/>
@@ -151,6 +152,7 @@
             <field name="view_mode">list,form</field>
             <field name="search_view_id" ref="view_rasproom_connection_search"/>
             <field name="help" type="html">
+                <!-- Placeholder for when no connections has been configured yet -->
                 <p class="o_view_nocontent_smiling_face">
                     Create your first Raspberry Connection!
                 </p>
