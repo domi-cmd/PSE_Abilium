@@ -148,7 +148,7 @@
         <record id="action_rasproom_connection" model="ir.actions.act_window">
             <field name="name">Raspberry Connections</field>
             <field name="res_model">rasproom.connection</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
             <field name="search_view_id" ref="view_rasproom_connection_search"/>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
@@ -158,32 +158,11 @@
         </record>
     </data>
 
-    <!-- Action for the Raspberry Connection but view_mode as list,form -->
-    <record id="action_raspberry_connections" model="ir.actions.act_window">
-        <field name="name">Manage Raspberry Connections</field>
-        <field name="res_model">rasproom.connection</field>
-        <field name="view_mode">list,form</field>
-        <field name="target">current</field>
-    </record>
-
-     <!-- Action for MQTT Connections -->
-    <record id="action_rasproom_connection" model="ir.actions.act_window">
-        <field name="name">MQTT Connections</field>
-        <field name="res_model">rasproom.connection</field>
-        <field name="view_mode">list,form</field>
-        <field name="search_view_id" ref="view_rasproom_connection_search"/>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                Create your first MQTT Connection!
-            </p>
-        </field>
-    </record>
-
     <!-- Configuration Menu for Room Raspberry Connections under Calendar -->
     <menuitem id="menu_configuration"
               name="Room Raspberry Connections"
               parent="calendar.calendar_menu_config"
-              action="action_raspberry_connections"
+              action="action_rasproom_connection"
               sequence="30"
               groups="base.group_system"/>
 </odoo>
