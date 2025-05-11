@@ -71,9 +71,9 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  | Add "Choose Room" Variable and other module related variables to integrated calendar | Dominic | 06.04.25 | Odoo Calendar | 4.5h / 1.5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
  | Make Room-Raspy Config read rooms from the Room Creator/Config (only display valid/existing rooms to choose from) | Dominic | 06.04.25 | Room-Rasp Config | 1.5h / 1.5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
  | Traktanden Intern Meeting 9 | Dominic | 06.04.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
- | Statusbericht 9 | Linus | 27.04.25 | Dokumentation | 30min / - | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- | Protokollabgaben 9 | Yannis | 27.04.25 | Dokumentation | 1.5h / 2h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- | Risikoanalyse 9 | Livia | 27.04.25 | Dokumentation | 30min / - | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Statusbericht 9 | Linus | 27.04.25 | Dokumentation | 30min / 40min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Protokollabgaben 9 | Yannis | 27.04.25 | Dokumentation | 1.5h / 2h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Risikoanalyse 9 | Livia | 27.04.25 | Dokumentation | 30min / 40min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Statusbericht 8 | Linus | 20.04.25 | Dokumentation | 30min / 30min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Traktanden Intern Meeting 8 | Dominic | 02.04.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
  | Protokollabgaben 8 | Caro | 20.04.25 | Dokumentation | 1.5h / 2h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
