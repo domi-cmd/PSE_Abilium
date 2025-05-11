@@ -15,6 +15,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
  | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
  |-----|-----|-----|-----|----|-----|-----|
+ |Anzeigen von Fehlfunktionen|Yannis|15.05.2025|Raspberry| /5Sp|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4)|
  |Vortrag Endprodukt|Yannis|21.05.2025|Präsentation|/6h|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Add "admin rights" logic to odoo so that base users cant access nor view the connection configuration menu | Dominic | 11.05.25 | Odoo | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Dokument Testdurchführung Usabillity Tests|Caro|-|Dokumentation|2.5h / 1.5h|✅|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
@@ -23,7 +24,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  | Refactor res.partner | Linus | 21.05.25 | Odoo | 1.5 / 1h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Add Profile Image to res.partner | Linus | 21.05.25 | Odoo | 30min / 30min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Remove MQTT Connector Class from RoomRaspConnec File | Dominic | 04.05.25 | Odoo | - / 1h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | User Story: Configuration von Raspberry | Myroslav,Yannis | 20.04.25 | Raspberry | - / 10h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | User Story: Configuration von Raspberry; einheitliches Setup & Konfig file | Yannis, Livia | 20.04.25 | Raspberry | - / 10h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Mockup Odoo mit Raspberry | Livia | 13.04.25 | Raspberry| 2h / 1.5h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  |Ersteller*in des Raums anzeigen|Yannis, Livia|07.05.2025|Raspberry| 3h / 2h |✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |UI Testing Odoo|Caro|06.05.2025|Odoo| 2h /2h |✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
