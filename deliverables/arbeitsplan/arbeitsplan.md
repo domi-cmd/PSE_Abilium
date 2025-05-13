@@ -3,7 +3,7 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 113 ✅
+## Overall Completed Issues: 130 ✅
 
 ## Statuslegende
 - ✅ Abgeschlossen
@@ -14,18 +14,27 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 
 ## Aufgabenliste
  | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
- |------|--------------|----------|---------------|--------|--------|----------|
+ |-----|-----|-----|-----|----|-----|-----|
+ | Refactored calendar_event.py and the two odoo module views; added comments and docstrings, cleaned out redundant code | Dominic | 11.05.25 | Odoo | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Anzeigen von Fehlfunktionen | Yannis | 15.05.2025 | Raspberry | /5Sp |🔄| ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Vortrag Endprodukt | Yannis | 21.05.2025 | Präsentation | - / 6h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Add "admin rights" logic to odoo so that base users cant access nor view the connection configuration menu | Dominic | 11.05.25 | Odoo | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ |Dokument Testdurchführung Usabillity Tests|Caro|-|Dokumentation|2.5h / 1.5h|✅|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ |Durchführen von Usability Tests|Caro|15.05.25|-| /4h|🔄| ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Plannung und Vorbereitung der Dokumentationsabgabe|Caro|24.05.25|-|/10h|🔄| ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Refactor res.partner | Linus | 21.05.25 | Odoo | 1.5 / 1h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Add Profile Image to res.partner | Linus | 21.05.25 | Odoo | 30min / 30min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Remove MQTT Connector Class from RoomRaspConnec File | Dominic | 04.05.25 | Odoo | - / 1h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | User Story: Configuration von Raspberry | Myroslav,Yannis | 20.04.25 | Raspberry | - / 10h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- | Mockup Odoo mit Raspberry | Livia | 13.04.25 | Raspberry| 2h / 1.5h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- |Ersteller*in des Raums anzeigen|Yannis, Livia|07.05.2025|Raspberry| 3h / 2h |🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
- |UI Testing Odoo|Caro|06.05.2025|Odoo| -/2h |🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
- |writing Constraints Odoo|Caro|06.05.2025|Odoo|-/5h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
- |Besetzt/nicht besetzt auf Raspberry|Yannis, Livia|07.05.2025|Raspberry| 4h / 5h |🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
- |Vortrag Myroslav|Myroslav|08.05.2025|Generell|-/4h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
- |Demo Raspberry und Conf file beim Kundenmeeting|Yannis, Livia|07.05.2025|Raspberry| -/3h |🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
- |Bug fix: Zugriff auf Odoo Atendees|Yannis|07.05.2025|Raspberry|6h / 4h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
- |Nächste freie Reservationen anzeigen|Yannis|07.05.2025|Raspberry| 10h / 8h|🔄|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ | User Story: Configuration von Raspberry; einheitliches Setup & Konfig file | Yannis, Livia | 20.04.25 | Raspberry | - / 10h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Mockup Odoo mit Raspberry | Livia | 13.04.25 | Raspberry| 2h / 1.5h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ |Ersteller*in des Raums anzeigen|Yannis, Livia|07.05.2025|Raspberry| 3h / 2h |✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ |UI Testing Odoo|Caro|06.05.2025|Odoo| 2h /2h |✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ |writing Constraints Odoo|Caro|06.05.2025|Odoo|4h /5h|✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ |Besetzt/nicht besetzt auf Raspberry|Yannis, Livia|07.05.2025|Raspberry| 4h / 5h |✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ |Vortrag Myroslav|Myroslav|08.05.2025|Präsentation|-/4h|✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ |Demo Raspberry und Conf file beim Kundenmeeting|Yannis, Livia|07.05.2025|Raspberry| -/3h |✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ |Bug fix: Zugriff auf Odoo Atendees|Yannis|07.05.2025|Raspberry|6h / 4h|✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ |Nächste freie Reservationen anzeigen|Yannis|07.05.2025|Raspberry| 10h / 8h|✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  | Traktanden Intern Meeting 04.05 | Dominic | 04.05.25 | Meeting | 15min / 15min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Traktanden Intern Meeting 17.05 | Dominic | 17.5.25 | Meeting | 15min / 15min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Traktanden Intern Meeting 04.05 | Dominic | 04.05.25 | Meeting | 15min / 15min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
@@ -34,7 +43,8 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  |Testen des conf file.|Yannis, Caro, Livia; Testpersonen: Livia und Caro; Beobachter: Yannis|04.05.2025|Raspberry|2h/1h|✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  |Erstellen eines conf. files|Yannis, Myroslav|07.05.2025|Raspberry|20h/22h|✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
  | Write more team Issues for 2nd half Sprint Odoo | Dominic | 01.05.25 | - | 30min / 30min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- | Odoo Res Partner: Add computed fields for room location in Odoo calendar | Linus | 04.05.25 | Odoo | - / 2.5h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+  |Wöchentliche Mails |Caro|-|Traktanden|1h/1h|✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
+ | Odoo Res Partner: Add computed fields for room location in Odoo calendar | Linus | 04.05.25 | Odoo | 5 / 2.5h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Odoo Res Partner: Show/select the room name instead of the connection name | Dominic | 04.05.25 | Odoo | 30min / - | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Odoo Res Partner: Remove resp partner when connection is deleted | Dominic | 04.05.25 | Odoo | 1h / 1h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Odoo add boolean toggles for "Active" and "Use Mqtt" in RoomRaspConnec View | UP FOR GRABS | 04.05.25 | Odoo | - / 30min | ⏳ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
@@ -64,9 +74,9 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  | Add "Choose Room" Variable and other module related variables to integrated calendar | Dominic | 06.04.25 | Odoo Calendar | 4.5h / 1.5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
  | Make Room-Raspy Config read rooms from the Room Creator/Config (only display valid/existing rooms to choose from) | Dominic | 06.04.25 | Room-Rasp Config | 1.5h / 1.5h | ✅ | ![number-2](https://github.com/user-attachments/assets/2e421c81-db8c-44e2-aa1a-ca8c98113994) |
  | Traktanden Intern Meeting 9 | Dominic | 06.04.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
- | Statusbericht 9 | Linus | 27.04.25 | Dokumentation | 30min / - | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- | Protokollabgaben 9 | Yannis | 27.04.25 | Dokumentation | 1.5h / 2h | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- | Risikoanalyse 9 | Livia | 27.04.25 | Dokumentation | 30min / - | 🔄 | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Statusbericht 9 | Linus | 27.04.25 | Dokumentation | 30min / 40min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Protokollabgaben 9 | Yannis | 27.04.25 | Dokumentation | 1.5h / 2h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Risikoanalyse 9 | Livia | 27.04.25 | Dokumentation | 30min / 40min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Statusbericht 8 | Linus | 20.04.25 | Dokumentation | 30min / 30min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Traktanden Intern Meeting 8 | Dominic | 02.04.25 | Meeting | 15min / 15min | ✅ | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e)|
  | Protokollabgaben 8 | Caro | 20.04.25 | Dokumentation | 1.5h / 2h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
