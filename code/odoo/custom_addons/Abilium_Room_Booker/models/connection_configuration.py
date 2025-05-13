@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import traceback
 from odoo import api, fields, models, _
 import logging
 import threading
@@ -79,7 +80,7 @@ class MqttConnectionManager:
                         _logger.error("Error disconnecting client: %s", e)
                 
                 pub_thread = conn.get('publisher_thread')
-                if pub_thread and pub_thread.is_alive():
+                if pub_thread and hasattr(pub_thread, 'is_alive') and pub_thread.is_alive():
                     pub_thread.do_run = False  # Signal thread to stop
 
                 return True
@@ -112,8 +113,8 @@ class RoomRaspConnection(models.Model):
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin'] #Commented out as not needed as of now
 
-    name = fields.Char(string='Connection Name', required=True, tracking=True)
-    room_name = fields.Char(string='Room', required=True, tracking=True)
+    name = fields.Char(string='Room Name', required=True, tracking=True)
+    profile_image = fields.Binary(string="Profile Image", attachment=True)
     capacity = fields.Integer(string='Capacity', required=True)
     street = fields.Char(string='Street')
     city = fields.Char(string='City')
@@ -139,8 +140,9 @@ class RoomRaspConnection(models.Model):
                 ('id', '!=', record.id)
             ])
             if existing:
-                raise ValidationError(f"The connection name '{record.name}' is already in use.")
-            
+                raise ValidationError(f"The room name '{record.name}' is already in use.")
+
+    #Constraint to ensure that the raspberry name is unique
     @api.constrains('raspName')
     def _check_unique_raspberry_name(self):
         """Ensure that the Raspberry Pi name is unique."""
@@ -151,17 +153,6 @@ class RoomRaspConnection(models.Model):
             ])
             if existing:
                 raise ValidationError(f"The raspberry name '{record.raspName}' is already in use.")
-    
-    @api.constrains('room_name')
-    def _check_unique_room_name(self):
-        """Ensure that the room name is unique."""
-        for record in self:
-            existing = self.search([
-                ('room_name', '=', record.room_name),
-                ('id', '!=', record.id)
-            ])
-            if existing:
-                raise ValidationError(f"The room name '{record.room_name}' is already in use.")
 
     @api.constrains('capacity')
     def _check_capacity(self):
@@ -655,10 +646,16 @@ class RoomRaspConnection(models.Model):
 
         for record in records:
             if not record.partner_id:
+                street = record.street or ''
+                if record.floor:
+                  street += ', Floor: ' + record.floor
                 partner = self.env['res.partner'].create({
-                    'name': record.room_name,
+                    'name': record.name,
                     'resource_calendar_id': record.resource_id.calendar_id.id,
                     'is_room': True,
+                    'image_1920': record.profile_image or False,
+                    'city': record.city,
+                    'street': street,
                 })
                 record.partner_id = partner
 
@@ -801,8 +798,8 @@ class RoomRaspConnection(models.Model):
         else:
             return self._show_notification("MQTT Connection", "Failed to disconnect", 'danger')
         
-
     def _start_data_publisher(self, connection_id, client):
+        """Start a periodic data publisher thread for sending room data to MQTT broker"""
         """Starts a background thread to publish periodic data to a topic.
 
         Called by:
@@ -818,29 +815,129 @@ class RoomRaspConnection(models.Model):
                     with self._get_new_cursor() as cr:
                         env = api.Environment(cr, self.env.uid, {})
                         connection = env['rasproom.connection'].browse(connection_id)
+                        
                         if not connection.exists() or not connection.active:
                             break
                         
-                        # Example room data
+                        # Diagnostic logging
+                        _logger.info(f"MQTT Publisher: Processing connection ID {connection_id} - {connection.name}")
+                        
+                        # Get the partner associated with this room
+                        partner = connection.partner_id
+                        current_time = fields.Datetime.now()
+                        
+                        # Debug partner info
+                        if partner:
+                            _logger.info(f"Room partner: ID={partner.id}, Name={partner.name}, is_room={getattr(partner, 'is_room', False)}")
+                        else:
+                            _logger.warning(f"No partner associated with room {connection.name}")
+                        
+                        # Basic room data
                         room_data = {
-                            'room': connection.room_name,
+                            'room': connection.name,
                             'raspberry': connection.raspName,
-                            'timestamp': fields.Datetime.now().isoformat(),
-                            'capacity': connection.capacity if hasattr(connection.room_name, 'capacity') else None
+                            'timestamp': fields.Datetime.to_string(current_time),
+                            'capacity': connection.capacity,
+                            'is_occupied': False  # Default value
                         }
+                        
+                        # Fetch calendar events for this room
+                        if partner and getattr(partner, 'is_room', False):
+                            # Get current and next upcoming events
+                            CalendarEvent = env['calendar.event']
+                            
+                            # Debug access rights
+                            has_access = CalendarEvent.check_access_rights('read', raise_exception=False)
+                            _logger.info(f"Calendar event read access: {has_access}")
+                            
+                            # Search for events where this room is an attendee
+                            domain = [
+                                ('partner_ids', 'in', partner.id),
+                                ('stop', '>=', fields.Datetime.now())  # Only future or current events
+                            ]
+                            
+                            # Debug: Count total events for this partner regardless of date
+                            all_events_count = CalendarEvent.search_count([('partner_ids', 'in', partner.id)])
+                            _logger.info(f"Total events for partner {partner.id}: {all_events_count}")
+                            
+                            # Order by start date and limit to next 5 events
+                            upcoming_events = CalendarEvent.search(domain, order='start', limit=5)
+                            _logger.info(f"Found {len(upcoming_events)} upcoming events for room {connection.name}")
+                            
+                            if upcoming_events:
+                                events_data = []
+                                current_event = None
+                                
+                                for event in upcoming_events:
+                                    # Format event data - use Odoo's serialization to ensure correct timezone handling
+                                    event_data = {
+                                        'name': event.name,
+                                        'start': fields.Datetime.to_string(event.start),
+                                        'stop': fields.Datetime.to_string(event.stop),
+                                        'duration': event.duration,  # in hours
+                                        'is_current': False
+                                    }
+                                    
+                                    # Get organizer information
+                                    if event.user_id:  # The user who created the event
+                                        event_data['organizer'] = event.user_id.partner_id.name
+                                    else:
+                                        event_data['organizer'] = "Unknown"
+                                    
+                                    # Check if this is the current event
+                                    if event.start <= current_time <= event.stop:
+                                        event_data['is_current'] = True
+                                        current_event = event_data
+                                        room_data['is_occupied'] = True
+                                    
+                                    events_data.append(event_data)
+                                
+                                # Add events data to room data
+                                room_data['events'] = events_data
+                                
+                                # Add current event to top level for easier access
+                                if current_event:
+                                    room_data['current_event'] = current_event
 
                         topic = f"{connection.mqtt_topic_prefix}{connection.raspName}/data"
                         payload = json.dumps(room_data)
                         qos = int(connection.mqtt_qos or 0)
 
                         result = client.publish(topic, payload, qos=qos)
-                        _logger.info("Published room data to %s: %s", topic, payload)
+                        _logger.info("Published room data to %s", topic)
+                        _logger.debug("Payload: %s", payload)
 
                 except Exception as e:
                     _logger.error("Error in data publishing thread: %s", e)
+                    _logger.error(traceback.format_exc())
 
-                time.sleep(15)
-
-        thread = threading.Thread(target=publish_loop, daemon=True)
-        thread.start()
-        self.mqtt_manager._connections[connection_id]['publisher_thread'] = thread
+                # Sleep for 30 seconds before next update
+                time.sleep(30)
+        
+        # Create the publisher thread
+        publisher_thread = threading.Thread(
+            target=publish_loop,
+            name=f"mqtt_publisher_{connection_id}"
+        )
+        publisher_thread.daemon = True  # Make thread daemon so it exits when main thread exits
+        publisher_thread.do_run = True  # Flag to control the loop
+        
+        # Start the thread
+        publisher_thread.start()
+        
+        # Update the connection in the manager to include this publisher thread
+        existing_conn = self.mqtt_manager._connections.get(connection_id, {})
+        existing_client = existing_conn.get('client', client)
+        existing_thread = existing_conn.get('thread')
+        
+        # Register with updated information
+        self.mqtt_manager.register(
+            connection_id,
+            existing_client,
+            existing_thread,
+            publisher_thread
+        )
+        
+        _logger.info(f"Started publisher thread for connection {connection_id}")
+        
+        return publisher_thread
