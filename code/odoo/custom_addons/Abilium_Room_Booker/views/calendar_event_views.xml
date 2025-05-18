@@ -8,7 +8,11 @@
             <field name="arch" type="xml">
                 <!-- Move custom fields after the 'location' field -->
                 <xpath expr="//field[@name='location']" position="after">
-                    <field name="meeting_room" options="{'no_create': True}" />
+                    <group>
+                        <field name="filter_room_by_capacity" string="Only show rooms with enough capacity"
+                               help="If enabled, only rooms that can hold all current attendees will be shown."/>
+                        <field name="meeting_room" options="{'no_create': True}" context="{'default_is_room': 1}"/>
+                    </group>
                 </xpath>
             </field>
         </record>
@@ -21,7 +25,11 @@
             <field name="arch" type="xml">
                 <!-- Add custom fields after the 'description' field -->
                 <xpath expr="//field[@name='description']" position="after">
-                    <field name="meeting_room" options="{'no_create': True}" />
+                    <group>
+                        <field name="filter_room_by_capacity" string="Only show rooms with enough capacity"
+                               help="If enabled, only rooms that can hold all current attendees will be shown."/>
+                        <field name="meeting_room" options="{'no_create': True}" context="{'default_is_room': 1}"/>
+                    </group>
                 </xpath>
             </field>
         </record>
