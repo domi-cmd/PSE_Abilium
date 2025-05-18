@@ -513,6 +513,7 @@ class RoomRaspConnection(models.Model):
                     'image_1920': record.profile_image or False,
                     'city': record.city,
                     'street': street,
+                    'room_capacity': record.capacity,
                 })
                 record.partner_id = partner
 
