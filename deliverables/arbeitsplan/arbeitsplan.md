@@ -14,7 +14,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 
 ## Aufgabenliste
  | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
- |......|.......|......|......|.....|......|......|
+ |------|-----|------|------|------|------|------|
  |Risikoanalyse 11|Livia|25.05.2025|Dokumentation|-/30min|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Protokoll 11|Yannis|25.05.2025|Dokumentation|-/1h|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Statusbericht 11|Linus|25.05.2025| Dokumentation |-/20min|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
