@@ -847,7 +847,7 @@ class RoomRaspConnection(models.Model):
                             CalendarEvent = env['calendar.event']
                             
                             # Debug access rights
-                            has_access = CalendarEvent.check_access_rights('read', raise_exception=False)
+                            has_access = CalendarEvent.check_access('read', raise_exception=False)
                             _logger.info(f"Calendar event read access: {has_access}")
                             
                             # Search for events where this room is an attendee
