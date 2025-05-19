@@ -1,0 +1,16 @@
+[Unit]
+Description=Auto-run script from bootfs config
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/bootconfig_runner.sh
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+# Allow service to run sudo commands without password
+Environment=SUDO_ASKPASS=/bin/true
+
+[Install]
+WantedBy=multi-user.target
