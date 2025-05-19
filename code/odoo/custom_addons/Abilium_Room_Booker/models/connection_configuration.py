@@ -7,8 +7,11 @@ import time
 import ssl
 from contextlib import contextmanager
 import json
-from odoo.exceptions import ValidationError #for constraints
+# ValidationError import is needed for constraints
+from odoo.exceptions import ValidationError 
 from odoo.exceptions import AccessError
+from . import mqtt_connector
+
 
 _logger = logging.getLogger(__name__)
 
@@ -18,94 +21,6 @@ try:
 except ImportError:
     HAS_MQTT = False
     _logger.warning("paho-mqtt library not installed. MQTT functionality disabled")
-
-
-class MqttConnectionManager:
-    """Singleton to manage MQTT connections across Odoo instances.
-    
-    Used by:
-        - RoomRaspConnection.connect_mqtt()
-        - RoomRaspConnection.disconnect_mqtt()
-        - RoomRaspConnection._reconnect_mqtt()
-        - RoomRaspConnection._mqtt_loop_start()
-        - RoomRaspConnection._cron_mqtt_connection_monitor()
-        - RoomRaspConnection.publish_test_message()
-    """
-    _instance = None
-    _connections = {}
-    _lock = threading.RLock()
-    
-    def __new__(cls):
-        """Ensure only one instance exists."""
-        if cls._instance is None:
-            cls._instance = super(MqttConnectionManager, cls).__new__(cls)
-            cls._instance._init()
-        return cls._instance
-    
-    def _init(self):
-        """Initialize the internal state."""
-        self._connections = {}
-        self._lock = threading.RLock()
-    
-    def register(self, connection_id, client, thread=None, publisher_thread=None):
-        """Registers a new MQTT client to the manager with optional threads.
-        
-        Called by:
-            - RoomRaspConnection._mqtt_loop_start()
-        """
-        with self._lock:
-            self._connections[connection_id] = {
-                'client': client,
-                'thread': thread,
-                'publisher_thread': publisher_thread,
-                'timestamp': time.time()
-            }
-    
-    def unregister(self, connection_id):
-        """Unregisters and cleanly disconnects a client by connection_id.
-        
-        Called by:
-            - RoomRaspConnection.disconnect_mqtt()
-            - RoomRaspConnection._reconnect_mqtt()
-        """
-        with self._lock:
-            if connection_id in self._connections:
-                conn = self._connections.pop(connection_id)
-                client = conn.get('client')
-                if client:
-                    try:
-                        if client.is_connected():
-                            client.disconnect()
-                        client.loop_stop()
-                    except Exception as e:
-                        _logger.error("Error disconnecting client: %s", e)
-                
-                pub_thread = conn.get('publisher_thread')
-                if pub_thread and hasattr(pub_thread, 'is_alive') and pub_thread.is_alive():
-                    pub_thread.do_run = False  # Signal thread to stop
-
-                return True
-        return False
-    
-    def get_client(self, connection_id):
-        """Returns the MQTT client instance for a given connection ID.
-        
-        Called by:
-            - RoomRaspConnection.publish_test_message()
-            - RoomRaspConnection._cron_mqtt_connection_monitor()
-        """
-        with self._lock:
-            conn = self._connections.get(connection_id)
-            return conn.get('client') if conn else None
-    
-    def is_connected(self, connection_id):
-        """Checks if the MQTT client is currently connected.
-        
-        Called by:
-            - RoomRaspConnection._cron_mqtt_connection_monitor()
-        """
-        client = self.get_client(connection_id)
-        return client and client.is_connected()
 
 
 class RoomRaspConnection(models.Model):
@@ -194,7 +109,7 @@ class RoomRaspConnection(models.Model):
     @property
     def mqtt_manager(self):
         """Access the MQTT connection manager singleton."""
-        return MqttConnectionManager()
+        return mqtt_connector.MqttConnectionManager()
 
     @contextmanager
     def _get_new_cursor(self):
@@ -749,7 +664,7 @@ class RoomRaspConnection(models.Model):
             ('active', '=', True)
         ])
         
-        manager = MqttConnectionManager()
+        manager = mqtt_connector.MqttConnectionManager()
         
         for connection in connections:
             try:
