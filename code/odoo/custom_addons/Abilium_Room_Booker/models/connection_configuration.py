@@ -167,7 +167,7 @@ class RoomRaspConnection(models.Model):
     mqtt_broker = fields.Char(string='MQTT Broker', default='test.mosquitto.org')
     mqtt_port = fields.Integer(string='MQTT Port', default=8883)
     mqtt_username = fields.Char(string='MQTT Username')
-    mqtt_password = fields.Char(string='MQTT Password', password=True)
+    mqtt_password = fields.Char(string='MQTT Password')
     mqtt_topic_prefix = fields.Char(string='Topic Prefix', default='test/room/')
     mqtt_use_tls = fields.Boolean(string='Use TLS', default=True)
     mqtt_client_id = fields.Char(string='Client ID', help="Leave empty for auto-generation")
