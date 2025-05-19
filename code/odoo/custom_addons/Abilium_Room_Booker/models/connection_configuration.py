@@ -809,7 +809,7 @@ class RoomRaspConnection(models.Model):
             - _get_new_cursor()
         """
         def publish_loop():
-            t = threading.currentThread()
+            t = threading.current_thread()
             while getattr(t, "do_run", True):
                 try:
                     with self._get_new_cursor() as cr:
