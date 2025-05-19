@@ -15,6 +15,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
  | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
  |------|-----|------|------|------|------|------|
+ |MQTT-Documentation|Livia|25.05.2025|Dokumentation|2h/1.5h|✅|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Risikoanalyse 11|Livia|25.05.2025|Dokumentation|-/30min|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Protokoll 11|Yannis|25.05.2025|Dokumentation|-/1h|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Statusbericht 11|Linus|25.05.2025| Dokumentation |-/20min|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
@@ -23,7 +24,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  |Statusbericht 10|Linus|18.05.2025| Dokumentation |15min/20min|✅|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Defaul values im MQTT Modul anpassen|Yannis|21.05.2025|Raspberry| /1h|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Refactored calendar_event.py and the two odoo module views; added comments and docstrings, cleaned out redundant code | Dominic | 11.05.25 | Odoo | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Anzeigen von Fehlfunktionen | Yannis, Livia | 15.05.2025 | Raspberry | /5Sp |🔄| ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Anzeigen von Fehlfunktionen | Yannis | 15.05.2025 | Raspberry | /5Sp |🔄| ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Vortrag Endprodukt | Yannis | 21.05.2025 | Präsentation | - / 6h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Add "admin rights" logic to odoo so that base users cant access nor view the connection configuration menu | Dominic | 11.05.25 | Odoo | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Dokument Testdurchführung Usabillity Tests|Caro|-|Dokumentation|2.5h / 1.5h|✅|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
