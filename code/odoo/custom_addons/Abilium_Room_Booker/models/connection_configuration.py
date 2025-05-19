@@ -8,6 +8,7 @@ import ssl
 from contextlib import contextmanager
 import json
 from odoo.exceptions import ValidationError #for constraints
+from odoo.exceptions import AccessError
 
 _logger = logging.getLogger(__name__)
 
@@ -847,7 +848,11 @@ class RoomRaspConnection(models.Model):
                             CalendarEvent = env['calendar.event']
                             
                             # Debug access rights
-                            has_access = CalendarEvent.check_access('read', raise_exception=False)
+                            try:
+                                CalendarEvent.check_access('read')
+                                has_access = True
+                            except AccessError:
+                                has_access = False
                             _logger.info(f"Calendar event read access: {has_access}")
                             
                             # Search for events where this room is an attendee
