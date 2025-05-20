@@ -71,8 +71,9 @@ class CalendarEvent(models.Model):
 
         # Display warning if room capacity is insufficient
         if self.meeting_room and hasattr(self.meeting_room, 'room_capacity'):
-            # Use the base attendees_count
-            attendee_count = self.attendees_count or 1
+            attendee_count = len(self.partner_ids.filtered(lambda p: not p.is_room))
+            if attendee_count == 0:
+                attendee_count = 1
 
             if self.meeting_room.room_capacity < attendee_count:
                 return {
