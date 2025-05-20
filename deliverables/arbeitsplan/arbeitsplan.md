@@ -3,7 +3,7 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 130 ✅
+## Overall Completed Issues: 137 ✅
 
 ## Statuslegende
 - ✅ Abgeschlossen
@@ -15,6 +15,9 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
  | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
  |------|-----|------|------|------|------|------|
+ | Odoo Refactor: Move MqttConnectionManager into seperate file from ConnectionConfigurator.py | Dominic | 19.05.25 | Odoo | 2.5h / 2h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Odoo Server Log Warnings: Remove illegal parameters | Dominic | 19.05.25 | Odoo | 30min / 30min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Odoo Server Log Warnings: Fix deprecated function calls and related logic | Dominic | 19.05.25 | Odoo | 2h / 2h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |MQTT-Documentation|Livia|25.05.2025|Dokumentation|2h/1.5h|✅|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Risikoanalyse 11|Livia|25.05.2025|Dokumentation|-/30min|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Protokoll 11|Yannis|25.05.2025|Dokumentation|-/1h|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
@@ -32,7 +35,6 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  | Plannung und Vorbereitung der Dokumentationsabgabe|Caro|24.05.25|-|/10h|🔄| ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Refactor res.partner | Linus | 21.05.25 | Odoo | 1.5 / 1h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Add Profile Image to res.partner | Linus | 21.05.25 | Odoo | 30min / 30min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Remove MQTT Connector Class from RoomRaspConnec File | Dominic | 04.05.25 | Odoo | - / 1h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | User Story: Configuration von Raspberry; einheitliches Setup & Konfig file | Yannis, Livia | 20.04.25 | Raspberry | - / 10h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Mockup Odoo mit Raspberry | Livia | 13.04.25 | Raspberry| 2h / 1.5h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  |Ersteller*in des Raums anzeigen|Yannis, Livia|07.05.2025|Raspberry| 3h / 2h |✅|![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b)|
