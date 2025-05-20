@@ -1,12 +1,13 @@
 from odoo import models, fields, api
+import logging
 
+_logger = logging.getLogger(__name__)
 class CalendarEvent(models.Model):
     _inherit = 'calendar.event'
 
     meeting_room = fields.Many2one(
         "res.partner",
         string='Room',
-        domain="[('is_room', '=', True)]",  # domain we override dynamically in onchange
         help="Select a room (a partner marked as is_room)."
     )
     filter_room_by_capacity = fields.Boolean(
@@ -14,65 +15,67 @@ class CalendarEvent(models.Model):
         default=False,
     )
     location = fields.Char(compute="_compute_location", store=True)
+    meeting_room_domain = fields.Char(
+        compute='_compute_meeting_room_domain',
+        store=False
+    )
 
-    @api.onchange('filter_room_by_capacity', 'attendee_ids')
-    def _onchange_filter_room(self):
-        domain = [('is_room', '=', True)]
-        if self.filter_room_by_capacity:
-            domain.append(('room_capacity', '>=', self.attendees_count))
-        return {
-            'domain': {
-                'meeting_room': domain
-            }
-        }
+    @api.depends('filter_room_by_capacity', 'partner_ids')
+    def _compute_meeting_room_domain(self):
+        for record in self:
+            domain = [('is_room', '=', True)]
 
+            attendee_count = len(record.partner_ids.filtered(lambda p: not p.is_room))
+            if attendee_count == 0:
+                attendee_count = 1
+
+            if record.filter_room_by_capacity:
+                domain.append(('room_capacity', '>=', attendee_count))
+
+            # Convert to a string domain to use in XML
+            record.meeting_room_domain = str(domain)
 
     @api.onchange('meeting_room')
     def _onchange_meeting_room(self):
         """
-
+        When a meeting room is selected, add it to partner_ids.
+        When a meeting room is removed or changed, update partner_ids accordingly.
+        Also check if the selected room has sufficient capacity.
         """
-        if not self.meeting_room:
-            return  # Nothing to do if no room selected
+        # First, remove any existing room partners that are not the current meeting room
+        room_partners_to_remove = self.partner_ids.filtered(
+            lambda p: p.is_room and (not self.meeting_room or p.id != self.meeting_room.id)
+        )
 
-        # Remove any previously selected room from attendees and partners
-        room_attendees = self.attendee_ids.filtered(lambda a: a.partner_id.is_room)
-        self.attendee_ids = self.attendee_ids - room_attendees
-        self.partner_ids = self.partner_ids - room_attendees.mapped('partner_id')
+        # Create commands list to update partner_ids
+        commands = []
 
-        # Check if this room is already in attendees
-        existing = self.attendee_ids.filtered(lambda a: a.partner_id == self.meeting_room)
+        # Add commands to remove old rooms
+        if room_partners_to_remove:
+            for partner in room_partners_to_remove:
+                commands.append((3, partner.id))  # (3, id) command unlinks without deletion
 
-        if not existing:
-            attendee_vals = {
-                'partner_id': self.meeting_room.id,
-                'email': self.meeting_room.email or '',  # Email optional but may be required
-            }
+        # Add command to add new room if needed
+        if self.meeting_room and self.meeting_room not in self.partner_ids:
+            commands.append((4, self.meeting_room.id))  # (4, id) command links existing record
 
-            if self.id:
-                # Saved event — create real attendee record
-                attendee_vals['event_id'] = self.id
-                self.env['calendar.attendee'].create(attendee_vals)
-            else:
-                # Unsaved form — use new() to attach it in memory
-                attendee = self.env['calendar.attendee'].new(attendee_vals)
-                self.attendee_ids += attendee
+        # Apply the commands if we have any
+        if commands:
+            self.partner_ids = commands
 
-            # Capacity check warning, always triggered when room is selected
-            if self.meeting_room.room_capacity and self.attendees_count > self.meeting_room.room_capacity:
+        # Display warning if room capacity is insufficient
+        if self.meeting_room and hasattr(self.meeting_room, 'room_capacity'):
+            # Use the base attendees_count
+            attendee_count = self.attendees_count or 1
+
+            if self.meeting_room.room_capacity < attendee_count:
                 return {
                     'warning': {
-                        'title': 'Room Overcapacity',
-                        'message': (
-                            f"The selected room '{self.meeting_room.name}' only supports "
-                            f"{self.meeting_room.room_capacity} people, but you have {self.attendees_count} attendees."
-                        )
+                        'title': 'Insufficient Room Capacity',
+                        'message': f'Selected room "{self.meeting_room.name}" has capacity for {self.meeting_room.room_capacity} '
+                                   f'people, but you have {attendee_count} attendees. This may be too crowded.'
                     }
                 }
-
-        # Also add room to partner_ids so it's shown in attendee widget
-        if self.meeting_room not in self.partner_ids:
-            self.partner_ids += self.meeting_room
 
 
     # compute location dependent on meeting_room
