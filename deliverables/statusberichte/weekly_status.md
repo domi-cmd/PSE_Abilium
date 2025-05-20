@@ -70,11 +70,23 @@ Diese Woche haben wir die Installation der Raspberrys stark vereinfacht,
 wir haben die Informationen des raspberry.connection im Kalender 
 darstellen lassen und die verschiedenen Branch versionen wieder in main integriert.
 
-## Week 11 : 05.05. - 05.11.
+## Week 11 : 05.05. - 11.05.
 
-Ende 3. Iteration.
+Ende 3. Iteration. Wir haben den Installationsprozess nach spezifikation der Kunden verbessert, 
+wir haben das Hinzufügen von Profilbildern implementiert und mit dem connection_configuration refactor 
+begonnen. 
 
-## Week 12 : 
+![StatusOK.png](statusgrafiken/StatusOK.png)
+
+## Week 12 : 12.05. - 18.05.
+
+Wir haben Kontakt mit einigen Personen aufgenommen um Usability Tests zu machen. 
+Ausserdem haben wir weiter Dokumentation geschrieben und begonnen filter für die 
+Selektion von Räumen nach Kapazität zu implementieren.
+
+![StatusOK.png](statusgrafiken/StatusOK.png)
+
+## Week 13 : 19.05. - 25.05.
 
 
 

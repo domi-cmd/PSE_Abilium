@@ -1,12 +1,12 @@
 <odoo>
     <data>
-        <!-- Inherit the calendar event form and add room_ids field -->
+        <!-- Inherit the calendar event form view and add the 'meeting_room' field after 'location' -->
         <record id="view_calendar_event_form" model="ir.ui.view">
             <field name="name">calendar.event.form.custom</field>
             <field name="model">calendar.event</field>
             <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
             <field name="arch" type="xml">
-                <!-- Move custom fields after the 'location' field -->
+                <!-- Position the 'meeting_room' field after the 'location' field -->
                 <xpath expr="//field[@name='location']" position="after">
                     <group>
                         <field name="filter_room_by_capacity" string="Only show rooms with enough capacity"
@@ -18,13 +18,13 @@
             </field>
         </record>
 
-        <!-- Inherit the modal quick create form view for calendar event and add custom fields -->
+        <!-- Inherit the modal form view for quick event creation and add the 'meeting_room' field -->
         <record id="view_calendar_event_form_modal" model="ir.ui.view">
             <field name="name">calendar.event.form.custom.modal</field>
             <field name="model">calendar.event</field>
             <field name="inherit_id" ref="calendar.view_calendar_event_form_quick_create"/>
             <field name="arch" type="xml">
-                <!-- Add custom fields after the 'description' field -->
+                <!-- Add 'meeting_room' field after the 'description' field in the modal form -->
                 <xpath expr="//field[@name='description']" position="after">
                     <group>
                         <field name="filter_room_by_capacity" string="Only show rooms with enough capacity"

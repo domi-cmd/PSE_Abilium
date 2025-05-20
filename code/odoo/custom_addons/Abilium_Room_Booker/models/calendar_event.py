@@ -1,8 +1,10 @@
 from odoo import models, fields, api
-import logging
 
-_logger = logging.getLogger(__name__)
 class CalendarEvent(models.Model):
+    """
+    Custom extension of the Odoo Calendar. Inherits from the 'calendar.event' model and adds functionality
+    for managing meeting rooms and dynamically computing event locations at runtime.
+    """
     _inherit = 'calendar.event'
 
     meeting_room = fields.Many2one(
@@ -14,6 +16,10 @@ class CalendarEvent(models.Model):
         string='Only show rooms with enough capacity',
         default=False,
     )
+    # Related meeting room partner, computed from partner_ids with is_room=True
+    meeting_room = fields.Many2one("res.partner", compute="_compute_room", store=True)
+
+    # Meeting room location string, computed from the associated meeting room's connection details
     location = fields.Char(compute="_compute_location", store=True)
     meeting_room_domain = fields.Char(
         compute='_compute_meeting_room_domain',
@@ -78,19 +84,24 @@ class CalendarEvent(models.Model):
                 }
 
 
-    # compute location dependent on meeting_room
     @api.depends("meeting_room")
     def _compute_location(self):
+        """
+        Computes the 'location' field based on the associated 'meeting_room'.
+        It searches for a related 'rasproom.connection' record and builds a
+        location string using its street, city, and floor.
+        """
         for event in self:
             location = ''
             if event.meeting_room:
-                # Look for a rasproom.connection linked to this partner
+                # Look for a rasproom.connection linked to the meeting_room partner
                 connection = self.env['rasproom.connection'].search(
                     [('partner_id', '=', event.meeting_room.id)],
                     limit=1
                 )
                 if connection:
-                    # Formatting the location string
+                    # Build the location string by joining available fields
                     parts = filter(None, [connection.street, connection.city, connection.floor])
                     location = ', '.join(parts)
+            # Assign the computed location to the event
             event.location = location
