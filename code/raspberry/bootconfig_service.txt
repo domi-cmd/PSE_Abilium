@@ -1,16 +1,49 @@
+# ===================================================================
+# Systemd Service Configuration for Raspberry Pi Auto-run System
+# Filename: /etc/systemd/system/bootconfig.service
+# Purpose: Automatically starts the bootconfig_runner.sh script at boot
+# ===================================================================
 [Unit]
+# Description of the service shown in systemctl status output
 Description=Auto-run script from bootfs config
+# Ensures this service starts only after network is available
+# This is important for MQTT applications that require connectivity
 After=network.target
 
 [Service]
+# Simple service type - process is the main process
+# Other options: forking, oneshot, notify, dbus, idle
 Type=simple
+# The actual command to execute when service starts
 ExecStart=/usr/local/bin/bootconfig_runner.sh
+# Automatically restart the service if it exits with error
+# This adds additional reliability beyond the script's own restart loop
 Restart=on-failure
+# Wait 5 seconds before attempting to restart after failure
+# Prevents rapid cycling if there's a persistent error
 RestartSec=5
+# Send stdout to the system journal (viewable with journalctl)
 StandardOutput=journal
+# Send stderr to the system journal
 StandardError=journal
-# Allow service to run sudo commands without password
+# Allow service to run sudo commands without password prompt
+# Required for hardware access and certain system operations
 Environment=SUDO_ASKPASS=/bin/true
 
 [Install]
+# Specifies when the service should be started during boot
+# multi-user.target roughly corresponds to runlevel 3 (multi-user text mode)
 WantedBy=multi-user.target
+
+# ===================================================================
+# Installation Instructions:
+# 1. Save this file as /etc/systemd/system/bootconfig.service
+# 2. Enable the service: sudo systemctl enable bootconfig.service
+# 3. Start the service: sudo systemctl start bootconfig.service
+#
+# Management Commands:
+# - Check status: sudo systemctl status bootconfig.service
+# - View logs: sudo journalctl -u bootconfig.service
+# - Restart service: sudo systemctl restart bootconfig.service
+# - Stop service: sudo systemctl stop bootconfig.service
+# ===================================================================
