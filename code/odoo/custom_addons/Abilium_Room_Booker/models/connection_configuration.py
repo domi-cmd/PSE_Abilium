@@ -646,9 +646,11 @@ class RoomRaspConnection(models.Model):
 
         for record in records:
             if not record.partner_id:
+                #generate street in res.partner from street and floor
                 street = record.street or ''
                 if record.floor:
                   street += ', Floor: ' + record.floor
+                # create linked res.partner with infos
                 partner = self.env['res.partner'].create({
                     'name': record.name,
                     'resource_calendar_id': record.resource_id.calendar_id.id,
@@ -656,6 +658,7 @@ class RoomRaspConnection(models.Model):
                     'image_1920': record.profile_image or False,
                     'city': record.city,
                     'street': street,
+                    'room_capacity': record.capacity,
                 })
                 record.partner_id = partner
 

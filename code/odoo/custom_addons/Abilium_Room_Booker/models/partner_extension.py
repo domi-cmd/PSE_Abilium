@@ -8,3 +8,4 @@ class ResPartner(models.Model):
     # field is_room defined as Boolean is called "Is Room?"
     is_room = fields.Boolean(string="Is Room?")
 
+    room_capacity = fields.Integer(string="Capacity")
