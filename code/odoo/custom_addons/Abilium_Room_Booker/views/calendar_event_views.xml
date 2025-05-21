@@ -6,11 +6,12 @@
             <field name="model">calendar.event</field>
             <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
             <field name="arch" type="xml">
-                <!-- Position the 'meeting_room' field after the 'location' field -->
+                <!-- Position the 'meeting_room' & 'filter_room_by_capacity' field after the 'location' field -->
                 <xpath expr="//field[@name='location']" position="after">
                     <group>
                         <field name="filter_room_by_capacity" string="Only show rooms with enough capacity"
                                help="If enabled, only rooms that can hold all current attendees will be shown."/>
+                        <!-- Add 'meeting_room' field with variable in domain for dynamic filtering -->
                         <field name="meeting_room" options="{'no_create': True}" readonly="False"
                                context="{'default_is_room': 1}" domain="meeting_room_domain"/>
                     </group>
@@ -24,11 +25,12 @@
             <field name="model">calendar.event</field>
             <field name="inherit_id" ref="calendar.view_calendar_event_form_quick_create"/>
             <field name="arch" type="xml">
-                <!-- Add 'meeting_room' field after the 'description' field in the modal form -->
+                <!-- Add 'meeting_room' & 'filter_room_by_capacity' field after the 'description' field in the modal form -->
                 <xpath expr="//field[@name='description']" position="after">
                     <group>
                         <field name="filter_room_by_capacity" string="Only show rooms with enough capacity"
                                help="If enabled, only rooms that can hold all current attendees will be shown."/>
+                        <!-- Add 'meeting_room' field with variable in domain for dynamic filtering -->
                         <field name="meeting_room" options="{'no_create': True}" readonly="False"
                                context="{'default_is_room': 1}" domain="meeting_room_domain"/>
                     </group>
