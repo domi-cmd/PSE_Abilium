@@ -14,6 +14,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 
 ## Aufgabenliste
  | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
+ |------|------|------|------|------|-----|-------|
  |Updating documentation version 2 |26.05.2025|Livia|Dokumentation|/20min|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
 |Setup guide Raspberry for non-technical users|Livia|Dokumentation|26.05.2025|/1.5h|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Add new field with filter and toggle to select rooms, or rooms with more capacity than attendees  | Linus | 20.05.25 | Odoo | 15h / 2h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
