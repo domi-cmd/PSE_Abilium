@@ -36,6 +36,7 @@ class RoomRaspConnection(models.Model):
     city = fields.Char(string='City')
     floor = fields.Char(string='Floor')
     description = fields.Char(string='Description')
+    # TODO: Make Raspberry ID read-only
     raspName = fields.Char(string='Raspberry ID', required=True, tracking=True, default=lambda self: self._default_rasp_id())
     active = fields.Boolean(string='Active', default=True, tracking=True)
     resource_id = fields.Many2one('resource.resource', string="Resource", ondelete='cascade')
