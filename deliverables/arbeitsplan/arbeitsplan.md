@@ -16,7 +16,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
  |------|------|------|------|------|-----|-------|
  |Updating documentation version 2 |Livia|26.05.2025|Dokumentation|/20min|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
-|Setup guide Raspberry for non-technical users|Livia, Yannis|Dokumentation|26.05.2025|/3h|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+|Setup guide Raspberry for non-technical users|Livia, Yannis|26.05.2025|Dokumentation|/3h|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Add new field with filter and toggle to select rooms, or rooms with more capacity than attendees  | Linus | 20.05.25 | Odoo | 15h / 2h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Odoo Refactor: Move MqttConnectionManager into seperate file from ConnectionConfigurator.py | Dominic | 19.05.25 | Odoo | 2.5h / 2h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Odoo Server Log Warnings: Remove illegal parameters | Dominic | 19.05.25 | Odoo | 30min / 30min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
