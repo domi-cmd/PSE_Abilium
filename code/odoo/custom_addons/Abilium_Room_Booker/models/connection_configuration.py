@@ -36,7 +36,7 @@ class RoomRaspConnection(models.Model):
     city = fields.Char(string='City')
     floor = fields.Char(string='Floor')
     description = fields.Char(string='Description')
-    raspName = fields.Char(string='Raspberry Name', required=True, tracking=True)
+    raspName = fields.Char(string='Raspberry ID', required=True, tracking=True, default=lambda self: self._default_rasp_id())
     active = fields.Boolean(string='Active', default=True, tracking=True)
     resource_id = fields.Many2one('resource.resource', string="Resource", ondelete='cascade')
     partner_id = fields.Many2one('res.partner', string="Related Contact")
@@ -45,6 +45,24 @@ class RoomRaspConnection(models.Model):
         string="Room Calendar",
         readonly=True
     )
+
+    def _default_rasp_id(self):
+        """Generate a default unique Raspberry ID with the format 'RASP-XXXX'"""
+        # Get the highest existing number
+        highest_id = 0
+        existing_ids = self.search([('raspName', 'like', 'RASP-%')])
+        
+        for record in existing_ids:
+            try:
+                # Extract the number part from RASP-XXXX
+                num = int(record.raspName.split('-')[1])
+                highest_id = max(highest_id, num)
+            except (IndexError, ValueError):
+                continue
+        
+        # Generate new ID with incremented number
+        new_id = highest_id + 1
+        return f"RASP-{new_id:04d}"                                                                                                                                        
 
     # All following constraints are to enforce uniqueness of variables (specified in docstrings)
     @api.constrains('name')
