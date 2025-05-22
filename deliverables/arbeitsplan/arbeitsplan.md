@@ -29,11 +29,11 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  |Defaul values im MQTT Modul anpassen|Yannis|21.05.2025|Raspberry| /1h|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Refactored calendar_event.py and the two odoo module views; added comments and docstrings, cleaned out redundant code | Dominic | 11.05.25 | Odoo | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Anzeigen von Fehlfunktionen | Yannis | 15.05.2025 | Raspberry | /5Sp |🔄| ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Vortrag Endprodukt | Yannis | 21.05.2025 | Präsentation | - / 6h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Vortrag Endprodukt | Yannis | 21.05.2025 | Präsentation | 6.5h / 6h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Add "admin rights" logic to odoo so that base users cant access nor view the connection configuration menu | Dominic | 11.05.25 | Odoo | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Dokument Testdurchführung Usabillity Tests|Caro|-|Dokumentation|2.5h / 1.5h|✅|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Durchführen von Usability Tests|Caro|15.05.25|-| /4h|🔄| ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Plannung und Vorbereitung der Dokumentationsabgabe|Caro|24.05.25|-|/10h|🔄| ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Planung der Dokumentationsabgabe|Caro|24.05.25|-|/2h|🔄| ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Refactor res.partner | Linus | 21.05.25 | Odoo | 2h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Add Profile Image to res.partner | Linus | 21.05.25 | Odoo | 30min / 30min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | User Story: Configuration von Raspberry; einheitliches Setup & Konfig file | Yannis, Livia | 20.04.25 | Raspberry | - / 10h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
