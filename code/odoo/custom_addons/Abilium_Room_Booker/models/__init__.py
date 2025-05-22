@@ -1,1 +1,1 @@
-from . import connection_configuration, calendar_event, partner_extension
+from . import connection_configuration, calendar_event, partner_extension, mqtt_connector
