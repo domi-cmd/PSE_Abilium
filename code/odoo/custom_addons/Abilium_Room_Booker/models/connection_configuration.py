@@ -7,7 +7,11 @@ import time
 import ssl
 from contextlib import contextmanager
 import json
-from odoo.exceptions import ValidationError #for constraints
+# ValidationError import is needed for constraints
+from odoo.exceptions import ValidationError 
+from odoo.exceptions import AccessError
+from . import mqtt_connector
+
 
 _logger = logging.getLogger(__name__)
 
@@ -17,94 +21,6 @@ try:
 except ImportError:
     HAS_MQTT = False
     _logger.warning("paho-mqtt library not installed. MQTT functionality disabled")
-
-
-class MqttConnectionManager:
-    """Singleton to manage MQTT connections across Odoo instances.
-    
-    Used by:
-        - RoomRaspConnection.connect_mqtt()
-        - RoomRaspConnection.disconnect_mqtt()
-        - RoomRaspConnection._reconnect_mqtt()
-        - RoomRaspConnection._mqtt_loop_start()
-        - RoomRaspConnection._cron_mqtt_connection_monitor()
-        - RoomRaspConnection.publish_test_message()
-    """
-    _instance = None
-    _connections = {}
-    _lock = threading.RLock()
-    
-    def __new__(cls):
-        """Ensure only one instance exists."""
-        if cls._instance is None:
-            cls._instance = super(MqttConnectionManager, cls).__new__(cls)
-            cls._instance._init()
-        return cls._instance
-    
-    def _init(self):
-        """Initialize the internal state."""
-        self._connections = {}
-        self._lock = threading.RLock()
-    
-    def register(self, connection_id, client, thread=None, publisher_thread=None):
-        """Registers a new MQTT client to the manager with optional threads.
-        
-        Called by:
-            - RoomRaspConnection._mqtt_loop_start()
-        """
-        with self._lock:
-            self._connections[connection_id] = {
-                'client': client,
-                'thread': thread,
-                'publisher_thread': publisher_thread,
-                'timestamp': time.time()
-            }
-    
-    def unregister(self, connection_id):
-        """Unregisters and cleanly disconnects a client by connection_id.
-        
-        Called by:
-            - RoomRaspConnection.disconnect_mqtt()
-            - RoomRaspConnection._reconnect_mqtt()
-        """
-        with self._lock:
-            if connection_id in self._connections:
-                conn = self._connections.pop(connection_id)
-                client = conn.get('client')
-                if client:
-                    try:
-                        if client.is_connected():
-                            client.disconnect()
-                        client.loop_stop()
-                    except Exception as e:
-                        _logger.error("Error disconnecting client: %s", e)
-                
-                pub_thread = conn.get('publisher_thread')
-                if pub_thread and hasattr(pub_thread, 'is_alive') and pub_thread.is_alive():
-                    pub_thread.do_run = False  # Signal thread to stop
-
-                return True
-        return False
-    
-    def get_client(self, connection_id):
-        """Returns the MQTT client instance for a given connection ID.
-        
-        Called by:
-            - RoomRaspConnection.publish_test_message()
-            - RoomRaspConnection._cron_mqtt_connection_monitor()
-        """
-        with self._lock:
-            conn = self._connections.get(connection_id)
-            return conn.get('client') if conn else None
-    
-    def is_connected(self, connection_id):
-        """Checks if the MQTT client is currently connected.
-        
-        Called by:
-            - RoomRaspConnection._cron_mqtt_connection_monitor()
-        """
-        client = self.get_client(connection_id)
-        return client and client.is_connected()
 
 
 class RoomRaspConnection(models.Model):
@@ -120,7 +36,8 @@ class RoomRaspConnection(models.Model):
     city = fields.Char(string='City')
     floor = fields.Char(string='Floor')
     description = fields.Char(string='Description')
-    raspName = fields.Char(string='Raspberry Name', required=True, tracking=True)
+    # TODO: Make Raspberry ID read-only
+    raspName = fields.Char(string='Raspberry ID', required=True, tracking=True, default=lambda self: self._default_rasp_id())
     active = fields.Boolean(string='Active', default=True, tracking=True)
     resource_id = fields.Many2one('resource.resource', string="Resource", ondelete='cascade')
     partner_id = fields.Many2one('res.partner', string="Related Contact")
@@ -129,6 +46,24 @@ class RoomRaspConnection(models.Model):
         string="Room Calendar",
         readonly=True
     )
+
+    def _default_rasp_id(self):
+        """Generate a default unique Raspberry ID with the format 'RASP-XXXX'"""
+        # Get the highest existing number
+        highest_id = 0
+        existing_ids = self.search([('raspName', 'like', 'RASP-%')])
+        
+        for record in existing_ids:
+            try:
+                # Extract the number part from RASP-XXXX
+                num = int(record.raspName.split('-')[1])
+                highest_id = max(highest_id, num)
+            except (IndexError, ValueError):
+                continue
+        
+        # Generate new ID with incremented number
+        new_id = highest_id + 1
+        return f"RASP-{new_id:04d}"                                                                                                                                        
 
     # All following constraints are to enforce uniqueness of variables (specified in docstrings)
     @api.constrains('name')
@@ -167,7 +102,7 @@ class RoomRaspConnection(models.Model):
     mqtt_broker = fields.Char(string='MQTT Broker', default='test.mosquitto.org')
     mqtt_port = fields.Integer(string='MQTT Port', default=8883)
     mqtt_username = fields.Char(string='MQTT Username')
-    mqtt_password = fields.Char(string='MQTT Password', password=True)
+    mqtt_password = fields.Char(string='MQTT Password')
     mqtt_topic_prefix = fields.Char(string='Topic Prefix', default='test/room/')
     mqtt_use_tls = fields.Boolean(string='Use TLS', default=True)
     mqtt_client_id = fields.Char(string='Client ID', help="Leave empty for auto-generation")
@@ -193,7 +128,7 @@ class RoomRaspConnection(models.Model):
     @property
     def mqtt_manager(self):
         """Access the MQTT connection manager singleton."""
-        return MqttConnectionManager()
+        return mqtt_connector.MqttConnectionManager()
 
     @contextmanager
     def _get_new_cursor(self):
@@ -751,7 +686,7 @@ class RoomRaspConnection(models.Model):
             ('active', '=', True)
         ])
         
-        manager = MqttConnectionManager()
+        manager = mqtt_connector.MqttConnectionManager()
         
         for connection in connections:
             try:
@@ -812,7 +747,7 @@ class RoomRaspConnection(models.Model):
             - _get_new_cursor()
         """
         def publish_loop():
-            t = threading.currentThread()
+            t = threading.current_thread()
             while getattr(t, "do_run", True):
                 try:
                     with self._get_new_cursor() as cr:
@@ -850,7 +785,11 @@ class RoomRaspConnection(models.Model):
                             CalendarEvent = env['calendar.event']
                             
                             # Debug access rights
-                            has_access = CalendarEvent.check_access_rights('read', raise_exception=False)
+                            try:
+                                CalendarEvent.check_access('read')
+                                has_access = True
+                            except AccessError:
+                                has_access = False
                             _logger.info(f"Calendar event read access: {has_access}")
                             
                             # Search for events where this room is an attendee
