@@ -8,8 +8,8 @@ import ssl
 from contextlib import contextmanager
 import json
 # ValidationError import is needed for constraints
-from odoo.exceptions import ValidationError 
-from odoo.exceptions import AccessError
+from odoo.exceptions import ValidationError # type: ignore
+from odoo.exceptions import AccessError # type: ignore
 from . import mqtt_connector
 
 
