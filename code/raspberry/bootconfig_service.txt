@@ -7,43 +7,45 @@
 # Description of the service shown in systemctl status output
 Description=Auto-run script from bootfs config
 # Ensures this service starts only after network is available
-# This is important for MQTT applications that require connectivity
+# Critical for applications that require network connectivity (MQTT, web services, etc.)
 After=network.target
 
 [Service]
-# Simple service type - process is the main process
-# Other options: forking, oneshot, notify, dbus, idle
+# Simple service type - the main process runs in the foreground
+# The service manager expects the process to remain running
 Type=simple
 # The actual command to execute when service starts
 ExecStart=/usr/local/bin/bootconfig_runner.sh
-# Automatically restart the service if it exits with error
-# This adds additional reliability beyond the script's own restart loop
+# Automatically restart the service only if it exits unexpectedly with an error
+# Complements the script's internal restart loop for additional reliability
 Restart=on-failure
-# Wait 5 seconds before attempting to restart after failure
-# Prevents rapid cycling if there's a persistent error
+# Wait 5 seconds before attempting to restart after a failure
+# Prevents rapid restart cycles that could overwhelm the system
 RestartSec=5
-# Send stdout to the system journal (viewable with journalctl)
+# Direct stdout to the systemd journal for centralized logging
 StandardOutput=journal
-# Send stderr to the system journal
+# Direct stderr to the systemd journal for error tracking
 StandardError=journal
-# Allow service to run sudo commands without password prompt
-# Required for hardware access and certain system operations
+# Configure environment to allow passwordless sudo execution
+# Essential for hardware access and system-level operations in the script
 Environment=SUDO_ASKPASS=/bin/true
 
 [Install]
-# Specifies when the service should be started during boot
-# multi-user.target roughly corresponds to runlevel 3 (multi-user text mode)
+# Specifies the target that should include this service when enabled
+# multi-user.target is the standard target for multi-user system state
 WantedBy=multi-user.target
 
 # ===================================================================
 # Installation Instructions:
 # 1. Save this file as /etc/systemd/system/bootconfig.service
-# 2. Enable the service: sudo systemctl enable bootconfig.service
-# 3. Start the service: sudo systemctl start bootconfig.service
+# 2. Reload systemd configuration: sudo systemctl daemon-reload
+# 3. Enable the service: sudo systemctl enable bootconfig.service
+# 4. Start the service: sudo systemctl start bootconfig.service
 #
 # Management Commands:
 # - Check status: sudo systemctl status bootconfig.service
-# - View logs: sudo journalctl -u bootconfig.service
+# - View logs: sudo journalctl -u bootconfig.service -f
 # - Restart service: sudo systemctl restart bootconfig.service
 # - Stop service: sudo systemctl stop bootconfig.service
+# - Disable service: sudo systemctl disable bootconfig.service
 # ===================================================================
