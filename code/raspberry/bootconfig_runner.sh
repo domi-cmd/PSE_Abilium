@@ -38,7 +38,7 @@ find_config() {
 # Locate configuration file using the search function
 CONFIG_FILE=$(find_config)
 if [ -z "$CONFIG_FILE" ]; then
-   # Log error and exit if no config file is found in any location
+  # Log error and exit if no config file is found in any location
   echo "No config file found in any of the expected locations" >> /var/log/bootconfig.log
   exit 1
 fi
