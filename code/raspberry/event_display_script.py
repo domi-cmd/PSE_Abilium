@@ -694,25 +694,39 @@ class MQTTDisplay:
             room_name = data.get('room', 'Unknown Room')
             all_events = data.get('events', [])
             
-            # Filter valid events
+            # Filter valid events - exclude current meeting
             current_time = self.get_current_time()
+            current_event = data.get('current_event')
             valid_events = []
             
             for event in all_events:
                 try:
-                    end_time = datetime.fromisoformat(event['stop'])
+                    # Skip current meeting (compare by name and start time to be safe)
+                    if current_event and (event.get('name') == current_event.get('name') and 
+                                        event.get('start') == current_event.get('start')):
+                        continue
                     
-                    if end_time.tzinfo is not None and current_time.tzinfo is not None:
-                        if end_time > current_time:
+                    # For upcoming events, check if they start in the future
+                    start_time = datetime.fromisoformat(event['start'])
+                    
+                    # Handle timezone-aware comparison
+                    if start_time.tzinfo is not None and current_time.tzinfo is not None:
+                        if start_time > current_time:
                             valid_events.append(event)
-                    elif end_time.tzinfo is None and current_time.tzinfo is None:
-                        if end_time > current_time:
+                    elif start_time.tzinfo is None and current_time.tzinfo is None:
+                        if start_time > current_time:
                             valid_events.append(event)
                     else:
-                        if (end_time.hour > current_time.hour or 
-                            (end_time.hour == current_time.hour and end_time.minute >= current_time.minute)):
+                        # Convert naive datetime for comparison
+                        if start_time.tzinfo is None:
+                            start_time = start_time.replace(tzinfo=pytz.UTC)
+                        if current_time.tzinfo is None:
+                            current_time = current_time.replace(tzinfo=pytz.UTC)
+                        if start_time > current_time:
                             valid_events.append(event)
-                except (ValueError, KeyError):
+                            
+                except (ValueError, KeyError) as e:
+                    logger.warning(f"Error processing event: {e}")
                     continue
             
             # Show room info
@@ -735,44 +749,79 @@ class MQTTDisplay:
                 draw.text((5, content_top + 10), "No upcoming events", font=fonts['text'], fill=0)
             else:
                 valid_events.sort(key=lambda x: x.get('start', ''))
-                max_events = min(3, len(valid_events))
+                # Show maximum 4 events in 2x2 layout
+                max_events = min(4, len(valid_events))
                 events_to_show = valid_events[:max_events]
+                
+                # Calculate layout dimensions with proper centering
+                available_height = height - content_top - 10  # Leave some bottom margin
+                available_width = width - 10  # Leave side margins
+                
+                # Define compartment dimensions
+                compartment_width = available_width // 2
+                compartment_height = available_height // 2
+                
+                # Starting positions for each compartment
+                left_column_start = 5
+                right_column_start = 5 + compartment_width
+                top_row_start = content_top + 8
+                bottom_row_start = content_top + 8 + compartment_height + 4
                 
                 for i, event in enumerate(events_to_show):
                     start_time = self._format_event_time(event['start'])
                     end_time = self._format_event_time(event['stop'])
                     
-                    is_current = event.get('is_current', False)
-                    
-                    if is_current:
-                        draw.rectangle([(3, content_top-2), (width-3, content_top+44)], outline=0, fill=0)
-                        text_color = 255
-                    else:
-                        text_color = 0
-                    
+                    # Truncate event name for 2-column layout
                     event_name = event['name']
-                    name_parts = self._wrap_text(event_name, 28)
+                    max_chars = 18  # Shorter for 2-column layout
+                    if len(event_name) > max_chars:
+                        event_name = event_name[:max_chars-3] + "..."
                     
-                    for j, part in enumerate(name_parts[:1]):
-                        draw.text((8, content_top), part, font=fonts['bold' if is_current else 'text'], fill=0)
-                        content_top += 16
+                    time_range = f"{start_time} - {end_time}"
                     
-                    draw.text((8, content_top), f"Reserved by: {event['organizer']}", font=fonts['small'], fill=0)
-                    content_top += 14
+                    # Calculate compartment position (2x2 grid)
+                    if i == 0:  # Top-left
+                        compartment_x = left_column_start
+                        compartment_y = top_row_start
+                    elif i == 1:  # Bottom-left
+                        compartment_x = left_column_start
+                        compartment_y = bottom_row_start
+                    elif i == 2:  # Top-right
+                        compartment_x = right_column_start
+                        compartment_y = top_row_start
+                    else:  # Bottom-right
+                        compartment_x = right_column_start
+                        compartment_y = bottom_row_start
                     
-                    draw.text((8, content_top), f"When: {start_time} - {end_time}", font=fonts['small'], fill=0)
-                    content_top += 16
+                    # Calculate text dimensions for centering
+                    name_width = draw.textbbox((0, 0), event_name, font=fonts['text'])[2]
+                    time_width = draw.textbbox((0, 0), time_range, font=fonts['small'])[2]
                     
-                    if i < max_events - 1:
-                        draw.line([(0, content_top), (width, content_top)], fill=0, width=1)
-                        content_top += 3
+                    # Center the text within the compartment
+                    name_x = compartment_x + (compartment_width - name_width) // 2
+                    time_x = compartment_x + (compartment_width - time_width) // 2
+                    
+                    # Vertical centering - account for both lines of text, moved slightly up
+                    text_block_height = 14 + 12  # Height of both text lines
+                    vertical_center_y = compartment_y + (compartment_height - text_block_height) // 2 - 6
+                    
+                    # Draw centered event text
+                    draw.text((name_x, vertical_center_y), event_name, font=fonts['text'], fill=0)
+                    draw.text((time_x, vertical_center_y + 14), time_range, font=fonts['small'], fill=0)
                 
-                if len(valid_events) > max_events:
-                    draw.text((5, height - 15), f"+ {len(valid_events) - max_events} more events...", font=fonts['small'], fill=0)
+                # Draw grid lines to separate compartments
+                # Vertical separator line
+                separator_x = 5 + compartment_width
+                draw.line([(separator_x, content_top), (separator_x, height - 5)], fill=0, width=1)
+                
+                # Horizontal separator line (only if we have events in bottom row)
+                if len(events_to_show) > 2:
+                    separator_y = content_top + 8 + compartment_height - 3
+                    draw.line([(5, separator_y), (width - 5, separator_y)], fill=0, width=1)
             
             self.epd.display(self.epd.getbuffer(image))
             logger.info("Events screen displayed on e-paper")
-            
+
     def _format_event_time(self, iso_time_str):
         """Parse event time handling both ISO and custom formats, converting to local timezone"""
         try:
