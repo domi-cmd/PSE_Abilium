@@ -178,9 +178,10 @@ class MQTTDisplay:
             status_topic = f"{self.topic_prefix}{self.rasp_name}/status"
             client.publish(status_topic, "online", qos=1, retain=True)
             
-            # Display setup screen only if no data has been received yet
-            if not self.last_data and not self.setup_screen_displayed:
-                self.schedule_display_update('setup', None)
+            # Update setup screen to show "Waiting for messages..." if no data yet
+            if not self.last_data:
+                self.force_display_update('setup', None)
+                logger.info("Connected - updated setup screen to show waiting for messages")
                 self.setup_screen_displayed = True
         else:
             self.connected = False
@@ -206,11 +207,10 @@ class MQTTDisplay:
         self.stop_screen_rotation()
         self.stop_timeout_timer()  # Stop timeout timer during disconnect
         
-        # Force update to setup screen to show disconnected status
+        # Force update to setup screen to show "Waiting for WiFi..." status
         self.current_screen_type = 'setup'
         self.force_display_update('setup', None)
-        logger.info("Connection lost - displaying setup screen with disconnected status")
-
+        logger.info("Connection lost - displaying setup screen with waiting for WiFi status")
     
     @error_handler
     def monitor_connection(self):
@@ -523,9 +523,14 @@ class MQTTDisplay:
             font_title = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 22)
             font_text = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 16)
             
+            # Dynamic title based on connection status
+            if self.connected:
+                title = "Waiting for messages..."
+            else:
+                title = "Waiting for WiFi..."
+            
             # Draw header
             draw.rectangle([(0, 0), (width, 30)], outline=0, fill=0)
-            title = "MQTT Display Setup"
             title_width = draw.textbbox((0, 0), title, font=font_title)[2]
             draw.text(((width - title_width) // 2, 4), title, font=font_title, fill=255)
             
