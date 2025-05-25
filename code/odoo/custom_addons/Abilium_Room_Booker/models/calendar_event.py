@@ -13,13 +13,19 @@ class CalendarEvent(models.Model):
         default=False,
     )
     # Related meeting room partner, computed from partner_ids with is_room=True
-    meeting_room = fields.Many2one("res.partner", compute="_compute_room", store=True,
-                                   string='Room',
-                                   help="Select a room (a partner marked as is_room)."
+    meeting_room = fields.Many2one(
+        "res.partner", compute="_compute_room",
+        store=True,
+        string='Room',
+        help="Select a room (a partner marked as is_room)."
     )
 
     # Meeting room location string, computed from the associated meeting room's connection details
-    location = fields.Char(compute="_compute_location", store=True)
+    location = fields.Char(
+        compute="_compute_location",
+        store=True
+    )
+    # field saving the dynamic domain
     meeting_room_domain = fields.Char(
         compute='_compute_meeting_room_domain',
         store=False
@@ -34,6 +40,11 @@ class CalendarEvent(models.Model):
 
     @api.depends('filter_room_by_capacity', 'partner_ids', 'booked_room_ids')
     def _compute_meeting_room_domain(self):
+        """
+        compute function to change the domain dynamically to not include,
+        what rooms are already booked &
+        what rooms do not have enough capacity.
+        """
         for record in self:
             # Base domain: only rooms
             domain = [('is_room', '=', True)]
@@ -43,7 +54,7 @@ class CalendarEvent(models.Model):
                 booked_ids = record.booked_room_ids.ids
                 domain.append(('id', 'not in', booked_ids))
 
-            # Count attendees (excluding room resources)
+            # Count attendees (excluding meeting_rooms)
             attendee_count = len(record.partner_ids.filtered(lambda p: not p.is_room)) or 1
 
             # Filter by capacity if enabled
