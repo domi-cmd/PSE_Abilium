@@ -76,9 +76,15 @@ Ende 3. Iteration. Wir haben den Installationsprozess nach spezifikation der Kun
 wir haben das Hinzufügen von Profilbildern implementiert und mit dem connection_configuration refactor 
 begonnen. 
 
-- **![StatusOK.png](statusgrafiken/StatusOK.png)**
+![StatusOK.png](statusgrafiken/StatusOK.png)
 
 ## Week 12 : 12.05. - 18.05.
+
+Wir haben Kontakt mit einigen Personen aufgenommen um Usability Tests zu machen. 
+Ausserdem haben wir weiter Dokumentation geschrieben und begonnen filter für die 
+Selektion von Räumen nach Kapazität zu implementieren.
+
+![StatusOK.png](statusgrafiken/StatusOK.png)
 
 ## Week 13 : 19.05. - 25.05.
 
