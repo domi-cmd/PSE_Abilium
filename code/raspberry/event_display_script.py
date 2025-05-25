@@ -103,19 +103,20 @@ class MQTTDisplay:
         self.pending_updates = {}
     
     def _setup_timezone(self, timezone):
-        if not timezone:
-            return None
-            
-        try:
-            tz = pytz.timezone(timezone)
-            logger.info(f"Using timezone: {timezone}")
-            return tz
-        except pytz.exceptions.UnknownTimeZoneError:
-            logger.warning(f"Unknown timezone: {timezone}, using system local time")
-            return None
+        if timezone:
+            try:
+                tz = pytz.timezone(timezone)
+                logger.info(f"Using timezone: {timezone}")
+                return tz
+            except pytz.exceptions.UnknownTimeZoneError:
+                logger.warning(f"Unknown timezone: {timezone}, using UTC")
+        
+        # Always return a timezone, never None
+        logger.info("No timezone specified, using UTC")
+        return pytz.timezone('UTC')
             
     def get_current_time(self):
-        return datetime.now(self.timezone) if self.timezone else datetime.now()
+        return datetime.now(self.timezone)
     
     @error_handler
     def setup_display(self):
@@ -377,7 +378,7 @@ class MQTTDisplay:
             
             # Draw time section
             draw.line([(0, 26), (width, 26)], fill=0, width=1)
-            current_time = (self.get_current_time() + timedelta(hours=1)).strftime('%H:%M:%S')
+            current_time = self.get_current_time().strftime('%H:%M:%S')
             
             capacity = data.get('capacity', 'N/A')
             capacity_text = f"Capacity: {capacity}"
@@ -390,7 +391,7 @@ class MQTTDisplay:
             # If both texts together are too wide for the display
             if update_width + capacity_width + 15 > width:
                 # Use shorter format for time to save space
-                short_time = (self.get_current_time() + timedelta(hours=1)).strftime('%H:%M')
+                short_time = self.get_current_time().strftime('%H:%M')
                 update_text = f"Update: {short_time}"
                 update_width = draw.textbbox((0, 0), update_text, font=fonts['text'])[2]
             
@@ -518,6 +519,7 @@ class MQTTDisplay:
                             valid_events.append(event)
                     # Mixed timezone awareness - normalize for comparison
                     else:
+                        # Mixed timezone awareness - use time comparison as fallback
                         if (end_time.hour > current_time.hour or 
                             (end_time.hour == current_time.hour and end_time.minute >= current_time.minute)):
                             valid_events.append(event)
@@ -526,7 +528,7 @@ class MQTTDisplay:
             
             # Show room name, date, and last update time
             current_date = current_time.strftime('%Y-%m-%d')
-            update_time = (current_time + timedelta(hours=1)).strftime('%H:%M:%S')
+            update_time = current_time.strftime('%H:%M:%S')
             info_text = f"{room_name} | {current_date} | Last Update: {update_time}"
             
             # Making sure the text fits, otherwise abbreviate
@@ -559,7 +561,12 @@ class MQTTDisplay:
                     
                     # Event block
                     if is_current:
-                        draw.rectangle([(3, content_top-2), (width-3, content_top+44)], outline=0)
+                        draw.rectangle([(3, content_top-2), (width-3, content_top+44)], outline=0, fill=0)
+                        text_color = 255  # White text on black background
+                        status_text = " (CURRENT)"
+                    else:
+                        text_color = 0  # Black text
+                        status_text = ""
                     
                     # Event name with word wrap
                     event_name = event['name']
@@ -592,15 +599,35 @@ class MQTTDisplay:
             # Schedule switching back to data screen
             threading.Timer(DISPLAY_UPDATE_INTERVAL,
                         lambda: self.schedule_display_update('data', data)).start()
-
+            
     def _format_event_time(self, iso_time_str):
+        """Parse event time handling both ISO and custom formats, converting to local timezone"""
         try:
+            # Try ISO format first (new format from publisher)
             dt = datetime.fromisoformat(iso_time_str)
-            adjusted_dt = dt + timedelta(hours=2)
-            return adjusted_dt.strftime('%H:%M')
+            
+            # If the datetime is timezone-aware, convert to local timezone
+            if dt.tzinfo is not None:
+                local_dt = dt.astimezone(self.timezone)
+                return local_dt.strftime('%H:%M')
+            else:
+                # If naive datetime, assume it's UTC and convert
+                utc_dt = dt.replace(tzinfo=pytz.UTC)
+                local_dt = utc_dt.astimezone(self.timezone)
+                return local_dt.strftime('%H:%M')
+                
         except (ValueError, TypeError):
-            return "??:??"
-    
+            try:
+                # Try custom datetime format (fallback for old format)
+                dt = datetime.strptime(iso_time_str, '%Y-%m-%d %H:%M:%S')
+                # Assume this is UTC and convert to local timezone
+                utc_dt = dt.replace(tzinfo=pytz.UTC)
+                local_dt = utc_dt.astimezone(self.timezone)
+                return local_dt.strftime('%H:%M')
+            except (ValueError, TypeError):
+                # If all parsing fails, return placeholder
+                return "??:??"
+        
     def _wrap_text(self, text, max_chars_per_line):
         if len(text) <= max_chars_per_line:
             return [text]
