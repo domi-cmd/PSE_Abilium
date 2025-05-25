@@ -43,11 +43,6 @@ except ImportError as e:
     logger.error(f"Required library not found: {e}")
     sys.exit(1)
 
-# Constants
-MQTT_RECONNECT_DELAY = 5
-CONNECTION_CHECK_INTERVAL = 30
-DISPLAY_UPDATE_INTERVAL = 15
-
 def error_handler(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -87,6 +82,11 @@ class MQTTDisplay:
         self.client = None
         self.connected = False
         self.timezone = self._setup_timezone(timezone)
+
+        self.screen_rotation_interval = 20  # Fixed 30 seconds between screens
+        self.current_screen_type = 'data'   # Track current screen ('data', 'events', 'setup')
+        self.screen_rotation_timer = None
+        self.rotation_active = False
         
         # Display parameters
         self.epd = None
@@ -94,13 +94,16 @@ class MQTTDisplay:
         self.setup_screen_displayed = False
         self.last_display_update = 0
         self.display_queue = queue.Queue()
+
+        self.last_data_time = 0  # Track when we last received data
+        self.data_timeout = 60   # 60 seconds timeout
+        self.timeout_timer = None
         
         # Thread control
         self.threads = {}
         self.running = False
-        
-        # Display update control
-        self.pending_updates = {}
+
+        self.data_lock = threading.Lock()
     
     def _setup_timezone(self, timezone):
         if timezone:
@@ -175,8 +178,8 @@ class MQTTDisplay:
             status_topic = f"{self.topic_prefix}{self.rasp_name}/status"
             client.publish(status_topic, "online", qos=1, retain=True)
             
-            # Display setup screen if needed
-            if not self.setup_screen_displayed:
+            # Display setup screen only if no data has been received yet
+            if not self.last_data and not self.setup_screen_displayed:
                 self.schedule_display_update('setup', None)
                 self.setup_screen_displayed = True
         else:
@@ -190,25 +193,46 @@ class MQTTDisplay:
             }
             error_msg = errors.get(rc, f"Unknown error: {rc}")
             logger.error(f"Connection failed: {error_msg}")
-            
+                
     def on_disconnect(self, client, userdata, rc):
         self.connected = False
         if rc == 0:
             logger.info("Disconnected from MQTT broker")
         else:
             logger.warning(f"Unexpected disconnect (code {rc})")
-            if self.last_data:
-                self.schedule_display_update('data', self.last_data)
+        
+        # When disconnected, show setup screen to display connection status
+        # Stop any ongoing rotation since we can't receive new data
+        self.stop_screen_rotation()
+        self.stop_timeout_timer()  # Stop timeout timer during disconnect
+        
+        # Force update to setup screen to show disconnected status
+        self.current_screen_type = 'setup'
+        self.force_display_update('setup', None)
+        logger.info("Connection lost - displaying setup screen with disconnected status")
+
     
     @error_handler
     def monitor_connection(self):
+        consecutive_failures = 0
+        max_failures = 3  # After 3 failed pings, assume connection is dead
+        
         while self.running:
             if self.client and not self.connected:
                 logger.info("Connection monitor: attempting reconnection")
                 try:
                     self.client.reconnect()
+                    consecutive_failures = 0  # Reset on successful reconnect attempt
                 except:
-                    logger.warning("Reconnection failed, recreating client")
+                    consecutive_failures += 1
+                    logger.warning(f"Reconnection failed (attempt {consecutive_failures}), recreating client")
+                    
+                    # If we've failed multiple times, ensure setup screen is shown
+                    if consecutive_failures >= max_failures:
+                        self.current_screen_type = 'setup'
+                        self.force_display_update('setup', None)
+                        consecutive_failures = 0  # Reset counter
+                    
                     self.client.loop_stop()
                     time.sleep(1)
                     self.connect_mqtt()
@@ -218,11 +242,18 @@ class MQTTDisplay:
                     ping_topic = f"{self.topic_prefix}{self.rasp_name}/ping"
                     self.client.publish(ping_topic, str(time.time()), qos=0)
                     logger.debug("Sent ping message")
+                    consecutive_failures = 0  # Reset on successful ping
                 except Exception as e:
                     logger.error(f"Failed to send ping: {e}")
+                    consecutive_failures += 1
+                    
+                    # If ping fails multiple times, the connection might be dead
+                    if consecutive_failures >= max_failures:
+                        logger.warning("Multiple ping failures - connection may be dead")
+                        self.connected = False  # Force reconnection logic
             
             time.sleep(self.ping_interval)
-    
+
     def on_message(self, client, userdata, message):
         try:
             topic = message.topic
@@ -236,42 +267,99 @@ class MQTTDisplay:
                 try:
                     data = json.loads(payload)
                     data['timestamp'] = self.get_current_time().isoformat()
-                    self.last_data = data
-                    self.schedule_display_update('data', data)
+                    
+                    # RESET TIMEOUT TIMER WHEN DATA IS RECEIVED
+                    self.reset_timeout_timer()
+                    
+                    # Use thread-safe data access
+                    with self.data_lock:
+                        # Check for significant changes that warrant immediate update
+                        immediate_update_needed = False
+                        
+                        if not self.last_data:
+                            # First data received - start rotation system
+                            immediate_update_needed = True
+                            logger.info("First data received - starting display system")
+                            
+                            # Stop any existing rotation and start fresh
+                            if self.rotation_active:
+                                self.stop_screen_rotation()
+                            
+                            # Update stored data first
+                            self.last_data = data.copy()  # Use copy() for safety
+                            
+                            # Force immediate display of data screen
+                            self.current_screen_type = 'data'
+                            self.force_display_update('data', data.copy())
+                            
+                            # Start rotation after a short delay
+                            def delayed_rotation_start():
+                                time.sleep(3)  # Give time for first display
+                                if self.running:
+                                    self.start_screen_rotation()
+                            
+                            rotation_thread = threading.Thread(target=delayed_rotation_start)
+                            rotation_thread.daemon = True
+                            rotation_thread.start()
+                            
+                            return  # Exit early to avoid duplicate processing
+                        else:
+                            # Check for room occupancy changes
+                            old_occupied = self.last_data.get('is_occupied', False)
+                            new_occupied = data.get('is_occupied', False)
+                            if old_occupied != new_occupied:
+                                immediate_update_needed = True
+                                logger.info(f"Room occupancy changed: {old_occupied} -> {new_occupied}")
+                            
+                            # Check for current event changes
+                            old_current = self.last_data.get('current_event')
+                            new_current = data.get('current_event')
+                            if old_current != new_current:
+                                immediate_update_needed = True
+                                logger.info("Current event changed - immediate update")
+                        
+                        # Update stored data
+                        self.last_data = data.copy()  # Use copy() for safety
+                        
+                        if immediate_update_needed:
+                            # Force immediate update of current screen with new data
+                            self.force_display_update(self.current_screen_type, data.copy())
+                        else:
+                            # Just update the current screen content (will be picked up by next rotation)
+                            logger.info("Data updated - will be shown on next screen refresh")
+                            
                 except json.JSONDecodeError:
                     logger.error(f"Invalid JSON payload: {payload}")
                     
             elif topic.endswith('/clear'):
                 if payload.lower() == 'true':
-                    self.last_data = {}
-                    self.setup_screen_displayed = False
-                    self.schedule_display_update('setup', None)
-                
+                    logger.info("Clear command received")
+                    with self.data_lock:  # Thread-safe access
+                        self.stop_screen_rotation()
+                        self.stop_timeout_timer()  # Stop timeout timer when clearing
+                        self.last_data = {}
+                        self.setup_screen_displayed = False
+                        self.current_screen_type = 'setup'
+                        self.force_display_update('setup', None)
+            
         except Exception as e:
             logger.error(f"Message processing error: {e}")
             logger.error(traceback.format_exc())
-    
-    def schedule_display_update(self, display_type, content):
-        self.pending_updates[display_type] = content
-        logger.info(f"Display update scheduled for type: {display_type}")
-                    
+                        
     @error_handler
     def stagger_worker(self):
+        """Simplified worker that only handles rate limiting for forced updates"""
         while self.running:
             current_time = time.time()
             time_since_last_update = current_time - self.last_display_update
             
-            if self.pending_updates and time_since_last_update >= DISPLAY_UPDATE_INTERVAL:
-                logger.info(f"Processing scheduled display update after {time_since_last_update:.1f} seconds")
-                
-                display_type, content = next(iter(self.pending_updates.items()))
-                self.display_queue.put((display_type, content))
-                
-                del self.pending_updates[display_type]
-                self.last_display_update = current_time
+            # Only enforce rate limiting for back-to-back updates
+            if time_since_last_update < 2.0:  # Minimum 2 seconds between any updates
+                time.sleep(0.5)
+                continue
             
             time.sleep(1.0)
-    
+
     @error_handler
     def display_worker(self):
         while self.running:
@@ -292,16 +380,136 @@ class MQTTDisplay:
     
     @error_handler
     def periodic_refresh(self):
+        """Periodic refresh to update timestamps and ensure display stays current"""
         while self.running:
             if self.last_data:
+                # Update timestamp in data
                 self.last_data['timestamp'] = self.get_current_time().isoformat()
-                self.schedule_display_update('data', self.last_data)
-                logger.info("Display refresh scheduled")
+                logger.info("Periodic data refresh completed")
             
-            for _ in range(5):  # 5 minutes
+            # Wait 5 minutes before next refresh
+            for _ in range(5):
                 if not self.running:
                     break
                 time.sleep(60)
+
+    def start_screen_rotation(self):
+        """Start fixed-time screen rotation independent of data updates"""
+        def rotate_screen():
+            if not self.running:
+                return
+                
+            # Only rotate if we have data
+            if not self.last_data:
+                logger.info("No data available for rotation, staying on setup screen")
+                # Schedule next check in case data arrives
+                if self.running:
+                    self.screen_rotation_timer = threading.Timer(self.screen_rotation_interval, rotate_screen)
+                    self.screen_rotation_timer.daemon = True
+                    self.screen_rotation_timer.start()
+                return
+            
+            # Determine next screen based on available content
+            if self.last_data.get('events') and len(self.last_data['events']) > 0:
+                # Switch between data and events screens
+                if self.current_screen_type == 'data':
+                    self.current_screen_type = 'events'
+                    logger.info("Rotating to events screen")
+                else:
+                    self.current_screen_type = 'data'
+                    logger.info("Rotating to data screen")
+            else:
+                # No events, always show data screen
+                self.current_screen_type = 'data'
+                logger.info("No events available, showing data screen")
+            
+            # Update the display with current data
+            self.display_queue.put((self.current_screen_type, self.last_data.copy()))
+            
+            # Schedule next rotation
+            if self.running:
+                self.screen_rotation_timer = threading.Timer(self.screen_rotation_interval, rotate_screen)
+                self.screen_rotation_timer.daemon = True
+                self.screen_rotation_timer.start()
+        
+        # Only start rotation if we have data
+        if self.last_data:
+            self.rotation_active = True
+            logger.info(f"Starting screen rotation with {self.screen_rotation_interval}s intervals")
+            rotate_screen()
+        else:
+            logger.info("No data available yet, delaying rotation start")
+
+    def stop_screen_rotation(self):
+        """Stop the screen rotation timer"""
+        self.rotation_active = False
+        if self.screen_rotation_timer:
+            self.screen_rotation_timer.cancel()
+            self.screen_rotation_timer = None
+            logger.info("Screen rotation stopped")
+
+    def force_display_update(self, display_type, content):
+        """Force an immediate display update without affecting rotation schedule"""
+        # Clear any pending updates of the same type to avoid queue buildup
+        temp_queue = queue.Queue()
+        while not self.display_queue.empty():
+            try:
+                item = self.display_queue.get_nowait()
+                if item[0] != display_type:  # Keep items that are different type
+                    temp_queue.put(item)
+                self.display_queue.task_done()
+            except queue.Empty:
+                break
+        
+        # Put back the items we want to keep
+        while not temp_queue.empty():
+            self.display_queue.put(temp_queue.get())
+        
+        # Add the new update
+        self.display_queue.put((display_type, content))
+        self.last_display_update = time.time()
+        logger.info(f"Forced display update: {display_type}")
+    
+    def schedule_display_update(self, display_type, content):
+        """Schedule a display update (used for non-urgent updates)"""
+        self.display_queue.put((display_type, content))
+        logger.debug(f"Scheduled display update: {display_type}")
+
+    def reset_timeout_timer(self):
+        """Reset the timeout timer when new data is received"""
+        self.last_data_time = time.time()
+        
+        # Cancel existing timer
+        if self.timeout_timer:
+            self.timeout_timer.cancel()
+        
+        # Start new timer
+        self.timeout_timer = threading.Timer(self.data_timeout, self.handle_data_timeout)
+        self.timeout_timer.daemon = True
+        self.timeout_timer.start()
+        logger.debug(f"Timeout timer reset - will trigger in {self.data_timeout} seconds")
+
+    def handle_data_timeout(self):
+        """Called when no data received for timeout period"""
+        logger.info(f"No data received for {self.data_timeout} seconds - returning to setup screen")
+        
+        with self.data_lock:
+            # Stop rotation and clear data
+            self.stop_screen_rotation()
+            self.last_data = {}
+            self.setup_screen_displayed = False
+            self.current_screen_type = 'setup'
+            
+            # Force display update to setup screen
+            self.force_display_update('setup', None)
+            logger.info("Timeout handled - setup screen queued for display")
+            
+    def stop_timeout_timer(self):
+        """Stop the timeout timer"""
+        if self.timeout_timer:
+            self.timeout_timer.cancel()
+            self.timeout_timer = None
+            logger.debug("Timeout timer stopped")
     
     def display_setup_screen(self):
         if not self.epd and not self.setup_display():
@@ -372,7 +580,6 @@ class MQTTDisplay:
             # Draw header with room name
             draw.rectangle([(0, 0), (width, 24)], outline=0, fill=0)
             room_name = data.get('room', 'Unknown Room')
-            # Calculate center position based on text width
             room_name_width = draw.textbbox((0, 0), room_name, font=fonts['title'])[2]
             draw.text(((width - room_name_width) // 2, 4), room_name, font=fonts['title'], fill=255)
             
@@ -384,21 +591,15 @@ class MQTTDisplay:
             capacity_text = f"Capacity: {capacity}"
             update_text = f"Last Update: {current_time}"
             
-            # Calculate text widths to position them properly
             update_width = draw.textbbox((0, 0), update_text, font=fonts['text'])[2]
             capacity_width = draw.textbbox((0, 0), capacity_text, font=fonts['text'])[2]
             
-            # If both texts together are too wide for the display
             if update_width + capacity_width + 15 > width:
-                # Use shorter format for time to save space
                 short_time = self.get_current_time().strftime('%H:%M')
                 update_text = f"Update: {short_time}"
                 update_width = draw.textbbox((0, 0), update_text, font=fonts['text'])[2]
             
-            # Draw update time on left
             draw.text((5, 28), update_text, font=fonts['text'], fill=0)
-            
-            # Draw capacity on right, leaving some margin
             right_position = width - capacity_width - 5
             draw.text((right_position, 28), capacity_text, font=fonts['text'], fill=0)
                         
@@ -409,7 +610,6 @@ class MQTTDisplay:
             
             draw.line([(0, content_top), (width, content_top)], fill=0, width=1)
             
-            # Display room status (occupied or free)
             status_text = "OCCUPIED" if is_occupied else "FREE"
             status_font = fonts['bold']
             
@@ -420,8 +620,6 @@ class MQTTDisplay:
                 draw.text((10, content_top+4), status_text, font=status_font, fill=0)
             
             content_top += 22
-            
-            # Draw divider before events
             draw.line([(0, content_top), (width, content_top)], fill=0, width=1)
             content_top += 2
             
@@ -430,31 +628,27 @@ class MQTTDisplay:
             
             if events:
                 if current_event:
-                    # Format times
                     start_time = self._format_event_time(current_event['start'])
                     end_time = self._format_event_time(current_event['stop'])
                     
                     draw.text((5, content_top), "Current Meeting:", font=fonts['heading'], fill=0)
                     content_top += 16
                     
-                    # Draw event name with word wrap
                     event_name = current_event['name']
                     if len(event_name) > 28:
                         name_parts = self._wrap_text(event_name, 28)
-                        for part in name_parts[:2]:  # Limit to 2 lines
+                        for part in name_parts[:2]:
                             draw.text((10, content_top), part, font=fonts['text'], fill=0)
                             content_top += 14
                     else:
                         draw.text((10, content_top), event_name, font=fonts['text'], fill=0)
                         content_top += 14
                     
-                    # Draw organizer and time period
                     draw.text((10, content_top), f"By: {current_event['organizer']}", font=fonts['small'], fill=0)
                     content_top += 12
                     draw.text((10, content_top), f"Time: {start_time} - {end_time}", font=fonts['small'], fill=0)
                     content_top += 16
                     
-                    # Add indicator for more events
                     if len(events) > 1:
                         draw.text((5, content_top), f"▼ {len(events)-1} more event(s)", font=fonts['small'], fill=0)
                 else:
@@ -468,11 +662,6 @@ class MQTTDisplay:
             
             self.epd.display(self.epd.getbuffer(image))
             logger.info("Room data displayed on e-paper")
-            
-            # Schedule the events screen if there are events
-            if events:
-                threading.Timer(DISPLAY_UPDATE_INTERVAL / 2, 
-                            lambda: self.schedule_display_update('events', data)).start()
 
     def display_events_screen(self, data):
         if not self.epd and not self.setup_display():
@@ -497,11 +686,10 @@ class MQTTDisplay:
             title_width = draw.textbbox((0, 0), title, font=fonts['title'])[2]
             draw.text(((width - title_width) // 2, 3), title, font=fonts['title'], fill=255)
             
-            # Get room name and events
             room_name = data.get('room', 'Unknown Room')
             all_events = data.get('events', [])
             
-            # Filter out events that have already ended
+            # Filter valid events
             current_time = self.get_current_time()
             valid_events = []
             
@@ -509,31 +697,26 @@ class MQTTDisplay:
                 try:
                     end_time = datetime.fromisoformat(event['stop'])
                     
-                    # Compare with current time based on timezone awareness
                     if end_time.tzinfo is not None and current_time.tzinfo is not None:
                         if end_time > current_time:
                             valid_events.append(event)
-                    # For naive datetimes, compare directly
                     elif end_time.tzinfo is None and current_time.tzinfo is None:
                         if end_time > current_time:
                             valid_events.append(event)
-                    # Mixed timezone awareness - normalize for comparison
                     else:
-                        # Mixed timezone awareness - use time comparison as fallback
                         if (end_time.hour > current_time.hour or 
                             (end_time.hour == current_time.hour and end_time.minute >= current_time.minute)):
                             valid_events.append(event)
                 except (ValueError, KeyError):
                     continue
             
-            # Show room name, date, and last update time
+            # Show room info
             current_date = current_time.strftime('%Y-%m-%d')
             update_time = current_time.strftime('%H:%M:%S')
             info_text = f"{room_name} | {current_date} | Last Update: {update_time}"
             
-            # Making sure the text fits, otherwise abbreviate
             text_width = draw.textbbox((0, 0), info_text, font=fonts['small'])[2]
-            if text_width > width - 10:  # If too long for display
+            if text_width > width - 10:
                 room_abbrev = room_name[:10] + "..." if len(room_name) > 13 else room_name
                 info_text = f"{room_abbrev} | {current_date} | {update_time}"
             
@@ -546,10 +729,7 @@ class MQTTDisplay:
             if not valid_events:
                 draw.text((5, content_top + 10), "No upcoming events", font=fonts['text'], fill=0)
             else:
-                # Sorting events by start time
                 valid_events.sort(key=lambda x: x.get('start', ''))
-                
-                # Display events (up to 3 events for better readability)
                 max_events = min(3, len(valid_events))
                 events_to_show = valid_events[:max_events]
                 
@@ -559,46 +739,34 @@ class MQTTDisplay:
                     
                     is_current = event.get('is_current', False)
                     
-                    # Event block
                     if is_current:
                         draw.rectangle([(3, content_top-2), (width-3, content_top+44)], outline=0, fill=0)
-                        text_color = 255  # White text on black background
-                        status_text = " (CURRENT)"
+                        text_color = 255
                     else:
-                        text_color = 0  # Black text
-                        status_text = ""
+                        text_color = 0
                     
-                    # Event name with word wrap
                     event_name = event['name']
                     name_parts = self._wrap_text(event_name, 28)
                     
-                    for j, part in enumerate(name_parts[:1]):  # Limit to 1 line
+                    for j, part in enumerate(name_parts[:1]):
                         draw.text((8, content_top), part, font=fonts['bold' if is_current else 'text'], fill=0)
                         content_top += 16
                     
-                    # Reservation info
                     draw.text((8, content_top), f"Reserved by: {event['organizer']}", font=fonts['small'], fill=0)
                     content_top += 14
                     
-                    # Time info
                     draw.text((8, content_top), f"When: {start_time} - {end_time}", font=fonts['small'], fill=0)
                     content_top += 16
                     
-                    # Add divider between events
                     if i < max_events - 1:
                         draw.line([(0, content_top), (width, content_top)], fill=0, width=1)
                         content_top += 3
                 
-                # If there are more events than shown
                 if len(valid_events) > max_events:
                     draw.text((5, height - 15), f"+ {len(valid_events) - max_events} more events...", font=fonts['small'], fill=0)
             
             self.epd.display(self.epd.getbuffer(image))
             logger.info("Events screen displayed on e-paper")
-            
-            # Schedule switching back to data screen
-            threading.Timer(DISPLAY_UPDATE_INTERVAL,
-                        lambda: self.schedule_display_update('data', data)).start()
             
     def _format_event_time(self, iso_time_str):
         """Parse event time handling both ISO and custom formats, converting to local timezone"""
@@ -674,16 +842,24 @@ class MQTTDisplay:
         self.start_thread('refresh', self.periodic_refresh)
         self.start_thread('connection', self.monitor_connection)
         
-        # Schedule setup screen display
+        # Display initial setup screen
+        self.current_screen_type = 'setup'
         self.schedule_display_update('setup', None)
         
+        # Note: Screen rotation will start automatically when first data is received
         logger.info("MQTT Display controller started")
-        logger.info(f"Display updates staggered every {DISPLAY_UPDATE_INTERVAL} seconds")
+        logger.info("Waiting for data to begin screen rotation...")
         
         return True
         
     def stop(self):
         self.running = False
+        
+        # Stop screen rotation
+        self.stop_screen_rotation()
+        
+        # NEW: Stop timeout timer
+        self.stop_timeout_timer()
         
         # Disconnect MQTT client
         if self.client:
