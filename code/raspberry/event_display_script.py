@@ -17,7 +17,7 @@ import threading
 import queue
 from PIL import Image, ImageDraw, ImageFont
 import pytz
-from datetime import datetime, timedelta
+from datetime import datetime
 from functools import wraps
 from contextlib import contextmanager
 
