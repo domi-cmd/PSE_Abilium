@@ -193,7 +193,7 @@ class RoomRaspConnection(models.Model):
         except Exception as e:
             _logger.error("Failed to update connection status: %s", e)
 
-    def _on_connect(self, client, userdata, flags, rc):
+    def _on_connect(self, client, userdata, flags, reasonCode, properties):
         """MQTT on_connect callback. Handles subscription and status update.
     
         Registered by:
@@ -209,7 +209,7 @@ class RoomRaspConnection(models.Model):
             return
             
         try:
-            if rc == 0:
+            if reasonCode == 0:
                 # Connection successful
                 self._update_connection_status(connection_id, 'connected')
                 
@@ -230,13 +230,13 @@ class RoomRaspConnection(models.Model):
                     4: "Bad credentials",
                     5: "Not authorized"
                 }
-                error_msg = errors.get(rc, f"Unknown error: {rc}")
+                error_msg = errors.get(reasonCode, f"Unknown error: {reasonCode}")
                 self._update_connection_status(connection_id, 'error', error_msg)
                 
         except Exception as e:
             _logger.error("Error in on_connect callback: %s", e)
 
-    def _on_disconnect(self, client, userdata, rc):
+    def _on_disconnect(self, client, userdata, reasonCode, properties):
         """MQTT on_disconnect callback. Manages reconnection and error handling.
     
         Registered by:
@@ -252,12 +252,12 @@ class RoomRaspConnection(models.Model):
             return
             
         try:
-            if rc == 0:
+            if reasonCode == 0:
                 # Normal disconnection
                 self._update_connection_status(connection_id, 'disconnected')
             else:
                 # Unexpected disconnection
-                error_msg = f"Unexpected disconnect (code {rc})"
+                error_msg = f"Unexpected disconnect (code {reasonCode})"
                 self._update_connection_status(connection_id, 'error', error_msg)
                 
                 # Schedule reconnection attempt
@@ -270,7 +270,7 @@ class RoomRaspConnection(models.Model):
         except Exception as e:
             _logger.error("Error in on_disconnect callback: %s", e)
 
-    def _on_message(self, client, userdata, message):
+    def _on_message(self, client, userdata, msg):
         """MQTT message handler. Processes inbound messages from broker.
         Callback when MQTT message is received
     
@@ -290,8 +290,8 @@ class RoomRaspConnection(models.Model):
                 if not connection.exists():
                     return
                     
-                topic = message.topic
-                payload = message.payload.decode('utf-8')
+                topic = msg.topic
+                payload = msg.payload.decode('utf-8')
                 _logger.info("Received message: %s - %s", topic, payload)
                 
                 # Process message (implement your message handling logic here)
@@ -326,7 +326,9 @@ class RoomRaspConnection(models.Model):
                 client = mqtt.Client(
                     client_id=connection.mqtt_client_id or f'odoo-{connection_id}-{int(time.time())}'[:23],
                     userdata={'connection_id': connection_id},
-                    protocol=mqtt.MQTTv311
+                    protocol=mqtt.MQTTv311,
+                    callback_api_version=5,
+                    transport="tcp"
                 )
                 
                 # Configure client
@@ -448,7 +450,7 @@ class RoomRaspConnection(models.Model):
         try:
             # Create a temporary client for testing
             client_id = f'odoo-test-{self.id}-{int(time.time())}'[:23]
-            client = mqtt.Client(client_id=client_id, protocol=mqtt.MQTTv311)
+            client = mqtt.Client(client_id=client_id, protocol=mqtt.MQTTv311, callback_api_version=5)
             
             if self.mqtt_username:
                 client.username_pw_set(self.mqtt_username, self.mqtt_password)
