@@ -527,7 +527,7 @@ class MQTTDisplay:
             if self.connected:
                 title = "Waiting for messages..."
             else:
-                title = "Waiting for WiFi..."
+                title = "Connecting to broker..."
             
             # Draw header
             draw.rectangle([(0, 0), (width, 30)], outline=0, fill=0)
