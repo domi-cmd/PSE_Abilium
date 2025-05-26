@@ -45,8 +45,8 @@ class RoomRaspConnection(models.Model):
     description = fields.Char(string='Description')
 
     # Raspberry Pi identifier - auto-generated and read-only
-    # TODO: Make Raspberry ID read-only
-    # Status and relationship fieldsraspName = fields.Char(string='Raspberry ID', required=True, tracking=True, default=lambda self: self._default_rasp_id(), readonly=True)
+    # Status and relationship fields
+    raspName = fields.Char(string='Raspberry ID', required=True, tracking=True, default=lambda self: self._default_rasp_id(), readonly=True)
     active = fields.Boolean(string='Active', default=True, tracking=True)
     resource_id = fields.Many2one('resource.resource', string="Resource", ondelete='cascade')
     partner_id = fields.Many2one('res.partner', string="Related Contact")
