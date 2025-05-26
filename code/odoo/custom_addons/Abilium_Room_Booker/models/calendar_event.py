@@ -8,10 +8,12 @@ class CalendarEvent(models.Model):
     """
     _inherit = 'calendar.event'
 
+    # for checkbox field activation of filter
     filter_room_by_capacity = fields.Boolean(
         string='Only show rooms with enough capacity',
         default=False,
     )
+    
     # Related meeting room partner, computed from partner_ids with is_room=True
     meeting_room = fields.Many2one(
         "res.partner", compute="_compute_room",
@@ -25,6 +27,7 @@ class CalendarEvent(models.Model):
         compute="_compute_location",
         store=True
     )
+    
     # field saving the dynamic domain
     meeting_room_domain = fields.Char(
         compute='_compute_meeting_room_domain',
@@ -41,9 +44,11 @@ class CalendarEvent(models.Model):
     @api.depends('filter_room_by_capacity', 'partner_ids', 'booked_room_ids')
     def _compute_meeting_room_domain(self):
         """
-        compute function to change the domain dynamically to not include,
-        what rooms are already booked &
-        what rooms do not have enough capacity.
+        room_capacity_filter
+        When this function is called the field domain_meeting_room
+        is calculated based on the boolean room_capacity, 
+        wheter the room is already booked and the
+        number of attendees in the event.
         """
         for record in self:
             # Base domain: only rooms
@@ -69,7 +74,8 @@ class CalendarEvent(models.Model):
         """
         When a meeting room is selected, add it to partner_ids.
         When a meeting room is removed or changed, update partner_ids accordingly.
-        Also check if the selected room has sufficient capacity.
+        Also check if the selected room has sufficient capacity and display a
+        warning if not.
         """
         # First, remove any existing room partners that are not the current meeting room
         room_partners_to_remove = self.partner_ids.filtered(
