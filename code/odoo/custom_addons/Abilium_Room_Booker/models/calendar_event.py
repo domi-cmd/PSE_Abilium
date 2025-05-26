@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+import json
 
 class CalendarEvent(models.Model):
     """
@@ -7,39 +8,61 @@ class CalendarEvent(models.Model):
     """
     _inherit = 'calendar.event'
 
-    meeting_room = fields.Many2one(
-        "res.partner",
-        string='Room',
-        help="Select a room (a partner marked as is_room)."
-    )
     filter_room_by_capacity = fields.Boolean(
         string='Only show rooms with enough capacity',
         default=False,
     )
     # Related meeting room partner, computed from partner_ids with is_room=True
-    meeting_room = fields.Many2one("res.partner", compute="_compute_room", store=True)
+    meeting_room = fields.Many2one(
+        "res.partner", compute="_compute_room",
+        store=True,
+        string='Room',
+        help="Select a room (a partner marked as is_room)."
+    )
 
     # Meeting room location string, computed from the associated meeting room's connection details
-    location = fields.Char(compute="_compute_location", store=True)
+    location = fields.Char(
+        compute="_compute_location",
+        store=True
+    )
+    # field saving the dynamic domain
     meeting_room_domain = fields.Char(
         compute='_compute_meeting_room_domain',
         store=False
     )
 
-    @api.depends('filter_room_by_capacity', 'partner_ids')
+    # list of meeting_rooms that are book at the time of this meeting
+    booked_room_ids = fields.Many2many(
+        'res.partner',
+        compute='_onchange_booked_rooms',
+        store=False
+    )
+
+    @api.depends('filter_room_by_capacity', 'partner_ids', 'booked_room_ids')
     def _compute_meeting_room_domain(self):
+        """
+        compute function to change the domain dynamically to not include,
+        what rooms are already booked &
+        what rooms do not have enough capacity.
+        """
         for record in self:
+            # Base domain: only rooms
             domain = [('is_room', '=', True)]
 
-            attendee_count = len(record.partner_ids.filtered(lambda p: not p.is_room))
-            if attendee_count == 0:
-                attendee_count = 1
+            # Exclude already booked rooms
+            if record.booked_room_ids:
+                booked_ids = record.booked_room_ids.ids
+                domain.append(('id', 'not in', booked_ids))
 
+            # Count attendees (excluding meeting_rooms)
+            attendee_count = len(record.partner_ids.filtered(lambda p: not p.is_room)) or 1
+
+            # Filter by capacity if enabled
             if record.filter_room_by_capacity:
                 domain.append(('room_capacity', '>=', attendee_count))
 
-            # Convert to a string domain to use in XML
-            record.meeting_room_domain = str(domain)
+        # Convert domain to JSON string for safe evaluation
+        record.meeting_room_domain = json.dumps(domain)
 
     @api.onchange('meeting_room')
     def _onchange_meeting_room(self):
@@ -106,3 +129,41 @@ class CalendarEvent(models.Model):
                     location = ', '.join(parts)
             # Assign the computed location to the event
             event.location = location
+
+
+    @api.constrains('meeting_room', 'start', 'stop')
+    def _check_meeting_room_availability(self):
+        """
+        raises error if the meeting_room of this event is
+        already booked during a timeframe
+        """
+        for event in self:
+            if not event.meeting_room:
+                continue
+            overlapping = self.search([
+                ('id', '!=', event.id),
+                ('meeting_room', '=', event.meeting_room.id),
+                ('start', '<', event.stop),
+                ('stop', '>', event.start),
+            ])
+            if overlapping:
+                raise ValidationError(f"Room {event.meeting_room.name} is already booked.")
+
+
+    @api.onchange('meeting_room', 'start', 'stop')
+    def _onchange_booked_rooms(self):
+        """
+        creates a list of meeting rooms in meetings
+        during the timeframe of this meeting and
+        saves it in booked_room_ids.
+        """
+        if self.start and self.stop:
+            overlapping_events = self.env['calendar.event'].search([
+                ('id', '!=', self.id),
+                ('meeting_room', '!=', False),
+                ('start', '<', self.stop),
+                ('stop', '>', self.start),
+            ])
+            self.booked_room_ids = overlapping_events.mapped('meeting_room').ids
+        else:
+            self.booked_room_ids = []
