@@ -37,7 +37,7 @@ class RoomRaspConnection(models.Model):
     floor = fields.Char(string='Floor')
     description = fields.Char(string='Description')
     # TODO: Make Raspberry ID read-only
-    raspName = fields.Char(string='Raspberry ID', required=True, tracking=True, default=lambda self: self._default_rasp_id())
+    raspName = fields.Char(string='Raspberry ID', required=True, tracking=True, default=lambda self: self._default_rasp_id(), readonly=True)
     active = fields.Boolean(string='Active', default=True, tracking=True)
     resource_id = fields.Many2one('resource.resource', string="Resource", ondelete='cascade')
     partner_id = fields.Many2one('res.partner', string="Related Contact")
@@ -99,8 +99,8 @@ class RoomRaspConnection(models.Model):
     
     # MQTT Configuration Fields
     use_mqtt = fields.Boolean(string='Use MQTT', default=True)
-    mqtt_broker = fields.Char(string='MQTT Broker', default='test.mosquitto.org')
-    mqtt_port = fields.Integer(string='MQTT Port', default=8883)
+    mqtt_broker = fields.Char(string='MQTT Broker')
+    mqtt_port = fields.Integer(string='MQTT Port')
     mqtt_username = fields.Char(string='MQTT Username')
     mqtt_password = fields.Char(string='MQTT Password')
     mqtt_topic_prefix = fields.Char(string='Topic Prefix', default='test/room/')
