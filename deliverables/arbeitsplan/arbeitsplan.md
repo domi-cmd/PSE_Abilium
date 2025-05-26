@@ -17,7 +17,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  |------|------|------|------|------|-----|-------|
  | Bug: Multi-booking of rooms Issue #49 | Linus | 26.05.2025 | Odoo | 2.5h / 1h |  ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Bug: Timezone handling | Yannis | 26.05.2025 | Raspberry | 4h / - |  ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- |Updating documentation version 2 |Livia|26.05.2025|Dokumentation|/20min|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ |Updating documentation version 2 |Livia|26.05.2025|Dokumentation|1.5h/20min|✅|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
 |Setup guide Raspberry for non-technical users|Livia, Yannis|26.05.2025|Dokumentation|4h/3h| ✅||![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Add new field with filter and toggle to select rooms, or rooms with more capacity than attendees  | Linus | 20.05.25 | Odoo | 15h / 2h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Odoo Refactor: Move MqttConnectionManager into seperate file from ConnectionConfigurator.py | Dominic | 19.05.25 | Odoo | 2.5h / 2h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
@@ -28,7 +28,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  |Risikoanalyse 10|Livia|18.05.2025|Dokumentation|20min/30min|✅|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Protokoll 10|Yannis|18.05.2025|Dokumentation|50min/1h|✅|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Statusbericht 10|Linus|18.05.2025| Dokumentation |15min/20min|✅|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- |Defaul values im MQTT Modul anpassen|Yannis|21.05.2025|Raspberry| /1h|🔄|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ |Defaul values im MQTT Modul anpassen|Yannis|21.05.2025|Raspberry| 35min/1h|✅|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Refactored calendar_event.py and the two odoo module views; added comments and docstrings, cleaned out redundant code | Dominic | 11.05.25 | Odoo | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Anzeigen von Fehlfunktionen | Yannis | 15.05.2025 | Raspberry | 7h / 4h |✅| ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Vortrag Endprodukt | Yannis | 21.05.2025 | Präsentation | 6.5h / 6h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
