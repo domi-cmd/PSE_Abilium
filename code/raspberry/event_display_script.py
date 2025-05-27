@@ -930,7 +930,7 @@ class MQTTDisplay:
                     
                     # Truncate event name for 2-column layout
                     event_name = event['name']
-                    max_chars = 18  # Shorter for 2-column layout
+                    max_chars = 17  # Shorter for 2-column layout
                     if len(event_name) > max_chars:
                         event_name = event_name[:max_chars-3] + "..."
                     
@@ -944,10 +944,10 @@ class MQTTDisplay:
                         compartment_x = left_column_start
                         compartment_y = bottom_row_start
                     elif i == 2:  # Top-right
-                        compartment_x = right_column_start
+                        compartment_x = right_column_start + 4
                         compartment_y = top_row_start
                     else:  # Bottom-right
-                        compartment_x = right_column_start
+                        compartment_x = right_column_start + 4
                         compartment_y = bottom_row_start
                     
                     # Calculate text dimensions for centering
