@@ -3,7 +3,7 @@
 - 🔄 In Bearbeitung
 - ⏳ Offen
 
-## Progress: 15/16 User-Stories  &  76/81 Story-Points Completed!
+## Progress: 16/16 User-Stories  &  81/81 Story-Points Completed!
 
 
 
@@ -17,7 +17,7 @@
 | Raspi: Einfaches Setup & Konfigurieren (Raspberry .conf file?) | 8 SP | ✅ | Es bleibt, die Konfiguration komplett in das Image flashing des Raspberrys zu integrieren | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
 | Raspi: Updates von Reservationen (updates anzeigen | 5 SP | ✅ | - | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
 | Odoo-Admin: RoomID & RaspberryID verwalten (Zuweisung) | 5 SP | ✅ | Configuration View für Zuweisung(Erstellung) von Raum-Raspberry Verbindungen existiert, Räume werden vom Room Model gelesen. Verbindung mit Raspi fehlt? | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
-| Raspi: Anzeigen von Fehlfunktionen | 5 SP | 🔄 | - | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+| Raspi: Anzeigen von Fehlfunktionen | 5 SP | ✅ | - | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
 | Odoo-Admin: Events erstellen und löschen | 3 SP |	✅ | - | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
 | Odoo-Benutzer*in: Erstellung Termin (Erstellung Sitzungszimmer) | 2 SP | ✅ | Done | ![number-2](https://github.com/user-attachments/assets/68ccd9a0-3247-4551-859f-72538872b16e) |
 | Odoo-Benutzer*in: Raumfilter (Grösse) | 2 SP | ✅ | - | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
