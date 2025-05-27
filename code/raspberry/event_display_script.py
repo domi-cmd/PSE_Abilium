@@ -930,7 +930,7 @@ class MQTTDisplay:
                     
                     # Truncate event name for 2-column layout
                     event_name = event['name']
-                    max_chars = 17  # Shorter for 2-column layout
+                    max_chars = 16  # Shorter for 2-column layout
                     if len(event_name) > max_chars:
                         event_name = event_name[:max_chars-3] + "..."
                     
