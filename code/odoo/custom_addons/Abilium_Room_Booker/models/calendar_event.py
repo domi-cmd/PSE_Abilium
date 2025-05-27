@@ -69,7 +69,7 @@ class CalendarEvent(models.Model):
         # Convert domain to JSON string for safe evaluation
         record.meeting_room_domain = json.dumps(domain)
 
-    @api.onchange('meeting_room')
+    @api.onchange('meeting_room', 'partner_ids')
     def _onchange_meeting_room(self):
         """
         When a meeting room is selected, add it to partner_ids.
