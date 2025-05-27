@@ -25,7 +25,7 @@ Die Lösung umfasst:
 
 
 ## Installation & Setup  
-[Download the Raspberry Pi setup files here](https://github.com/domi-cmd/PSE_Abilium/releases/tag/v1.0.0)
+- [Download the Raspberry Pi setup files here](https://github.com/domi-cmd/PSE_Abilium/releases/tag/v1.0.0)
 
 ## Quellen  
 - [Odoo – Open Source ERP-System](https://www.odoo.com)  
