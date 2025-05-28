@@ -95,7 +95,7 @@ If you made updates to your script and need to change it:
 ### 1. Navigate to Script Directory
 Once you're connected to the Raspberry Pi via SSH, enter:
 ```bash
-cd e-Paper/Raspberry_JetsonNano/python/examples
+cd e-Paper/RaspberryPi_JetsonNano/python/examples
 ```
 
 ### 2. Remove Old Script
