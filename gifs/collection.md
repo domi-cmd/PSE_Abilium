@@ -19,4 +19,6 @@ Put conf file into bootfs gif:
 
 <img src="https://github.com/user-attachments/assets/3df45b93-10d7-45e7-b03f-0fabaf31973c" alt="settings_gif" width="400"/>
 
+Choose model:
 
+![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/44aac280-5fd8-4ded-8dd5-46b02bb155e5)
