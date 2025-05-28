@@ -24,3 +24,8 @@ Choose model:
 <img src="https://github.com/user-attachments/assets/b3df41f9-1d5f-493f-b90f-4c127603304f" alt="settings_gif" width="400"/>
 
 
+Select wifi gif small:
+
+<img src="https://github.com/user-attachments/assets/e0ec401a-484e-4893-8074-80e9684a8899" alt="settings_gif" width="400"/>
+
+
