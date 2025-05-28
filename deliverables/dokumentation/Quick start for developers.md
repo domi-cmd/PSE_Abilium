@@ -117,7 +117,7 @@ chmod +x mqtt_opt.py
 ```
 
 ### 5. Restart Auto-run Service
-Then you can redirect to the root directory and enter:
+Then you can redirect to the home directory and enter:
 ```bash
 sudo systemctl restart bootconfig.service
 ```
