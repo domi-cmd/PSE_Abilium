@@ -45,7 +45,7 @@ Open up a terminal or command prompt window and enter:
 ```bash
 ssh pi@your_hostname.local
 ```
-Make sure your computer is connected to the same WiFi as the Raspberry Pi.
+Make sure your computer is connected to the same WiFi as the Raspberry Pi. Enter the password you chose earlier.
 
 ### 9. Create Setup Script
 Once you have a connection, use the following command:
