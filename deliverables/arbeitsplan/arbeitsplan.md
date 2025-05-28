@@ -79,7 +79,6 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  | Odoo Res Partner: Add computed fields for room location in Odoo calendar | Linus | 04.05.25 | Odoo | 5 / 2.5h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Odoo Res Partner: Show/select the room name instead of the connection name | Dominic | 04.05.25 | Odoo | 30min / - | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Odoo Res Partner: Remove resp partner when connection is deleted | Dominic | 04.05.25 | Odoo | 1h / 1h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
- | Odoo add boolean toggles for "Active" and "Use Mqtt" in RoomRaspConnec View | UP FOR GRABS | 04.05.25 | Odoo | - / 30min | ⏳ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Resolve merge conflicts of branches into main | Dominic | - | Odoo | 2h / - | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Fix Odoo bugs due to branch merging | Dominic | - | Odoo | 7h / 2h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Prepare, cleanup and refactor code for pushing to customer repo | Dominic | 04.05.25 | Odoo | 1.5h / 1.5h | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
