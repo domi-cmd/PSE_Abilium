@@ -7,3 +7,10 @@ Size filter gif:
 Go in settings gif:
 
 <img src="https://github.com/user-attachments/assets/62ad1ba0-e67c-4f6a-a06a-f17bbac030d5" alt="settings_gif" width="400"/>
+
+
+Set raspberry name:
+
+<img src="https://github.com/user-attachments/assets/bdfda668-00ea-4db3-ba45-9aa5c96f97d0" alt="settings_gif" width="400"/>
+
+
