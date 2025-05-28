@@ -44,3 +44,8 @@ Test connection button:
 
 <img src="https://github.com/user-attachments/assets/5c7e17ae-d4c6-4200-98ea-c4be59f72a8a" alt="settings_gif" width="500"/>
 
+Welcome screen:
+
+<img src="https://github.com/user-attachments/assets/6d66cca3-3272-4c22-8d96-36abbf08aea2" alt="settings_gif" width="600"/>
+
+
