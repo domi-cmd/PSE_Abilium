@@ -84,3 +84,53 @@ When done, press `Ctrl+D` two times.
 You now have a working Raspberry Pi with your chosen display script, but the Raspberry Pi doesn't automatically start the script with predefined parameters yet. For that, we need to add 2 more files:
 - `bootconfig_runner.sh`
 - `bootconfig_service.txt`
+
+### 18. Configure Auto-run System
+Consult the [Raspberry Pi Auto-run Configuration System Documentation](https://github.com/domi-cmd/PSE_Abilium/blob/main/deliverables/dokumentation/Raspberry_Pi_Auto-run_Configuration_System_Documentation.md) for the setup of these files.
+
+## Updating Your Script
+
+If you made updates to your script and need to change it:
+
+### 1. Navigate to Script Directory
+Once you're connected to the Raspberry Pi via SSH, enter:
+```bash
+cd e-Paper/Raspberry_JetsonNano/python/examples
+```
+
+### 2. Remove Old Script
+This is where your script is saved. You can remove it via:
+```bash
+rm mqtt_opt.py
+```
+
+### 3. Create New Script
+Then create a new one (same steps as the `setup_script.sh`):
+```bash
+nano mqtt_opt.py
+```
+
+### 4. Make Script Executable
+Make it executable:
+```bash
+chmod +x mqtt_opt.py
+```
+
+### 5. Restart Auto-run Service
+Then you can redirect to the root directory and enter:
+```bash
+sudo systemctl restart bootconfig.service
+```
+to restart the auto-run process with the new script.
+
+### 6. Check Service Status
+You can check the service status with:
+```bash
+sudo systemctl status bootconfig.service
+```
+
+**Note:** These steps need to be repeated every time you want to change the script, but you can stay connected via SSH throughout the process.
+
+## Next Steps
+
+After completing these steps, you'll have a functional Raspberry Pi setup with your display script installed and configured for automatic startup.
