@@ -3,7 +3,7 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 162 ✅
+## Overall Completed Issues: 167 ✅
 
 ## Statuslegende
 - ✅ Abgeschlossen
@@ -15,6 +15,11 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
  | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
  |------|------|------|------|------|-----|-------|
+ | Final checkup on repositories | Dominic |28.05.25 | Organizational | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Added description, website and topic tags to both repositories | Dominic |28.05.25 | Organizational | 30min / 30min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Reformatted readme and added further product information to it | Dominic |28.05.25 | Organizational | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Cleaned up various folders and files in both repositories (empty placeholders, outdated files) | Dominic |28.05.25 | Organizational | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Created and added various gifs to repository | Dominic |28.05.25 | Organizational | 2.5h / 2h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Fixed faulty missing import warnings | Dominic |28.05.25 | Odoo | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Durchführen von Usability Tests | Caro | 15.05.25 | - | - / 4 h| 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Planung der Dokumentationsabgabe | Caro | 24.05.25 | - | - / 2h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
