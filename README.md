@@ -1,7 +1,13 @@
-# PSE_Abilium 🚀
+# PSE_Abilium 🚀    
 
-## Projektbeschreibung 📌
+<img src="https://github.com/user-attachments/assets/62ad1ba0-e67c-4f6a-a06a-f17bbac030d5" alt="settings_gif" width="400"/>
+
+## Projektbeschreibung 📌 
+
 PSE_Abilium ist ein IoT-Modul für das Open-Source-ERP-System Odoo, das die Verwaltung und Beschriftung von Sitzungszimmern mit e-Ink-Displays ermöglicht. Das Ziel des Projekts ist es, Doppelbuchungen zu vermeiden, indem Reservierungsinformationen auf einem e-Ink-Display dargestellt werden.  
+
+<img src="https://github.com/user-attachments/assets/ee419069-2993-48fd-b09c-ac4825420387" alt="size_filter_gif" width="400"/>
+
 
 Die Lösung umfasst:  
 - Ein **Odoo-Modul**, das die Raumverwaltung und Reservierungen steuert.  
