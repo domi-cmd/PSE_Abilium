@@ -62,7 +62,7 @@ Then press `Ctrl+X`, then `Y`, then press `Enter`.
 ### 12. Make File Executable
 Make the file executable with:
 ```bash
-chmod +x setup_script.sh
+sudo chmod +x setup_script.sh
 ```
 
 ### 13. Execute the Script
