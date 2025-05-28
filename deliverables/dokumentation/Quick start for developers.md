@@ -86,7 +86,7 @@ You now have a working Raspberry Pi with your chosen display script, but the Ras
 - `bootconfig_service.txt`
 
 ### 18. Configure Auto-run System
-Consult the [Raspberry Pi Auto-run Configuration System Documentation](https://github.com/domi-cmd/PSE_Abilium/blob/main/deliverables/dokumentation/Raspberry_Pi_Auto-run_Configuration_System_Documentation.md) for the setup of these files.
+Consult the [Raspberry Pi Auto-run Configuration System Documentation](https://github.com/domi-cmd/PSE_Abilium/blob/main/deliverables/dokumentation/Raspberry_Pi_Auto-run_Configuration_System_Documentation.md) for the setup of these files. Skip Step 3.
 
 ## Updating Your Script
 
