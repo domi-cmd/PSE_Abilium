@@ -131,6 +131,16 @@ sudo systemctl status bootconfig.service
 
 **Note:** These steps need to be repeated every time you want to change the script, but you can stay connected via SSH throughout the process.
 
+## Making a New Image
+
+To create a new image, I used this command, which creates and also compresses it directly. You might need to install zstd (compression tool) first:
+
+```bash
+sudo dd if=/dev/disk4 bs=4M status=progress | zstd -9 -T0 > raspberry-image-final.img.zst
+```
+
+To check what disk number your SD card is, you can use `diskutil list` on macOS or `diskpart` on Windows.
+
 ## Next Steps
 
 After completing these steps, you'll have a functional Raspberry Pi setup with your display script installed and configured for automatic startup.
