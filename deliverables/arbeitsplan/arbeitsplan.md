@@ -3,7 +3,7 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 137 ✅
+## Overall Completed Issues: 161 ✅
 
 ## Statuslegende
 - ✅ Abgeschlossen
@@ -15,15 +15,21 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
  | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
  |------|------|------|------|------|-----|-------|
- | Traktanden Intern Meeting 25.05 | Dominic | 25.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Traktanden Intern Meeting 22.05 | Dominic | 22.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Traktanden Intern Meeting 18.05 | Dominic | 18.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Traktanden Intern Meeting 15.05 | Dominic | 15.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Traktanden Intern Meeting 11.05 | Dominic | 11.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Traktanden Intern Meeting 07.05 | Dominic | 07.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Traktanden Team Meeting 6 | Dominic | 26.05.25 | Meeting | 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Traktanden Team Meeting 5 | Dominic | 14.05.25 | Meeting | 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Traktanden Team Meeting 4 | Dominic | 16.04.25 | Meeting | 15min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
+ | Durchführen von Usability Tests | Caro | 15.05.25 | - | - / 4 h| 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Planung der Dokumentationsabgabe | Caro | 24.05.25 | - | - / 2h | 🔄 | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Traktanden & Planen Standup Meeting 27.05.25 | Dominic | 27.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Traktanden & Planen Standup Meeting 24.05.25 | Dominic | 24.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Traktanden & Planen Standup Meeting 20.05.25 | Dominic | 20.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Traktanden & Planen Standup Meeting 13.05.25 | Dominic | 13.05.25 | Meeting | 20min / 20min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Traktanden & Planen Intern Meeting 25.05 | Dominic | 25.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Traktanden & Planen Intern Meeting 22.05 | Dominic | 22.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Traktanden & Planen Intern Meeting 18.05 | Dominic | 18.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Traktanden & Planen Intern Meeting 15.05 | Dominic | 15.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Traktanden & Planen Intern Meeting 11.05 | Dominic | 11.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Traktanden & Planen Intern Meeting 07.05 | Dominic | 07.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Traktanden & Planen Team Meeting 6 | Dominic | 26.05.25 | Meeting | 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Traktanden & Planen Team Meeting 5 | Dominic | 14.05.25 | Meeting | 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Traktanden & Planen Team Meeting 4 | Dominic | 16.04.25 | Meeting | 15min | ✅ | ![number-3](https://github.com/user-attachments/assets/a2e7514a-eab8-4d23-9c87-cd58b247637b) |
  | Bug: Multi-booking of rooms Issue #49 | Linus | 26.05.2025 | Odoo | 2.5h / 1h |  ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Bug: Timezone handling | Yannis | 26.05.2025 | Raspberry | 4h / - |  ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Updating documentation version 2 |Livia|26.05.2025|Dokumentation|1.5h/20min|✅|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
@@ -43,8 +49,6 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  | Vortrag Endprodukt | Yannis | 21.05.2025 | Präsentation | 6.5h / 6h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Add "admin rights" logic to odoo so that base users cant access nor view the connection configuration menu | Dominic | 11.05.25 | Odoo | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  |Dokument Testdurchführung Usabillity Tests|Caro|-|Dokumentation|2.5h / 1.5h|✅|![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- |Durchführen von Usability Tests|Caro|15.05.25|-| /4h|🔄| ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Planung der Dokumentationsabgabe|Caro|24.05.25|-|/2h|🔄| ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Refactor res.partner | Linus | 21.05.25 | Odoo | 2h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Add Profile Image to res.partner | Linus | 21.05.25 | Odoo | 30min / 30min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | User Story: Configuration von Raspberry; einheitliches Setup & Konfig file | Yannis, Livia | 25.05.25 | Raspberry | 19h / 10h | ✅| | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
