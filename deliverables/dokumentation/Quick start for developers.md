@@ -1,6 +1,6 @@
 # Raspberry Pi Display Script Setup Dev-Guide
 
-This is a quick start guide to set up your Raspberry Pi to modify the display script and understand what additional processes need to be added. Prior experience is expected as this isn't a detailed guide. This guide doesn't cover the use of the Raspberry Pi image we created for easy setup.
+This is a quick start guide to set up your Raspberry Pi to modify the display script and understand what additional processes need to be added. Prior experience is expected. This guide doesn't cover the use of the Raspberry Pi image we created for easy setup.
 
 ## Prerequisites
 
