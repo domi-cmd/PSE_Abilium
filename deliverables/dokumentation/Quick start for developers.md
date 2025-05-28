@@ -12,7 +12,7 @@ This is a quick start guide to set up your Raspberry Pi to modify the display sc
 ## Setup Instructions
 
 ### 1. Flash Your SD Card
-Flash your SD card with the [Raspberry Pi Imager tool](insert-link-here).
+Flash your SD card with the [Raspberry Pi Imager tool](https://www.raspberrypi.com/software/).
 
 ### 2. Configure the Image
 Once opened:
@@ -43,7 +43,7 @@ It may take multiple minutes to establish a connection.
 ### 8. SSH Connection
 Open up a terminal or command prompt window and enter:
 ```bash
-ssh your_hostname@your_username.local
+ssh pi@your_hostname.local
 ```
 Make sure your computer is connected to the same WiFi as the Raspberry Pi.
 
@@ -75,7 +75,7 @@ Execute it with the command:
 All the needed libraries will be installed. You can check the specific installations in the `old_setup_script.sh` file.
 
 ### 15. Input Display Script
-After completion, you will be prompted to input your display script directly into the terminal (you need to enter a name first).
+After completion, you will be prompted to input your display script directly into the terminal (you need to enter `mqtt_opt.py` as the name first).
 
 ### 16. Complete Script Input
 When done, press `Ctrl+D` two times.
