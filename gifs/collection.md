@@ -46,6 +46,5 @@ Test connection button:
 
 Welcome screen:
 
-<img src="https://github.com/user-attachments/assets/6d66cca3-3272-4c22-8d96-36abbf08aea2" alt="settings_gif" width="600"/>
-
+<img src="https://github.com/user-attachments/assets/1c06c54e-1a5c-4198-8112-ee88094842c1" alt="settings_gif" width="600"/>
 
