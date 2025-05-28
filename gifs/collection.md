@@ -14,3 +14,9 @@ Set raspberry name:
 <img src="https://github.com/user-attachments/assets/bdfda668-00ea-4db3-ba45-9aa5c96f97d0" alt="settings_gif" width="400"/>
 
 
+
+Put conf file into bootfs gif:
+
+<img src="https://github.com/user-attachments/assets/3df45b93-10d7-45e7-b03f-0fabaf31973c" alt="settings_gif" width="400"/>
+
+
