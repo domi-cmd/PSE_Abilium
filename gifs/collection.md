@@ -32,3 +32,9 @@ Select wifi gif large:
 
 <img src="https://github.com/user-attachments/assets/d04f120c-5bb1-4dac-b983-56026a5165a7" alt="settings_gif" width="400"/>
 
+Select image:
+
+<img src="https://github.com/user-attachments/assets/705d122a-f195-4ab6-bb0f-dfa3a01f4886" alt="settings_gif" width="400"/>
+
+
+
