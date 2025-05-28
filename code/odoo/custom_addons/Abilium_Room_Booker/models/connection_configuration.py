@@ -9,8 +9,8 @@ import ssl                               # For secure socket layer connections
 from contextlib import contextmanager    # For creating context managers
 import json                              # For JSON data serialization/deserialization
 # ValidationError import is needed for constraints
-from odoo.exceptions import ValidationError     # For custom validation errors
-from odoo.exceptions import AccessError         # For access control errors
+from odoo.exceptions import ValidationError     # type: ignore For custom validation errors
+from odoo.exceptions import AccessError         # type: ignore For access control errors
 from . import mqtt_connector                    # Local MQTT connection manager module
 
 # Logger instance for this module
