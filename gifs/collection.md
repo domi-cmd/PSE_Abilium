@@ -39,3 +39,8 @@ Select image:
 Activate ssh gif:
 
 <img src="https://github.com/user-attachments/assets/efb37644-4013-4e5a-acc9-38a0497354e1" alt="settings_gif" width="400"/>
+
+Test connection button:
+
+<img src="https://github.com/user-attachments/assets/5c7e17ae-d4c6-4200-98ea-c4be59f72a8a" alt="settings_gif" width="400"/>
+
