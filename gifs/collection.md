@@ -21,5 +21,6 @@ Put conf file into bootfs gif:
 
 Choose model:
 
-![ezgif com-optimize](https://github.com/user-attachments/assets/b3df41f9-1d5f-493f-b90f-4c127603304f)
+<img src="https://github.com/user-attachments/assets/b3df41f9-1d5f-493f-b90f-4c127603304f" alt="settings_gif" width="400"/>
+
 
