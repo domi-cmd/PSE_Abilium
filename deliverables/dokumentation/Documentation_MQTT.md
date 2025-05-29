@@ -87,11 +87,11 @@ The Raspberry Pi Devices (`event_display_script`) display data and subscribe to 
 
 **MQTT Architecture Diagram:**
 
-![MQTT Communication Architecture](img.png)
+![MQTT Communication Architecture](/deliverables/dokumentation/images/mqtt_architecture_diagram.png)
 
 **MQTT Sequence Diagram:**
 
-![MQTT Communication Sequence](img_1.png)
+![MQTT Communication Sequence](/deliverables/dokumentation/images/mqtt_sequence_diagram.png)
 
 ## Configuration Parameters
 

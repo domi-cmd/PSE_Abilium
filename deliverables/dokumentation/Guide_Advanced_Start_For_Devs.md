@@ -1,6 +1,6 @@
-# Raspberry Pi Display Script Setup Dev-Guide
+# Raspberry Pi Display Script Setup Guide
 
-This is a quick start guide to set up your Raspberry Pi to modify the display script and understand what additional processes need to be added. Prior experience is expected. This guide doesn't cover the use of the Raspberry Pi image we created for easy setup.
+This is a quick start guide to set up your Raspberry Pi to modify the display script and understand what additional processes need to be added. Prior experience is expected as this isn't a detailed guide. This guide doesn't cover the use of the Raspberry Pi image we created for easy setup.
 
 ## Prerequisites
 
@@ -45,7 +45,7 @@ Open up a terminal or command prompt window and enter:
 ```bash
 ssh pi@your_hostname.local
 ```
-Make sure your computer is connected to the same WiFi as the Raspberry Pi. Enter the password you chose earlier.
+Make sure your computer is connected to the same WiFi as the Raspberry Pi.
 
 ### 9. Create Setup Script
 Once you have a connection, use the following command:
@@ -95,7 +95,7 @@ If you made updates to your script and need to change it:
 ### 1. Navigate to Script Directory
 Once you're connected to the Raspberry Pi via SSH, enter:
 ```bash
-cd e-Paper/RaspberryPi_JetsonNano/python/examples
+cd e-Paper/Raspberry_JetsonNano/python/examples
 ```
 
 ### 2. Remove Old Script
@@ -117,7 +117,7 @@ chmod +x mqtt_opt.py
 ```
 
 ### 5. Restart Auto-run Service
-Then you can redirect to the home directory and enter:
+Then you can redirect to the root directory and enter:
 ```bash
 sudo systemctl restart bootconfig.service
 ```
