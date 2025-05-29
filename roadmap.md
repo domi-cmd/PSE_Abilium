@@ -7,10 +7,10 @@
 - **21. Mai – Dokumentation & Testresultate abgeben** 📑
 
 ## 🔄 Iteration Deadlines
-- **12. März – Ende Iteration 1** ✅
-- **2. April – Ende Iteration 2** ✅
-- **30. April – Ende Iteration 3** ✅
-- **14. Mai – Ende Iteration 4** ✅
+- **19. März – Ende Iteration 1** ✅
+- **14. April – Ende Iteration 2** ✅
+- **5. Mai – Ende Iteration 3** ✅
+- **28. Mai – Ende Iteration 4** ✅
 
 ## 🎤 Präsentationstermine
 - **5. März – Requirements (5 min) - Caro** 📋
@@ -21,10 +21,10 @@
 - **21. Mai – Schlussdemo (8–10 min) - Yannis** 🎬
 
 ## 🎲 Planning Games
-- **19. Februar – Planning Game 1** 🎲
-- **12. März – Planning Game 2** 🎲
-- **2. April – Planning Game 3** 🎲
-- **30. April – Planning Game 4** 🎲
+- **6. März – Planning Game 1** 🎲
+- **20. März – Planning Game 2** 🎲
+- **15. April – Planning Game 3** 🎲
+- **6. Mai – Planning Game 4** 🎲
 
 ## 🏖️ Pausen & Feiertage
 - **9. April – Unterrichtsfrei (SUB Jubiläum)** 🎉
