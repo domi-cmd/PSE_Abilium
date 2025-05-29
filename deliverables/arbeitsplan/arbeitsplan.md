@@ -3,7 +3,7 @@
 ## Übersicht
 Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) wird dieser Arbeitsplan laufend aktualisiert und im Repository bereitgestellt.
 
-## Overall Completed Issues: 167 ✅
+## Overall Completed Issues: 171 ✅
 
 ## Statuslegende
 - ✅ Abgeschlossen
@@ -15,7 +15,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
  | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
  |------|------|------|------|------|-----|-------|
- | Final checkup on repositories | Dominic |28.05.25 | Organizational | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Final checkup on repositories, reinforced folder and file naming conventions, renamed images in /dokumentation and moved them in appropriate folder, updated alt descriptions of gifs in readme, adjusted errors in roadmap, fixed minor merge conflict on customer repository | Dominic |28.05.25 | Organizational | 2h / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Added description, website and topic tags to both repositories | Dominic |28.05.25 | Organizational | 30min / 30min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Writing the user manual | Caro | 26.05.25 | - | 6h / 4h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Reformatted readme and added further product information to it | Dominic |28.05.25 | Organizational | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
@@ -24,7 +24,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  | Fixed faulty missing import warnings | Dominic |28.05.25 | Odoo | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Writing the README for clients github| Caro | 28.05.25 | - | 1h / 30min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Durchführen von Usability Tests | Caro | 15.05.25 | - | 30min / 4 h| ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Planung der Dokumentationsabgabe | Caro | 24.05.25 | - | 4 / 2h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Planung der Dokumentationsabgabe | Caro | 24.05.25 | - | 4h / 2h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Traktanden & Planen Standup Meeting 27.05.25 | Dominic | 27.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Traktanden & Planen Standup Meeting 24.05.25 | Dominic | 24.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Traktanden & Planen Standup Meeting 20.05.25 | Dominic | 20.05.25 | Meeting | 15min / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
