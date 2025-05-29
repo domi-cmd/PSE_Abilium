@@ -1,7 +1,7 @@
 # PSE_Abilium 🚀    
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/1c06c54e-1a5c-4198-8112-ee88094842c1" alt="settings_gif" width="600"/>
+<img src="https://github.com/user-attachments/assets/1c06c54e-1a5c-4198-8112-ee88094842c1" alt="display_welcome_gif" width="600"/>
 </p>
 
 
@@ -26,7 +26,7 @@ Die Lösung umfasst:
 - ### 🖥️ **E-Ink Bildschirm**: Momentane sowie kommende Raumbuchungen auf energiefreundliche Art vor Ort darstellen 
 - ### 📡 **MQTT Kommunikation**: Übermittelt Daten sicher und in echtzeit zwischen Odoo und den Raspberry Pi Geräten
 
-  <img src="https://github.com/user-attachments/assets/5c7e17ae-d4c6-4200-98ea-c4be59f72a8a" alt="settings_gif" width="500"/>
+  <img src="https://github.com/user-attachments/assets/5c7e17ae-d4c6-4200-98ea-c4be59f72a8a" alt="mqtt_connection_gif" width="500"/>
 - ### 🔄 **Status Updates**: Aktualisiert die E-Ink Bildschirme automatisch wann immer Änderungen im Kalendar eingetragen werden
 
 ### Technologien  
