@@ -20,7 +20,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
  | Writing the user manual | Caro | 26.05.25 | - | 6h / 4h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Reformatted readme and added further product information to it | Dominic |28.05.25 | Organizational | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Cleaned up various folders and files in both repositories (empty placeholders, outdated files) | Dominic |28.05.25 | Organizational | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
- | Created and added various gifs to repository | Dominic |28.05.25 | Organizational | 2.5h / 2h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
+ | Created and added various gifs to repository | Dominic, Yannis |28.05.25 | Organizational | 2.5h / 2h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Fixed faulty missing import warnings | Dominic |28.05.25 | Odoo | 1h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Writing the README for clients github| Caro | 28.05.25 | - | 1h / 30min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Durchführen von Usability Tests | Caro | 15.05.25 | - | 30min / 4 h| ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
