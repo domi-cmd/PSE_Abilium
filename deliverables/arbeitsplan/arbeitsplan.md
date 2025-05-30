@@ -15,6 +15,7 @@ Basierend auf der Detailplanung der Stories (siehe PSE Handbuch Abschnitt 2.1) w
 ## Aufgabenliste
  | Task | Verantwortlich | Deadline | Abhängigkeiten | Tatsächlicher / Geschätzter Zeitaufwand | Status | Sprint # |
  |------|------|------|------|------|-----|-------|
+ | Reworked update logic for display script | Yannis | 24.05.2025 | Raspberry | 6h / - | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Created and tested advanced start for devs | Yannis | 27.05.2025 | Raspberry | 2h / 1h | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Final checkup on repositories, reinforced folder and file naming conventions, renamed images in /dokumentation and moved them in appropriate folder, updated alt descriptions of gifs in readme, adjusted errors in roadmap, fixed minor merge conflict on customer repository | Dominic |28.05.25 | Organizational | 2h / 15min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
  | Added description, website and topic tags to both repositories | Dominic |28.05.25 | Organizational | 30min / 30min | ✅ | ![number-4](https://github.com/user-attachments/assets/696ba4ec-7ae3-43aa-b56b-872d033213b4) |
